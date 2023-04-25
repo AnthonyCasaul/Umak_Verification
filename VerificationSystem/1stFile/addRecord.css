@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Inria+Serif:wght@700&family=Inter&display=swap");
+/* 
+  umak text
+
+
+*/
+* {
+  margin: 0 0;
+  padding: 0 0;
+  text-decoration: none;
+}
+
+.navigator {
+  display: flex;
+  background-color: #073775;
+  flex-direction: row;
+  padding: 14px;
+}
+
+.umaklogo {
+  width: 3.8%;
+  height: 3.8%;
+  margin-left: 0.5%;
+}
+.umaktext {
+  font-family: "Inria Serif", serif;
+  font-size: 1.7vw;
+  color: white;
+  display: flex;
+  align-items: center;
+  margin-left: 1vw;
+  white-space: nowrap;
+}
+.sideContainer {
+  display: flex;
+  align-items: center;
+  margin-left: 40vw;
+  white-space: nowrap;
+}
+
+ul li {
+  list-style: none;
+  display: inline-block;
+  font-family: "Inter", sans-serif;
+
+  padding-left: 30px;
+}
+ul li a {
+  color: #c7c7c7;
+  font-size: 2.3vh;
+  padding: 5%;
+}
+.icon {
+  width: 30%;
+  margin-left: 15%;
+}
+#active {
+  color: white;
+  font-weight: 500;
+  border: solid white 1px;
+  border-radius: 7px;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Inter";
+  color: #073775;
+  font-weight: 700;
+  font-size: 1vw;
+}
+.form {
+  width: 80%;
+}
+.cTable {
+  border-spacing: 0.5vw 1vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tdLogo {
+  text-align: center;
+}
+.logo {
+  width: 10vw;
+}
+input[type="text"].sameInput {
+  background-color: #d9d9d9;
+  width: 15vw;
+  height: 4vh;
+}
+input[type="date"] {
+  color: gray;
+}
+input[type="date"]:focus {
+  color: black;
+}
+input[type="date"].sameInput {
+  background-color: #d9d9d9;
+  width: 15vw;
+  height: 4vh;
+}
+input[type="text"].sameDesign {
+  background-color: #d9d9d9;
+  width: 3vw;
+  height: 4vh;
+}
+input[type="radio"] {
+  width: 1.4em;
+  height: 1.4em;
+  vertical-align: top;
+  cursor: pointer;
+}
+select {
+  background-color: #d9d9d9;
+  width: 16vw;
+  height: 4vh;
+  border-radius: 10px;
+  font-size: 1vw;
+  padding: 0 10px;
+  border: none;
+  color: gray;
+}
+select:focus {
+  color: black;
+}
+/* #address {
+  width: 78%;
+} */
+#sem,
+#acadYr {
+  width: 80%;
+}
+input {
+  border-radius: 10px;
+  font-size: 1vw;
+  padding: 0 10px;
+  border: none;
+}
+input:focus {
+  box-shadow: 0 0 10px #719ece;
+}
+input[type="submit"] {
+  background-color: #097507;
+  color: white;
+  padding: 6px 15px;
+  cursor: pointer;
+}
+button {
+  background-color: #073775;
+  color: white;
+  padding: 6px 15px;
+  border-radius: 25px;
+  font-size: 1vw;
+  border: none;
+  cursor: pointer;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  height: 7%;
+  width: 100%;
+  background-color: #073775;
+}
+/* 
+td {
+  border: 1px solid black;
+} */

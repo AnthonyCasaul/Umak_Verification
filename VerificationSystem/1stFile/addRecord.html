@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="addRecord.css" />
+    <link rel="icon" href="img/UMakLogo.png" />
+    <title>Add Student Record</title>
+  </head>
+  <body>
+    <nav class="navigator">
+      <img src="img/UMakLogo.png" class="umaklogo" />
+      <h1 class="umaktext">UNIVERSITY OF MAKATI</h1>
+      <div class="sideContainer">
+        <ul>
+          <li><a href="#" class="logout">REPORTS</a></li>
+          <li><a href="#" class="logout">STAFFS</a></li>
+          <li><a href="#" id="active">RECORDS</a></li>
+          <li><a href="#" class="logout">LOG OUT</a></li>
+        </ul>
+
+        <div class="ImgIcon"><img src="img/userLogo.png" class="icon" /></div>
+      </div>
+    </nav>
+
+    <div class="content">
+      <div class="form">
+        <form action="">
+          <table class="cTable">
+            <tr>
+              <td>
+                <button class="back">BACK</button>
+              </td>
+              <td colspan="6" height="200vh" class="tdLogo">
+                <img src="img/addPhoto.png" alt="" class="logo" />
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">STUDENT ID</td>
+              <td>LAST NAME</td>
+              <td>FIRST NAME</td>
+              <td>MIDDLE NAME</td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <input type="text" id="sID" class="sameInput" />
+              </td>
+              <td>
+                <input type="text" id="lName" class="sameInput" />
+              </td>
+              <td><input type="text" id="fName" class="sameInput" /></td>
+              <td><input type="text" id="mName" class="sameInput" /></td>
+            </tr>
+            <tr>
+              <td colspan="3">BIRTHDATE</td>
+              <td>ADDRESS</td>
+              <td></td>
+              <td>CONTACT</td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <input type="date" id="bDate" class="sameInput" />
+              </td>
+              <td colspan="2">
+                <input type="text" id="address" class="sameInput" />
+              </td>
+              <td><input type="text" id="contactNo" class="sameInput" /></td>
+            </tr>
+            <tr>
+              <td>SUFFIX</td>
+              <td colspan="2">GENDER</td>
+              <td>DATE GRADUATED</td>
+              <td>DEPARTMENT</td>
+              <td>PROGRAM</td>
+            </tr>
+            <tr>
+              <td>
+                <input type="text" id="suffix" class="sameDesign" />
+              </td>
+              <td colspan="2">
+                <input
+                  type="radio"
+                  id="male"
+                  name="gender"
+                  class="sameDesign"
+                />
+                <label for="Male">Male</label>
+                <input
+                  type="radio"
+                  id="female"
+                  name="gender"
+                  class="sameDesign"
+                />
+                <label for="Female">Female</label>
+              </td>
+              <td>
+                <input type="date" id="dGrad" class="sameInput" />
+              </td>
+              <td>
+                <select
+                  name=""
+                  id="department"
+                  onchange="changeProgram(this.value)"
+                >
+                  <option value="none" selected disabled hidden>
+                    Select an Option
+                  </option>
+                  <option value="COAHS">
+                    College of Allied Health Studies
+                  </option>
+                  <option value="CMLI">
+                    College of Maritime and Leadership Innovation
+                  </option>
+                  <option value="COE">College of Education</option>
+                  <option value="CGPP">
+                    College of Governance and Public Policy
+                  </option>
+                  <option value="CHK">Center of Human Kinesthetics</option>
+                  <option value="COS">College of Science</option>
+                  <option value="CBFS">College of Business & Fincance</option>
+                  <option value="CTM">College of Technology Management</option>
+                  <option value="CTHM">
+                    College of Tourism & Hospitality Management
+                  </option>
+                  <option value="CCIS">
+                    College of Computing and Information Sciences
+                  </option>
+                  <option value="CCSCE">
+                    College of Construction Science and Civil Engineering
+                  </option>
+                  <option value="DCNB">
+                    Design Center for Nation Building
+                  </option>
+                </select>
+              </td>
+              <td colspan="2">
+                <select name="" id="programs">
+                  <option value="none" selected disabled hidden>
+                    Select an Option
+                  </option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3"></td>
+              <td style="width: 2%">SEMESTER</td>
+              <td style="width: 5%">ACADEMIC YEAR</td>
+              <td colspan="2">MAJOR</td>
+            </tr>
+            <tr>
+              <td colspan="3"></td>
+              <td class="smallInput">
+                <input type="text" id="sem" class="sameInput" />
+              </td>
+              <td><input type="text" id="acadYr" class="sameInput" /></td>
+              <td colspan="2">
+                <select name="" id="Major">
+                  <option value="">1</option>
+                  <option value="">2</option>
+                  <option value="">3</option>
+                  <option value="">4</option>
+                  <option value="">5</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3"></td>
+              <td>GUARDIAN NAME</td>
+              <td>CONTACT</td>
+              <td>RELATIONSHIP</td>
+            </tr>
+            <tr>
+              <td colspan="3"></td>
+              <td>
+                <input type="text" id="gName" class="sameInput" />
+              </td>
+              <td><input type="text" id="gContact" class="sameInput" /></td>
+              <td><input type="text" id="relationship" class="sameInput" /></td>
+            </tr>
+            <tr>
+              <td colspan="7"></td>
+              <td class="save"><input type="submit" value="SAVE" /></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+
+    <footer></footer>
+    <script>
+      function changeProgram(department) {
+        const selectProgram = document.getElementById("programs");
+        selectProgram.innerHTML = ""; // clear out existing options
+        if (department === "") {
+          selectProgram.disabled = true;
+          return;
+        }
+        selectProgram.disabled = false;
+        let programs = [];
+        if (department === "COAHS") {
+          programs = [
+            "Bachelor of Science in Nursing",
+            "Bachelor of Science in Pharmacy",
+            "Bachelor of Science in Radiologic Technology",
+            "Associtate in Dental Hygiene",
+            "Associate in Dental Technology",
+          ];
+        } else if (department === "CMLI") {
+          programs = [
+            "Bachelor of Science in Marine Engineering",
+            "Bachelor of Science in Marine Transportation",
+          ];
+        } else if (department === "COE") {
+          programs = [
+            "Bachelor of Science in Secondary Education Major in English",
+            "Bachelor of Science in Secondary Education Major in Mathematics",
+            "Bachelor of Science in Secondary Education Major in Social Studies",
+          ];
+        } else if (department === "CGPP") {
+          programs = ["Bachelor of Arts in Political Science"];
+        } else if (department === "CHK") {
+          programs = [
+            "Bachelor in Physical Wellness Major in Sports Management",
+          ];
+        } else if (department === "COS") {
+          programs = [
+            "Bachelor of Science in Psychology Major in Research & Measurement",
+            "Bachelor in Multimedia Arts Major in Digital Arts and Animation",
+            "Bachelor in Multimedia Arts Major in Film Production",
+            "Bachelor of Arts in Communication and Service Management",
+            "Associate in Customer Service Management",
+          ];
+        } else if (department === "CBFS") {
+          programs = [
+            "Bachelor of Science in Business Administration Major in Building and Property Management",
+            "Bachelor of Science in Business Administration Major in Supply Management",
+            "Bachelor of Science in Office Managemenet",
+            "Bachelor of Science in Management Accounting",
+            "Bachelor of Science in Entrepreneurial Management",
+            "Bachelor of Science in Marketing Management",
+            "Bachelor of Science in Finanacial Management",
+            "Associate in Sales Management",
+            "Associate in Entrepreneurship",
+            "Associate in Office Management Technology",
+            "Associate in Supply Management",
+            "Associate in Building & Property Management",
+          ];
+        } else if (department === "CTM") {
+          programs = [
+            "Bachelor of Science in Building Technology Management",
+            "Bachelor of Science in Electrical Technology",
+            "Bachelor of Science in Electronics and Telecommunication Technology",
+            "Diploma in Industrial Facilities Technology",
+            "Diploma in Industrial Technology Major in Service Mechanics",
+          ];
+        } else if (department === "CTHM") {
+          programs = [
+            "Bachelor of Science in Hospitality Management",
+            "Bachelor of Science in Tourism Management",
+            "Associate in Hospitality Management",
+          ];
+        } else if (department === "CCIS") {
+          programs = [
+            "Bachelor of Science in Computer Science Major in Social Computing",
+            "Bachelor of Science in Computer Science Major in Application Development",
+            "Bachelor of Science in Information and Network Security",
+            "Bachelor of Science in Computational and Data Sciences",
+            "Diploma in Application Development",
+            "Diploma in Computer Network Administration",
+          ];
+        } else if (department === "CCSCE") {
+          programs = ["Diploma in Civil Enginerring (Ladderized Program)"];
+        } else if (department === "DCNB") {
+          programs = ["Bachelor in Science in Social Work"];
+        }
+        programs.forEach((programs) => {
+          const option = document.createElement("option");
+          option.value = programs;
+          option.textContent = programs;
+          selectProgram.appendChild(option);
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Inria+Serif:wght@700&family=Inter&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* NAVIGATION BAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #073775;
+  color: #fff;
+  padding: 0 50px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 2vw;
+  padding: 0.5% 0;
+  font-family: "Inria Serif", serif;
+}
+
+.logo img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.nav-links {
+  display: flex;
+}
+.nav-links li {
+  list-style: none;
+  padding: 5% 0;
+  transition: all 0.5s ease-out;
+}
+.nav-links li a {
+  margin: 0 20px;
+  font-size: 1.1vw;
+  text-decoration: none;
+  color: white;
+  font-family: "Inter", sans-serif;
+}
+#active {
+  background-color: #0a4ca1;
+  font-weight: 800;
+}
+.nav-links li:hover {
+  background-color: #0a4ca1;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+}
+.fa-solid {
+  padding: 5px 20px 0px 20px;
+}
+/* END OF NAVIGATION BAR */
+footer {
+  position: fixed;
+  bottom: 0;
+  height: 7vh;
+  width: 100%;
+  background-color: #073775;
+  color: white;
+}

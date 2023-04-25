@@ -1,0 +1,60 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="template.css" />
+    <title>dropdown Menu</title>
+  </head>
+  <body>
+    <div class="menu-bar">
+      <div class="logoText">
+        <img src="img/UMakLogo.png" alt="" class="umakLogo">
+        <h1 class="logo">UMak Verification System</span></h1>
+      </div>
+      <ul>
+        <li><a href="dashboard.php">REPORT</a></li>
+        <li>
+          <a href="admin_staff.php">STAFFS ▼</a>
+
+          <div class="dropdown-menu">
+            <ul>
+              <li><a href="admin_staff.php">View Staffs</a></li>
+              <li><a href="addStaff.php">Add Staffs</a></li>
+              <li><a href="staffactivity.php">Show Staff Activities</a></li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="records.php">RECORDS ▼</a>
+
+          <div class="dropdown-menu">
+            <ul>
+              <li><a href="addRecord.php">Add Records</a></li>
+              <li><a href="#">Add Bulk</a></li>
+              <!-- <li>
+                <a href="#">Team <i class="fas fa-caret-right"></i></a>
+
+                <div class="dropdown-menu-1">
+                  <ul>
+                    <li><a href="#">Team-1</a></li>
+                    <li><a href="#">Team-2</a></li>
+                    <li><a href="#">Team-3</a></li>
+                    <li><a href="#">Team-4</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li><a href="#">FAQ</a></li> -->
+            </ul>
+          </div>
+        </li>
+        <li><a href="#">LOG OUT</a></li>
+      </ul>
+    </div>
+
+    <div class="hero">&nbsp;</div>
+  </body>
+</html>
