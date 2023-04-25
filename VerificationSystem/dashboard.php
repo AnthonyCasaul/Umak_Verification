@@ -76,7 +76,7 @@ for ($x = 0;$x < count($department);$x++){
           </li>';
          }
         ?>
-        
+        <!-- <p></p> -->
         <li>
           <a href="records.php">RECORDS ▼</a>
 
