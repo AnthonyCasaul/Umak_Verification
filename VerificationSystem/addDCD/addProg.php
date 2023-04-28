@@ -10,7 +10,7 @@ $rowNavBar = $navBar->fetch_assoc();
 $account_tag = $rowNavBar['account_tag'];
 $Admin = "Admin";
 
-$displayProg = mysqli_query($conn, "SELECT DISTINCT(program) FROM student_data");
+$displayDept = mysqli_query($conn, "SELECT DISTINCT(department) FROM student_data");
 
 ?>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ $displayProg = mysqli_query($conn, "SELECT DISTINCT(program) FROM student_data")
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/template.css" />
-    <link rel="stylesheet" href="css/program.css" />
+    <link rel="stylesheet" href="program.css" />
     <link rel="icon" href="../img/UMakLogo.png" />
     <title>Document</title>
   </head>
@@ -85,61 +85,43 @@ $displayProg = mysqli_query($conn, "SELECT DISTINCT(program) FROM student_data")
             <p>ADD PROGRAM</p>
         </div>
     </div>
+    
     <div class="display">
-      <div class="departmentDiv">
-        <p class="header">CHOOSE A DEPARTMENT</p>
-        <select id="department" name="department"   required>
-                <option value="">--Select--</option>
-                <option value="CBFS">CBFS</option>
-                <option value="CTHM">CTHM</option>
-                <option value="IGS">IGS/CGS/CCAPS</option>
-                <option value="COS">COS</option>
-                <option value="COE">COE</option>
-                <option value="CCSCE">CCSE</option>
-                <option value="IIT">IIT/COT/ITRED/CTM</option>
-                <option value="CCIS">CCIS</option>
-                <option value="CGPP">CGPP</option>
-                <option value="CAL">CAL</option>
-                <option value="COASH">COAHS</option>
-                <option value="CHK">CHK</option>
-                <option value="CMLI">CMLI</option>
-                <option value="SOL">SOL</option>
-              </select>
-      </div>
-      <!-- SHOW EXISTING PROGRAM -->
-      <div class="program">
-      <p class="header">EXISTING PROGRAM</p> 
-      <div>
-        <p id="programs"></p>
-      </div>
-      </div>
-      <!-- FORM -->
-        <form action="" class="inputForm">
-          <section>
-            <label for="">PROGRAM:</label>
-            <div class="inputs-container">
-              <input type="text" id="program">
-            </div>
-          </section>
-          <section>
-            <label for="">MAJOR:</label>
-            <div class="inputs-container">
-              <input type="text" id="major">
-            </div>
-        </section>
+      <div class="leftPannel">
+      <div class="h1">CHOOSE A DEPARTMENT</div>
+    <?php
+      if(mysqli_num_rows($displayDept) > 0){
+        while($row = mysqli_fetch_assoc($displayDept)){
+          $dept = strtoupper($row['department']);
+          echo '<div class="eachDiv" onclick="displayPrograms(\''.$dept.'\')">'.$dept.'</div>';
+        }
+      }
+    ?>
+    </div>
+      <form action="" class="form">
+        <div class="program">
+        <div class="header" id="program-header">ENTER PROGRAM</div>
+          <input type="text">
+        </div>
+        <div class="major">
+          <div class="header">ENTER MAJOR</div>
+          <input type="text">
+        </div>
         <input type="submit" value="SAVE">
       </form>
-
     </div>
     </div>
 
     <script>
-      //Back Button Function
-    function goBack() {
-      window.history.back();
-    }
-</script>
+      function goBack() {window.history.back();}
+      function displayPrograms(dept) {
+        // update the program header text
+        document.getElementById("program-header").textContent = "ENTER PROGRAM FOR " + dept;
+      }
+    </script>
+
     <script src="../js/addCategory.js"></script>
+    <script src="js/addProg.js"></script>
 
  <footer></footer>
 </body>

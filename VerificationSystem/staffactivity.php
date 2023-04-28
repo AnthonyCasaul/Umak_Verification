@@ -20,7 +20,7 @@ $select = mysqli_query($conn, "SELECT * FROM `activity_history`") or die('query 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Activity</title>
-<link rel="stylesheet" href="staffactivity.css">
+<link rel="stylesheet" href="css/staffactivity.css">
 <link rel="icon" href="img/UMakLogo.png" />
 
 <body>

@@ -20,7 +20,7 @@ $displayDept = mysqli_query($conn, "SELECT DISTINCT(department) FROM student_dat
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/template.css" />
-    <link rel="stylesheet" href="css/dept.css" />
+    <link rel="stylesheet" href="dept.css" />
     <link rel="icon" href="../img/UMakLogo.png" />
     <title>Document</title>
   </head>
@@ -86,29 +86,25 @@ $displayDept = mysqli_query($conn, "SELECT DISTINCT(department) FROM student_dat
         </div>
     </div>
     <div class="display">
-      <table>
-        <th>EXISTING DEPARTMENT</th>
-
-    <?php
+    <div class="leftPannel">
+      <div class="h1">CHOOSE A DEPARTMENT</div>
+      <?php
         if(mysqli_num_rows($displayDept) > 0){
-			while($row = mysqli_fetch_assoc($displayDept)){
-                $dept = strtoupper($row['department']);
+			    while($row = mysqli_fetch_assoc($displayDept)){
+            $dept = strtoupper($row['department']);
 
-                echo '<tr>
-                        <td>'.$dept.'</td>
-                      </tr>
-                      ';
-      }
-    }
-    ?>
-      </table>
-        <form action="" class="inputForm">
+              echo '<div class="eachDiv">'.$dept.'</div>';
+          }
+        }
+      ?>
+      </div>
+        <form action="" class="form">
           <section>
-            <label for="">HOW MANY DEPARTMENT? (5 max)</label>
+          <div class="header">HOW MANY DEPARTMENT (5 max)</div>
             <input type="number" id="how-many">
           </section>
           <section>
-            <label for="">DEPARTMENT NAME</label>
+          <div class="header">DEPARTMENT NAME</div>
             <div id="inputs-container">
               <input type="text" class="deptInput">
             </div>

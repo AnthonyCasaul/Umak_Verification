@@ -76,7 +76,6 @@ for ($x = 0;$x < count($department);$x++){
           </li>';
          }
         ?>
-        <!-- <p></p> -->
         <li>
           <a href="records.php">RECORDS ▼</a>
 
@@ -132,7 +131,7 @@ for ($x = 0;$x < count($department);$x++){
             </div>
           </div>
           <div class="donutContainer">
-            <div class="donutPlaceholder"><canvas id="myChart" width="100%"></canvas></div>
+            <div class="donutPlaceholder"><canvas id="myChart" width="100%" ></canvas></div>
           </div>
         </div>
 

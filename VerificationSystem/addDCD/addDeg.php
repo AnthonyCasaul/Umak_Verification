@@ -20,7 +20,7 @@ $displayDeg = mysqli_query($conn, "SELECT DISTINCT(degree) FROM student_data");
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/template.css" />
-    <link rel="stylesheet" href="css/degree.css" />
+    <link rel="stylesheet" href="degree.css" />
     <link rel="icon" href="../img/UMakLogo.png" />
     <title>Document</title>
   </head>
@@ -86,29 +86,24 @@ $displayDeg = mysqli_query($conn, "SELECT DISTINCT(degree) FROM student_data");
         </div>
     </div>
     <div class="display">
-      <table>
-        <th>EXISTING DEGREE</th>
-
+    <div class="leftPannel">
+      <div class="h1">CHOOSE A DEPARTMENT</div>
     <?php
-        if(mysqli_num_rows($displayDeg) > 0){
-			while($row = mysqli_fetch_assoc($displayDeg)){
-                $dept = strtoupper($row['degree']);
-
-                echo '<tr>
-                        <td>'.$dept.'</td>
-                      </tr>
-                      ';
+      if(mysqli_num_rows($displayDeg) > 0){
+        while($row = mysqli_fetch_assoc($displayDeg)){
+          $deg = strtoupper($row['degree']);
+          echo '<div class="eachDiv">'.$deg.'</div>';
+        }
       }
-    }
     ?>
-      </table>
-        <form action="" class="inputForm">
+    </div>
+    <form action="" class="form">
           <section>
-            <label for="">HOW MANY DEGREE? (5 max)</label>
+          <div class="header">HOW MANY DEPARTMENT (5 max)</div>
             <input type="number" id="how-many">
           </section>
           <section>
-            <label for="">DEGREE NAME</label>
+          <div class="header">DEPARTMENT NAME</div>
             <div id="inputs-container">
               <input type="text" class="deptInput">
             </div>
