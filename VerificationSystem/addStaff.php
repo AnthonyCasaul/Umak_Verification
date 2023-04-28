@@ -47,7 +47,7 @@ if(isset($_POST['submit'])){
         <title>UMak Verification System</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/addStaff.css">
+        <link rel="stylesheet" href="addStaff.css">
         <link rel="icon" href="img/UMakLogo.png" />
     </head>
 
@@ -114,78 +114,77 @@ if(isset($_POST['submit'])){
                 }
             ?>
             <div class="userForm">
-                <table>
                 <form action="" method="post" enctype="multipart/form-data"> 
-                        <tr>
-                            <td><label for="">LAST NAME</label></td>
-                            <td><input type="text" name="lname" placeholder="LAST NAME"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="">FIRST NAME</label></td>
-                            <td><input type="text" name="fname" placeholder="FIRST NAME"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="">MIDDLE NAME</label></td>
-                            <td><input type="text" name="mname" placeholder="MIDDLE NAME"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="">USERNAME</label></td>
-                            <td><input type="text" name="uname" placeholder="USERNAME"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="">PASSWORD</label></td>
-                            <td><input type="password" name="password" placeholder="PASSWORD"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="">EMAIL</label></td>
-                            <td><input type="text" name="email" placeholder="EMAIL"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="">CONTACT</label></td>
-                            <td><input type="text" name="contact" placeholder="CONTACT"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="" class="PiC">PROGRAM IN CHARGE</label></td>
-                            <td>
-                                <select id="department" name="program"   required>
-                                    <option value="">--Select--</option>
-                                    <option value="cbfs">CBFS</option>
-                                    <option value="cthm">CTHM</option>
-                                    <option value="igs">IGS/CGS/CCAPS</option>
-                                    <option value="cos">COS</option>
-                                    <option value="coe">COE</option>
-                                    <option value="ccsce">CCSE</option>
-                                    <option value="iit">IIT/COT/ITRED/CTM</option>
-                                    <option value="ccis">CCIS</option>
-                                    <option value="cgpp">CGPP</option>
-                                    <option value="cal">CAL</option>
-                                    <option value="coahs">COAHS</option>
-                                    <option value="chk">CHK</option>
-                                    <option value="cmli">CMLI</option>
-                                    <option value="sol">SOL</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right">
-                                <div class="EVbuttons">
-                                <label for="view">VIEW</label>
-                                <input type="radio" id="view" name="tag" value="View"></div>
-                            </td>
-                            <td>
-                                <div class="EVbuttons">
-                                <input type="radio" id="edit" name="tag" value="Edit">
-                                <label for="edit">EDIT</label>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right"><button class="cancel" onclick="window.location.href='admin_staff.php';">CANCEL</button></td>
-                            <td><input type="submit" name="submit" placeholder="SAVE" value="SAVE"/></td>
-                        </tr>
-                    </form>
-                </table> 
-                </div>
+                  <div class="labelInput">
+
+                    <div class="name">
+                      <div class="fRows lname">
+                        <label for="">LAST NAME</label>
+                        <input type="text" name="lname">
+                      </div>
+                      <div class="fRows fname">
+                        <label for="">FIRST NAME</label>
+                        <input type="text" name="fname">
+                      </div>
+                      <div class="fRows mname">
+                        <label for="">MIDDLE NAME</label>
+                        <input type="text" name="mname">
+                      </div>
+                    </div>
+
+                    <div class="userPass">
+                      <div class="tRows Div">
+                        <label for="">USERNAME</label>
+                        <input type="text" name="uname">
+                      </div>
+                      <div class="tRows Div">
+                        <label for="">PASSWORD</label>
+                        <input type="password" name="password">
+                      </div>
+                    </div>
+
+                    <div class="credentials">
+                      <div class="tRows Div">
+                        <label for="">EMAIL</label>
+                        <input type="text" name="email">
+                      </div>
+                      <div class="tRows Div">
+                        <label for="">CONTACT</label>
+                        <input type="text" name="contact">
+                      </div>
+                    </div>
+                    <label for="" class="PiC">PROGRAM IN CHARGE</label>
+                    <select id="department" name="program"   required>
+                      <option value="">--Select--</option>
+                      <option value="cbfs">CBFS</option>
+                      <option value="cthm">CTHM</option>
+                      <option value="igs">IGS/CGS/CCAPS</option>
+                      <option value="cos">COS</option>
+                      <option value="coe">COE</option>
+                      <option value="ccsce">CCSE</option>
+                      <option value="iit">IIT/COT/ITRED/CTM</option>
+                      <option value="ccis">CCIS</option>
+                      <option value="cgpp">CGPP</option>
+                      <option value="cal">CAL</option>
+                      <option value="coahs">COAHS</option>
+                      <option value="chk">CHK</option>
+                      <option value="cmli">CMLI</option>
+                      <option value="sol">SOL</option>
+                    </select>
+                  </div>
+                  <div class="btns">
+                  <button class="cancel hoverBtns" onclick="window.location.href='admin_staff.php';">CANCEL</button>
+                    <div class="radioBtns">
+                      <div class="EVbtns">
+                        <input type="radio" id="view" name="tag" value="View" class="radio"><label for=""> VIEW</label>
+                      </div>
+                      <div class="EVbtns">
+                        <input type="radio" id="edit" name="tag" value="Edit" class="radio"><label for=""> EDIT</label>
+                      </div>
+                    </div>
+                    <input class="hoverBtns" type="submit" name="submit" placeholder="SAVE" value="SAVE"/>
+                  </div>
+                  </form>
 
                 
                  
