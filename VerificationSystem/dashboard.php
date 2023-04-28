@@ -49,6 +49,11 @@ for ($x = 0;$x < count($department);$x++){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/dashboard.css" />
     <link rel="icon" href="img/UMakLogo.png" />
+     <!-- FUNCTIONS FOR BUTTONS TO DISPLAY -->
+    <script src="js/displayGraph.js"> </script>
+
+    <!-- DISPLAY FOR COLLEGES -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Document</title>
   </head>
   <body>
