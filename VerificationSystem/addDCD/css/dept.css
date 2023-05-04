@@ -1,12 +1,17 @@
+
+
 .display{
   /* border: 1px solid black; */
   display: flex;
   height: 700px;
-  width: 1300px;
+  width: 1400px;
   margin-bottom: 2%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px ;
+}
+table{
+  font-size: 20px;
 }
 .leftPannel::-webkit-scrollbar {
   width: 10px;
@@ -33,6 +38,9 @@
   padding: 15px;
   font-weight: 700;
   margin-top: 3px;
+}
+.eachDiv:hover{
+  cursor: pointer;
 }
 .leftPannel{
   overflow-y: scroll;
@@ -88,4 +96,21 @@ input[type=submit]{
   color: white;
   border: none;
   cursor: pointer;
+}
+@media screen and (max-height: 657px) {
+  .display{
+    width: 1000px;
+    height: 400px;
+  }
+  input{
+    height: 40px;
+    font-size: 15px;
+    padding: 10px;
+  }
+  .header{
+    font-size: 20px;
+  }
+  .h1{
+    font-size: 20px;
+  }
 }

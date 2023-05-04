@@ -181,3 +181,21 @@ footer {
   width: 100%;
   background-color: #073775;
 }
+
+@media screen and (max-height: 657px) {
+  .content{
+    margin-top: 5vh;
+  }
+  .box{
+    width: 300px;
+    height: 350px;
+  }
+  .boxImg{
+    width: 180px;
+    height: 180px;
+  }
+  .box p{
+    font-size: 25px;
+  }
+  
+}

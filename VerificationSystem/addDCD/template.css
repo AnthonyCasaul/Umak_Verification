@@ -162,3 +162,16 @@ footer {
   width: 100%;
   background-color: #073775;
 }
+
+@media screen and (max-height: 657px) {
+  .deptText{
+    width: 300px;
+    height: 40px;
+  }
+  .boxImg {
+    height: 30px;
+  }
+  .deptText p{
+    font-size: 20px;
+  }
+}

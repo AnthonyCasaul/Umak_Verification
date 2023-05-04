@@ -19,8 +19,8 @@ $displayDept = mysqli_query($conn, "SELECT DISTINCT(department) FROM student_dat
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/template.css" />
-    <link rel="stylesheet" href="program.css" />
+    <link rel="stylesheet" href="template.css" />
+    <link rel="stylesheet" href="css/program.css" />
     <link rel="icon" href="../img/UMakLogo.png" />
     <title>Document</title>
   </head>
@@ -93,7 +93,7 @@ $displayDept = mysqli_query($conn, "SELECT DISTINCT(department) FROM student_dat
       if(mysqli_num_rows($displayDept) > 0){
         while($row = mysqli_fetch_assoc($displayDept)){
           $dept = strtoupper($row['department']);
-          echo '<div class="eachDiv" onclick="displayPrograms(\''.$dept.'\')">'.$dept.'</div>';
+          echo '<div class="eachDiv" style="cursor: pointer;" onclick="displayPrograms(\''.$dept.'\')">'.$dept.'</div>';
         }
       }
     ?>
