@@ -138,12 +138,14 @@ h1 {
 }
 .cTable {
   border-spacing: 2vw 1.7vh;
-  margin-top: 3%;
+  margin-top: 2%;
   margin-left: auto;
   margin-right: auto;
   color: #073775;
   font-weight: 800;
   font-size: 1.2vw;
+  border-radius: 15px;
+  box-shadow: 0px 5px 10px rgba(0, 1, 41, 0.37);
 }
 .tdLogo {
   text-align: center;
@@ -151,33 +153,32 @@ h1 {
 .addPhoto {
   width: 10vw;
 }
-input[type="text"] {
-  border-radius: 10px;
-  font-size: 1vw;
-  padding: 5px 10px;
+input{
+  height: 40px;
+  font-size: 16px;
+  padding-left: 10px;
+  width: 100%;
   border: none;
-  background-color: #c7c7c7;
+  border-bottom: 2px solid #073775;
+  border-radius: 0px;
+  outline: none;
 }
-select {
-  border-radius: 10px;
-  font-size: 1vw;
-  width: 13.5vw;
-  padding: 5px 10px;
+input[type="text"]:focus{
+  border: 1px solid #073775;
+  border-radius: 5px;
+}
+select{
+  height: 40px;
+  width: 100%;
+  font-size: 16px;
+  padding-left: 10px;
   border: none;
-  background-color: #c7c7c7;
-  color: gray;
+  border-bottom: 2px solid #073775;
+  border-radius: 0px;
+  outline: none;
 }
 select:focus {
   color: black;
-}
-input[type="date"] {
-  border-radius: 10px;
-  width: 12.5vw;
-  font-size: 1vw;
-  padding: 5px 10px;
-  border: none;
-  background-color: #c7c7c7;
-  color: gray;
 }
 input[type="date"]:focus {
   color: black;
@@ -227,5 +228,8 @@ footer {
   }
   input[type=radio]{
     height: 14px;
+  }
+  input{
+    height: 25px;
   }
 }

@@ -155,7 +155,7 @@ if(isset($_POST['submit'])){
                     </div>
                     <label for="" class="PiC">PROGRAM IN CHARGE</label>
                     <select id="department" name="program"   required>
-                      <option value="">--Select--</option>
+                      <option value="" selected disabled>--Select--</option>
                       <option value="cbfs">CBFS</option>
                       <option value="cthm">CTHM</option>
                       <option value="igs">IGS/CGS/CCAPS</option>

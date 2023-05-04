@@ -58,7 +58,7 @@ if(isset($_POST['submit'])){
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/addRecord.css" />
+    <link rel="stylesheet" href="addRecord.css" />
     <link rel="icon" href="img/UMakLogo.png" />
     <title>Add Student Record</title>
   </head>
@@ -192,7 +192,7 @@ if(isset($_POST['submit'])){
         <tr>
           <td colspan="2"></td>
           <td>SEMESTER</td>
-          <td>ACADEMIC YEAR</td>
+          <td>ACAD. YEAR</td>
           <td colspan="2">DEGREE</td>
           <td colspan="2">MAJOR</td>
         </tr>

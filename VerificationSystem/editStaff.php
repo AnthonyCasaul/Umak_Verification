@@ -60,9 +60,6 @@ if(isset($_POST['update'])){
     header('location: admin_staff.php');
 }
 
-if(isset($_POST['cancel'])){
-    header('location: admin_staff.php');
-}
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +71,7 @@ if(isset($_POST['cancel'])){
         <title>UMak Verification System</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/editStaff.css">
+        <link rel="stylesheet" href="editStaff.css">
         <link rel="icon" href="img/UMakLogo.png" />
     </head>
 
@@ -139,69 +136,84 @@ if(isset($_POST['cancel'])){
                         echo '<div class="message">'.$message.'</div>';
                     }
                 }
-      ?>
+            ?>
             <div class="userForm">
-                <table>
-                <form action="" method="post" enctype="multipart/form-data"> 
-                        <tr>
-                            <td><label for="">LAST NAME</label></td>
-                            <td><input type="text" name="lname" value="<?php echo $lName?>"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="">FIRST NAME</label></td>
-                            <td><input type="text" name="fname" value="<?php echo $fName?>"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="">MIDDLE NAME</label></td>
-                            <td><input type="text" name="mname" value="<?php echo $mName?>"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="">USERNAME</label></td>
-                            <td><input type="text" name="uname" value="<?php echo $uName?>"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="">PASSWORD</label></td>
-                            <td><input type="text" name="password" value="<?php echo $pass?>"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="">EMAIL</label></td>
-                            <td><input type="text" name="email" value="<?php echo $email?>"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="">CONTACT</label></td>
-                            <td><input type="text" name="contact" value="<?php echo $contact?>"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="">PROGRAM IN CHARGE</label></td>
-                            <td><input type="text" name="program" value="<?php echo $program?>"></td>
-                        </tr>
-                        <tr>
-                            <td align="right">
-                                <div class="EVbuttons">
-                                <label for="view">VIEW</label>
-                                <input type="radio" id="view" name="tag" value="View" <?php if ($tag == "View"){ echo "checked";} ?>></div>
-                            </td>
-                            <td>
-                                <div class="EVbuttons">
-                                <input type="radio" id="edit" name="tag" value="Edit"<?php if ($tag == "Edit"){ echo "checked";} ?>>
-                                <label for="edit">EDIT</label>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right"><button type="submit" class="cancel" name="cancel">CANCEL</button></td>
-                            <td><input type="submit" name="update" placeholder="SAVE" value="SAVE"/></td>
-                        </tr>
-                    </form>
-                </table> 
-                </div>
-
+              <form action="" method="post" enctype="multipart/form-data"> 
+                  <div class="labelInput">
                 
-                 
+                    <div class="name">
+                      <div class="fRows lname">
+                        <label for="">LAST NAME</label>
+                        <input type="text" name="lname" value="<?php echo $lName?>">
+                      </div>
+                      <div class="fRows fname">
+                        <label for="">FIRST NAME</label>
+                        <input type="text" name="fname" value="<?php echo $fName?>">
+                      </div>
+                      <div class="fRows mname">
+                        <label for="">MIDDLE NAME</label>
+                        <input type="text" name="mname" value="<?php echo $mName?>">
+                      </div>
+                    </div>
+
+                    <div class="userPass">
+                      <div class="tRows Div">
+                        <label for="">USERNAME</label>
+                        <input type="text" name="uname" value="<?php echo $uName?>">
+                      </div>
+                      <div class="tRows Div">
+                        <label for="">PASSWORD</label>
+                        <input type="password" name="password" value="<?php echo $pass?>">
+                      </div>
+                    </div>
+
+                    <div class="credentials">
+                      <div class="tRows Div">
+                        <label for="">EMAIL</label>
+                        <input type="text" name="email" value="<?php echo $email?>">
+                      </div>
+                      <div class="tRows Div">
+                        <label for="">CONTACT</label>
+                        <input type="text" name="contact" value="<?php echo $contact?>">
+                      </div>
+                    </div>
+                    <label for="" class="PiC">PROGRAM IN CHARGE</label>
+                    <select id="department" name="program">
+                      <option value="" selected disabled><?php echo '<b>'.$program.'</b>'?></option>
+                      <option value="cbfs">CBFS</option>
+                      <option value="cthm">CTHM</option>
+                      <option value="igs">IGS/CGS/CCAPS</option>
+                      <option value="cos">COS</option>
+                      <option value="coe">COE</option>
+                      <option value="ccsce">CCSE</option>
+                      <option value="iit">IIT/COT/ITRED/CTM</option>
+                      <option value="ccis">CCIS</option>
+                      <option value="cgpp">CGPP</option>
+                      <option value="cal">CAL</option>
+                      <option value="coahs">COAHS</option>
+                      <option value="chk">CHK</option>
+                      <option value="cmli">CMLI</option>
+                      <option value="sol">SOL</option>
+                    </select>
+                    <div class="btns">
+                      <button class="cancel hoverBtns" onclick="window.location.href='admin_staff.php';">CANCEL</button>
+                        <div class="radioBtns">
+                          <div class="EVbtns">
+                            <input type="radio" id="view" name="tag" value="View" class="radio"<?php if($tag=="View"){echo "checked";}?>><label for=""> VIEW</label>
+                          </div>
+                          <div class="EVbtns">
+                            <input type="radio" id="edit" name="tag" value="Edit" class="radio"<?php if($tag=="Edit"){echo "checked";}?>><label for=""> EDIT</label>
+                          </div>
+                        </div>
+                      <input class="hoverBtns" type="submit" name="submit" placeholder="SAVE" value="SAVE"/>
+                    </div>
+              </div>
+              </form>
             </div>
         </div>
         
     </div>
+    
     </body>
 
     <footer> </footer>
