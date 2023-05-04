@@ -196,10 +196,7 @@ function searchFunction() {
     }
 });	
 }
-
 </script>
-
-  
   </body>
   <footer></footer>
 </html>

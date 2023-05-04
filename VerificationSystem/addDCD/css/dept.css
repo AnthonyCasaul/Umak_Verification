@@ -1,6 +1,4 @@
-
-
-.display{
+.display {
   /* border: 1px solid black; */
   display: flex;
   height: 700px;
@@ -8,9 +6,9 @@
   margin-bottom: 2%;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 10px ;
+  border-radius: 10px;
 }
-table{
+table {
   font-size: 20px;
 }
 .leftPannel::-webkit-scrollbar {
@@ -23,7 +21,7 @@ table{
 .leftPannel::-webkit-scrollbar-track {
   background-color: #073775;
 }
-.h1{
+.h1 {
   background-color: #073775;
   text-align: center;
   position: sticky;
@@ -33,50 +31,50 @@ table{
   font-size: 27px;
   font-weight: 700;
 }
-.eachDiv{
+.eachDiv {
   background-color: white;
   padding: 15px;
   font-weight: 700;
   margin-top: 3px;
 }
-.eachDiv:hover{
+.eachDiv:hover {
   cursor: pointer;
 }
-.leftPannel{
+.leftPannel {
   overflow-y: scroll;
   width: 600px;
 }
 
-.form{
+.form {
   display: flex;
   flex-direction: column;
   background-color: white;
   gap: 30px;
   width: 100%;
   padding: 25px;
-  border-radius: 10px ;
+  border-radius: 10px;
   /* border: 1px solid black; */
 }
-section{
+section {
   display: flex;
   flex-direction: column;
 }
-.header{
+.header {
   color: #073775;
   font-size: 30px;
   font-weight: 700;
   padding: 20px;
 }
-#inputs-container{
+#inputs-container {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
-label{
+label {
   font-size: 30px;
   font-weight: 700;
 }
-input{
+input {
   height: 60px;
   padding: 20px;
   font-size: 20px;
@@ -86,31 +84,31 @@ input{
   border-radius: 10px;
   transition: all ease 0.2s;
 }
-input[type="text"]:focus{
+input[type="text"]:focus {
   transform: scale(1.05);
   transition: all ease 0.2s;
   box-shadow: 0px 5px 10px rgba(0, 2, 105, 0.5);
 }
-input[type=submit]{
+input[type="submit"] {
   background-color: #1967e1;
   color: white;
   border: none;
   cursor: pointer;
 }
 @media screen and (max-height: 657px) {
-  .display{
+  .display {
     width: 1000px;
-    height: 400px;
+    height: 300px;
   }
-  input{
+  input {
     height: 40px;
     font-size: 15px;
     padding: 10px;
   }
-  .header{
+  .header {
     font-size: 20px;
   }
-  .h1{
+  .h1 {
     font-size: 20px;
   }
 }
