@@ -163,7 +163,7 @@ if(isset($_POST['importSubmit'])){
       
     </div>
     <footer></footer>
-    <script>
+    <!-- <script>
 
 		// Get the upload icon and upload text elements
 		var uploadIcon = document.getElementById('upload-icon');
@@ -217,6 +217,6 @@ if(isset($_POST['importSubmit'])){
 			// Trigger a click event on the file input element
 			input.click();
 		});
-	</script>
+	</script> -->
   </body>
 </html>

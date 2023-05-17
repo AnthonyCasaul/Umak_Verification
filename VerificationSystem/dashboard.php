@@ -27,12 +27,41 @@ $added  = "Add";
  $countAdded = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM activity_history WHERE recent_activity = '$added'") or die('query failed');
  $row5 = $countAdded->fetch_assoc();
 
-$department = array("CCIS","cbfs");
-$departmentV = array();
+// $department = array("CCIS","cbfs");
+// $departmentV = array();
 
-for ($x = 0;$x < count($department);$x++){
+// for ($x = 0;$x < count($department);$x++){
 
-  $ccis = mysqli_query($conn, "SELECT * FROM student_data WHERE department = '$department[$x]'");
+//   $ccis = mysqli_query($conn, "SELECT * FROM student_data WHERE department = '$department[$x]'");
+//   $ccisV = mysqli_num_rows($ccis);
+//   $departmentV[] = $ccisV;
+
+//   //array_push($departmentV,$ccisV);
+// }
+
+$dbdepartment = "SELECT * FROM deparment";
+
+$dpresult = mysqli_query($conn,$dbdepartment);
+
+$deptvalue = [];
+
+if(mysqli_num_rows($dpresult)){
+  while($rowdept = mysqli_fetch_assoc($dpresult)){
+      $deptvalue[] = $rowdept['department'];
+
+
+  }
+}
+
+
+
+
+
+$departmentV = [];
+
+for ($x = 0;$x < count($deptvalue);$x++){
+
+  $ccis = mysqli_query($conn, "SELECT * FROM student_data WHERE department = '$deptvalue[$x]'");
   $ccisV = mysqli_num_rows($ccis);
   $departmentV[] = $ccisV;
 
@@ -254,10 +283,10 @@ for ($x = 0;$x < count($department);$x++){
         new Chart(ctx, {
           type: 'bar',
           data: {
-            labels: ['CCIS','CBFS','CHK','COAHS'],
+            labels: <?php echo json_encode($deptvalue);?>,
             datasets: [{
               label: 'Total Alumni by Colleges',
-              data: [<?php echo $departmentV[0]; ?>,<?php echo $departmentV[1]; ?>,<?php echo $departmentV[0]; ?>,<?php echo $departmentV[1]; ?> ],
+              data: <?php echo json_encode($departmentV);?>,
               backgroundColor: ['#e1cd19','#9d9712','#1967e1','#073755']
             }]
           },
