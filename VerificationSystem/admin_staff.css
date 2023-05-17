@@ -153,7 +153,11 @@ h1 {
   transition: all 0.3s ease;
 }
 .box:hover{
-  transform: scale(1.05);
+  transform: scale(1.1);
+}
+.box:hover .boxbutton{
+  transform: scale(1.075);
+  transition: all 1.5s ease;
 }
 .usericon {
   width: 30%;
@@ -177,6 +181,7 @@ h1 {
   margin-top: 5%;
   display: flex;
   justify-content: space-evenly;
+  transition: all 1.5s ease;
 }
 .showact_button {
   font-family: "Inter", sans-serif;

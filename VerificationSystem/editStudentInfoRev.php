@@ -92,7 +92,7 @@ if(isset($_POST['update_profile'])){
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/editStudentInfoRev.css" />
+    <link rel="stylesheet" href="editStudentInfoRev.css" />
     <script src="https://kit.fontawesome.com/370708d2ea.js" crossorigin="anonymous"></script>
     <title>UMak Verification System</title>
   </head>
@@ -156,13 +156,22 @@ if(isset($_POST['update_profile'])){
       <div class="content">
         <div class="studInfo">
 
+        <div class="infoHonor">
           <div class="persoInfo1">
             <input class="lname" type="text" name="update_lastname" value="<?php echo $lname;?>">,
             <div class="fname_mi">
             <input id="fname" type="text" name="update_firstname" value="<?php echo $fname;?>">
             <input id="mname" type="text" name="update_middlename" value="<?php echo $mname;?>"></div>
           </div>
-            
+          <div class="lowerDiv">
+            <section class="label">
+              AWARD OF DISTINCTION
+            </section>
+            <section class="award unLine">
+              CUM LAUDE
+            </section>
+          </div>
+          </div>
             <div class="persoInfo2">
 
             <input class="studNumber" type="text" name="update_studentid" value="<?php echo $studentid;?>">

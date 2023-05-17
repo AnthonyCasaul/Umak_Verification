@@ -145,7 +145,7 @@ h1 {
   gap: 20px;
 }
 .studInfo {
-  border-radius: 15px;
+  border-radius: 5px;
   height: 600px;
   background-color: rgba(0, 0, 0, 0.12);
   padding: 30px;
@@ -166,7 +166,7 @@ h1 {
 }
 .schoolInfo {
   background-color: rgba(0, 0, 0, 0.08);
-  border-radius: 15px;
+  border-radius: 5px;
   padding: 40px;
   justify-content: space-between;
   display: flex;
@@ -177,41 +177,45 @@ h1 {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   background-color: rgba(0, 0, 0, 0.04);
-  border-radius: 15px;
+  border-radius: 5px;
   padding: 20px 40px;
   max-height: 200px;
 }
 /* CONTENTS */
 /* PERSONAL INFO */
+.infoHonor{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 .persoInfo1 {
   display: flex;
   flex-direction: column;
+  flex-grow: 8;
 }
 .lname {
   color: #073775;
-  font-size: 75px;
+  font-size: 60px;
   font-weight: 700;
 }
 .fname_mi {
-  display: flex;
-  justify-content: space-between;
+  color: #073775;
+  font-weight: 700;
+  border-bottom: 3px solid #073775;
   padding-bottom: 5px;
-  gap: 20px;
 }
-#fname {
-  flex-grow: 8;
-  color: #073775;
-  font-size: 35px;
-  font-weight: 700;
+.midtext{
+  font-size: 27px;
 }
-#mname {
-  flex-grow: 2;
-  color: #073775;
-  font-size: 35px;
+.label{
+  font-size: 20px;
+}
+.award{
+  font-size: 40px;
   font-weight: 700;
-  max-width: 50px;
+  color: #073775;
 }
 .studNumber {
   text-align: center;
@@ -244,7 +248,6 @@ b {
 }
 .cont_rel {
   display: flex;
-  margin-top: 10px;
   gap: 90px;
 }
 
@@ -258,38 +261,104 @@ b {
   border: none;
   cursor: pointer;
 }
-
-/* INPUT STYLE */
-input {
-  outline: none;
-  border: none;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-bottom: 2px solid #073775;
-  padding: 5px 10px;
+.unLine{
+  border-bottom: 1px solid #073775;
 }
-/* SELECT STYLE */
-select {
-  outline: none;
-  border: none;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-bottom: 2px solid #073775;
-  padding: 5px 10px;
-  font-size: 20px;
-}
-/* SAVE BUTTON */
-input[type="submit"] {
+/* EDIT ICON */
+.editIcon {
   position: absolute;
-  bottom: 1%;
+  bottom: 16%;
   right: 1vw;
   background-color: #073775;
-  width: 7vh;
-  height: 3.5vh;
-  color: white;
-  border-radius: 15px;
+  width: 5vh;
+  height: 5vh;
+  display: flex;
+  border-radius: 25px;
   transition: all 0.3s ease-out;
-  font-size: 1vw;
-  border: none;
+  overflow: hidden;
+}
+.fa-pen-to-square {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.2vw;
+  transition: all 0.3s ease-out;
+}
+.editIcon:hover {
+  width: 8vh;
+  transition: all 0.3s ease-out;
   cursor: pointer;
+}
+.editIcon:hover img {
+  display: none;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+}
+.editIcon:hover .editText {
+  display: block;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+}
+.editText {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  color: white;
+  font-family: "Inter";
+  font-weight: 700;
+  display: none;
+  transition: all 0.3s ease-out;
+}
+/* DOWNLOAD ICON */
+.dlIcon {
+  position: absolute;
+  bottom: 10%;
+  right: 1vw;
+  background-color: #073775;
+  width: 5vh;
+  height: 5vh;
+  display: flex;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.fa-download {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.2vw;
+  transition: all 0.3s ease;
+}
+.dlIcon:hover {
+  width: 15vh;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.dlIcon:hover img {
+  display: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.dlIcon:hover .dlText {
+  display: block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.dlText {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  color: white;
+  font-family: "Inter";
+  font-weight: 700;
+  display: none;
+  transition: all 0.3s ease;
 }
 /*FOOTER*/
 footer {
@@ -299,4 +368,33 @@ footer {
   height: 7%;
   width: 100%;
   background-color: #073775;
+}
+@media screen and (max-height: 657px) {
+  .text{
+    font-size: 35px;
+  }
+  .lname{
+    font-size: 40px;
+  }
+  .label{
+    font-size: 15px;
+  }
+  .award{
+    font-size: 25px;
+  }
+  .midtext{
+    font-size: 23px;
+  }
+  .studNumber{
+    font-size: 23px;
+  }
+  b{
+    font-size: 20px;
+  }
+  .content{
+    height: 420px;
+  }
+  .studInfo{
+    height: 420px;
+  }
 }
