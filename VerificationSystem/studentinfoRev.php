@@ -45,7 +45,7 @@ if(mysqli_num_rows($select) > 0){
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/studentinfoRev.css" />
+    <link rel="stylesheet" href="studentinfoRev.css" />
     <link rel="icon" href="img/UMakLogo.png" />
     <script src="https://kit.fontawesome.com/370708d2ea.js" crossorigin="anonymous"></script>
     <title>UMak Verification System</title>
@@ -109,6 +109,7 @@ if(mysqli_num_rows($select) > 0){
       <div class="content">
         <div class="studInfo">
 
+        <div class="infoHonor">
           <div class="persoInfo1">
             <section class="lname">
                 <?php echo $lname?>,
@@ -118,22 +119,31 @@ if(mysqli_num_rows($select) > 0){
                 ?>
             </section>
           </div>
-            
+          <div class="lowerDiv">
+            <section class="label">
+              AWARD OF DISTINCTION
+            </section>
+            <section class="award unLine">
+              CUM LAUDE
+            </section>
+          </div>
+          </div>
+
             <div class="persoInfo2">
 
             <section class="studNumber">
                 <?php echo $student_id?>
             </section>
-              <section class="label bdate">
+              <section class="label bdate unLine">
                  BIRTHDATE <br>
                 <b><?php echo $birthday?></b> 
               </section>
 
-              <section class="label contact">
+              <section class="label contact unLine">
                 CONTACT <br>
                 <b><?php echo $contact?></b>
               </section>
-              <section class="label add">
+              <section class="label add unLine">
                 ADDRESS <br>
                 <b><?php echo $address?></b>
               </section>
@@ -145,45 +155,45 @@ if(mysqli_num_rows($select) > 0){
 
             <div class="schoolInfo">
               <div class="yearSemAcadyr">
-                <section class ="label dateGrad">
+                <section class ="label dateGrad unLine">
                   DATE GRADUATED <br>
                     <b><?php echo $dgrad?></b>
                 </section>
-                <section class="label sem">
+                <section class="label sem unLine">
                   SEMESTER <br>
                   <b><?php echo $semester?></b>
                 </section>
-                <section class="label acadyr">
+                <section class="label acadyr unLine">
                   ACADEMIC YEAR <br>
                   <b><?php echo $acadyear?></b>
                 </section>
               </div>
-              <section class="label dept">
+              <section class="label dept unLine">
                 DEPARTMENT <br>
                   <b><?php echo $department?></b>
               </section>
-              <section class="label prog">
+              <section class="label prog unLine">
                 PROGRAM <br>
                   <b><?php echo $program?></b>
               </section>
-              <section class="label major">
+              <section class="label major unLine">
                 MAJOR <br>
                   <b><?php echo $major?></b>
               </section>
             </div>
 
             <div class="parentInfo">
-              <section class="guardian">
+              <section class="guardian unLine">
                 GUARDIAN <br>
                 <b><?php echo $gname?></b>
               </section>
 
             <div class="cont_rel">
-              <section class="pcontact">
+              <section class="pcontact unLine">
                 CONTACT <br>
                 <b><?php echo $gcontact?></b>
               </section>
-              <section class="relationship">
+              <section class="relationship unLine">
                 RELATIONSHIP <br>
                 <b><?php echo $relationship?></b>
               </section></div>
