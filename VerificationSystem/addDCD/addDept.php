@@ -10,7 +10,12 @@ $rowNavBar = $navBar->fetch_assoc();
 $account_tag = $rowNavBar['account_tag'];
 $Admin = "Admin";
 
-$displayDept = mysqli_query($conn, "SELECT DISTINCT(department) FROM student_data");
+$displayDept = mysqli_query($conn, "SELECT DISTINCT(department) FROM deparment");
+
+if (isset($_POST['save'])){
+    echo "haha";
+
+}
 
 ?>
 <!DOCTYPE html>
@@ -98,10 +103,10 @@ $displayDept = mysqli_query($conn, "SELECT DISTINCT(department) FROM student_dat
         }
       ?>
       </div>
-        <form action="" class="form">
+        <form action="" method= "post" class="form">
           <section>
           <div class="header">HOW MANY DEPARTMENT (5 max)</div>
-            <input type="number" id="how-many">
+            <input type="number" id="how-many" name="department">
           </section>
           <section>
           <div class="header">DEPARTMENT NAME</div>
@@ -109,7 +114,7 @@ $displayDept = mysqli_query($conn, "SELECT DISTINCT(department) FROM student_dat
               <input type="text" class="deptInput">
             </div>
         </section>
-        <input type="submit" value="SAVE">
+        <input type="submit" value="SAVE" name="save">
       </form>
     </div>
     </div>
