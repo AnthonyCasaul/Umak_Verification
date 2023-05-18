@@ -52,11 +52,6 @@ if(mysqli_num_rows($dpresult)){
 
   }
 }
-
-
-
-
-
 $departmentV = [];
 
 for ($x = 0;$x < count($deptvalue);$x++){
@@ -67,6 +62,39 @@ for ($x = 0;$x < count($deptvalue);$x++){
 
   //array_push($departmentV,$ccisV);
 }
+
+$degree = ['Non-Baccalaureate Degree','Baccalaureate Degree','Graduate Degree','Post Baccalaureate Degree'];
+for ($x = 0;$x < count($degree);$x++){
+
+  $result = mysqli_query($conn, "SELECT * FROM student_data WHERE degree = '$degree[$x]'");
+  $countV = mysqli_num_rows($result);
+  $degreecount[] = $countV;
+
+  //array_push($departmentV,$ccisV);
+}
+
+$academicValue = [];
+
+$queryacademic = "SELECT DISTINCT(academic_year) FROM student_data";
+$academicV = mysqli_query($conn,$queryacademic);
+if(mysqli_num_rows($academicV)){
+  while($rowacademic = mysqli_fetch_assoc($academicV)){
+      $academicValue[] = $rowacademic['academic_year'];
+
+  }
+}
+
+$acadValue = [];
+
+for ($x = 0;$x < count($academicValue);$x++){
+
+  $resultacad = mysqli_query($conn, "SELECT * FROM student_data WHERE academic_year = '$academicValue[$x]'");
+  $acadV = mysqli_num_rows($resultacad);
+  $acadValue[] = $acadV;
+
+  //array_push($departmentV,$ccisV);
+}
+
 
 ?>
 
@@ -309,10 +337,10 @@ for ($x = 0;$x < count($deptvalue);$x++){
         new Chart(cty, {
           type: 'bar',
           data: {
-            labels: ['CCIS','CBFS','CHK','COAHS'],
+            labels: <?php echo json_encode($degree)?>,
             datasets: [{
               label: 'Total Alumni by Colleges',
-              data: [<?php echo $departmentV[0]; ?>,<?php echo $departmentV[1]; ?>,<?php echo $departmentV[0]; ?>,<?php echo $departmentV[1]; ?> ],
+              data: <?php echo json_encode($degreecount)?>,
               backgroundColor: ['#000','#9d9712','#1967e1','#073755']
             }]
           },
@@ -324,7 +352,38 @@ for ($x = 0;$x < count($deptvalue);$x++){
             }
           }
         });
+      
+
+      
       </script>
+      <!-- DISPLAY FOR YEAR -->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+          const ctyear = document.getElementById('yrGraph');
+
+          new Chart(ctyear, {
+            type: 'bar',
+            data: {
+              labels: <?php echo json_encode($academicValue)?>,
+              datasets: [{
+                label: 'Total Alumni by Colleges',
+                data: <?php echo json_encode($acadValue)?>,
+                backgroundColor: ['#000','#9d9712','#1967e1','#073755']
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        
+
+        
+        </script>
     
     <footer></footer>
   </body>
