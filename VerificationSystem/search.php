@@ -2,7 +2,7 @@
 include 'condb.php';
 $search = $_POST['search'];
 
-$select = mysqli_query($conn, "SELECT * FROM student_data WHERE student_lname LIKE '%$search%' OR student_fname LIKE '%$search%'");
+$select = mysqli_query($conn, "SELECT * FROM student_data WHERE student_lname LIKE '%$search%' OR student_fname LIKE '%$search%' LIMIT 100");
 
 echo '<div class="rcrdPage">
         <table class="content-table">
@@ -22,7 +22,7 @@ if ($select->num_rows > 0) {
         $name = $row['student_lname'].', '.$row['student_fname'].' '.$row['student_mname'];
         echo '<tbody>
               <tr>
-              <td>'.$row['student_id'].'</>
+              <td>'.$row['student_id'].'</td>
               <td>'.ucfirst(strtolower($name)).'</td>
               <td class="leftAlign">'.$row['program'].'</td>
               <td>'.$row['academic_year'].'</td>
@@ -40,6 +40,10 @@ if ($select->num_rows > 0) {
               </tbody>';
     }
 } else {
-    echo "0 results"."</div></div>";
+    echo '
+    <tbody>
+              <td colspan="4"><h2>NO DATA</h2></td>
+    </tbody>
+    ';
 }
 ?>
