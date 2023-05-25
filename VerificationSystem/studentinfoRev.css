@@ -222,7 +222,6 @@ h1 {
   color: #545454;
   font-size: 30px;
   font-weight: 600;
-  text-decoration: underline;
 }
 .persoInfo2 {
   flex-grow: 6;
@@ -256,7 +255,7 @@ b {
   background-color: #073775;
   color: white;
   padding: 6px 15px;
-  border-radius: 25px;
+  border-radius: 5px;
   font-size: 1vw;
   border: none;
   cursor: pointer;

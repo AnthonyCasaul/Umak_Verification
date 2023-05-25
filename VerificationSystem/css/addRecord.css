@@ -129,7 +129,7 @@ h1 {
   font-size: 0.9vw;
 }
 .back {
-  border-radius: 15px;
+  border-radius: 5px;
   padding: 5px 17px;
   border: none;
   background-color: #073775;
@@ -158,29 +158,35 @@ input{
   font-size: 16px;
   padding-left: 10px;
   width: 100%;
-  border: none;
-  border-bottom: 2px solid #073775;
   border-radius: 0px;
+  border: 1px solid #073775;
+  border-radius: 5px;
   outline: none;
 }
 input[type="text"]:focus{
-  border: 1px solid #073775;
-  border-radius: 5px;
+  border: none;
+  border-bottom: 2px solid #073775;
+  border-radius: 0px;
 }
 select{
   height: 40px;
   width: 100%;
   font-size: 16px;
   padding-left: 10px;
-  border: none;
-  border-bottom: 2px solid #073775;
-  border-radius: 0px;
+  border: 1px solid #073775;
+  border-radius: 5px;
   outline: none;
 }
 select:focus {
   color: black;
+  border: none;
+  border-bottom: 2px solid #073775;
+  border-radius: 0px;
 }
 input[type="date"]:focus {
+  border: none;
+  border-bottom: 2px solid #073775;
+  border-radius: 0px;
   color: black;
 }
 #shortInput {
@@ -194,7 +200,7 @@ input[type="date"]:focus {
   width: 100%;
 }
 input[type="submit"] {
-  border-radius: 15px;
+  border-radius: 5px;
   padding: 5px 17px;
   border: none;
   color: white;

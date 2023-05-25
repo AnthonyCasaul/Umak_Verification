@@ -58,7 +58,7 @@ if(isset($_POST['submit'])){
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="addRecord.css" />
+    <link rel="stylesheet" href="css/addRecord.css" />
     <link rel="icon" href="img/UMakLogo.png" />
     <title>Add Student Record</title>
   </head>
@@ -190,7 +190,7 @@ if(isset($_POST['submit'])){
         </tr>
         <!-- NAMES -->
         <tr>
-          <td colspan="2"></td>
+          <td colspan="2">AWARD OF DISTINCTION</td>
           <td>SEMESTER</td>
           <td>ACAD. YEAR</td>
           <td colspan="2">DEGREE</td>
@@ -198,7 +198,17 @@ if(isset($_POST['submit'])){
         </tr>
         <!-- INPUT -->
         <tr>
-          <td colspan="2"></td>
+          <td colspan="2">
+            <select name="" id="" required>
+            <option value="none" selected disabled hidden>Select an Option</option>
+              <option value="Summa Cum Laude">SUMMA CUM LAUDE</option>
+              <option value="Magna Cum Laude">MAGNA CUM LAUDE</option>
+              <option value="Cum Laude">CUM LAUDE</option>
+              <option value="With Highest Honors">WITH HIGHEST HONORS</option>
+              <option value="With High Honors">WITH HIGH HONORS</option>
+              <option value="With Honors">WITH HONORS</option>
+            </select>
+          </td>
           <td><input type="text" name="sem" class="mediumInput" required></td>
           <td><input type="text" name="acadYr" class="mediumInput" required></td></td>
           <!-- DEGREE SECTION -->
