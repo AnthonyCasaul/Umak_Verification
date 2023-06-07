@@ -104,7 +104,7 @@ for ($x = 0;$x < count($academicValue);$x++){
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="dashboard.css" />
     <link rel="icon" href="img/UMakLogo.png" />
      <!-- FUNCTIONS FOR BUTTONS TO DISPLAY -->
     <script src="js/displayGraph.js"> </script>
@@ -257,28 +257,64 @@ for ($x = 0;$x < count($academicValue);$x++){
 
           <!-- CALLER -->
           <div class="bot-div barContainer">
-            <div class="btnDiv">
-              <button class="btn btnDept" id="colBtn" onclick="showCol()">COLLEGES</button>
-              <button class="btn btnDept" id="deptBtn" onclick="showDept()">DEPARTMENT</button>
-              <button class="btn btnDeg" id="degBtn" onclick="showDeg()">DEGREE</button>
-              <button class="btn btnYear" id="yrBtn" onclick="showYr()">YEAR</button>
-              <div class="searchProg">
-                <img src="img/searchIcon.png" alt="" class="searchImg">
-                <input type="text" placeholder="Search Program" oninput="showResults()">
+            <div class="separator">
+              <div class="btnDiv">
+                <button class="btn btnDept" id="colBtn" onclick="showCol()">COLLEGES</button>
+                <button class="btn btnDept" id="deptBtn" onclick="showDept()">DEPARTMENT</button>
+                <button class="btn btnDeg" id="degBtn" onclick="showDeg()">DEGREE</button>
+                <button class="btn btnYear" id="yrBtn" onclick="showYr()">YEAR</button>
+
+                <div class="searchProg">
+                  <img src="img/searchIcon.png" alt="" class="searchImg">
+                  <input type="text" placeholder="Search Program" oninput="showResults()">
+                </div>
               </div>
-            </div>
-            <div id="searchResults" style="display: none;">
-              <p>1000</p>
-              <h3>N0. OF ALUMNI</h3>
-            </div>
+
+              <div id="searchResults" >
+                <span class="aNum">1000</span>
+                <span>N0. OF ALUMNI</span>
+              </div>
 
             <!-- DISPLAY -->
-            <div class="barPlaceholder" id="barPlaceholder">
-              <canvas id="colGraph" class="graph" style="display:block"></canvas>
-              <canvas id="deptGraph" class="graph" style="display:none"></canvas>
-              <canvas id="degGraph" class="graph" style="display:none"></canvas>
-              <canvas id="yrGraph" class="graph" style="display:none"></canvas>
-              <canvas id="progGraph" class="graph" style="display:none"></canvas>
+              <div class="barPlaceholder" id="barPlaceholder">
+                <canvas id="colGraph" class="graph" style="display:block"></canvas>
+                <canvas id="deptGraph" class="graph" style="display:none"></canvas>
+                <canvas id="degGraph" class="graph" style="display:none"></canvas>
+                <canvas id="yrGraph" class="graph" style="display:none"></canvas>
+                <canvas id="progGraph" class="graph" style="display:none"></canvas>
+              </div>
+            </div>
+            <div class="awardees">
+              <div class="labelTop">
+                <img src="img/cum-laude.png" alt="" class="icon">
+                <span>AWARDS OF <br> DISTINCTION</span>
+              </div>
+              <table>
+                <tr>
+                  <td>900</td>
+                  <td>SUMMA CUM LAUDE</td>
+                </tr>
+                <tr>
+                  <td>576</td>
+                  <td>MAGNA CUM LAUDE</td>
+                </tr>
+                <tr>
+                  <td>234</td>
+                  <td> CUM LAUDE</td>
+                </tr>
+                <tr>
+                  <td>876</td>
+                  <td>WITH HIGHEST HONOR</td>
+                </tr>
+                <tr>
+                  <td>242</td>
+                  <td>WITH HIGH HONOR</td>
+                </tr>
+                <tr>
+                  <td>132</td>
+                  <td>WITH HONOR</td>
+                </tr>
+              </table>
             </div>
 
           </div>

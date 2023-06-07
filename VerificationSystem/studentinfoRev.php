@@ -131,7 +131,7 @@ if(mysqli_num_rows($select) > 0){
 
             <div class="persoInfo2">
 
-            <section class="studNumber">
+            <section class="studNumber unLine">
                 <?php echo $student_id?>
             </section>
               <section class="label bdate unLine">
