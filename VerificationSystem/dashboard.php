@@ -368,7 +368,7 @@ for ($x = 0;$x < count($academicValue);$x++){
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
       <script>
-        const cty = document.getElementById('deptGraph');
+        const cty = document.getElementById('degGraph');
 
         new Chart(cty, {
           type: 'bar',

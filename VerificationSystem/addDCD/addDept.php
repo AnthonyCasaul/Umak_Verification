@@ -13,7 +13,11 @@ $Admin = "Admin";
 $displayDept = mysqli_query($conn, "SELECT DISTINCT(department) FROM deparment");
 
 if (isset($_POST['save'])){
-    echo "haha";
+      $input = $_POST['input'];
+     foreach($input as $key)
+     {
+        echo $key;
+     };
 
 }
 
@@ -135,7 +139,7 @@ if (isset($_POST['save'])){
       for (let i = 1; i <= Math.min(howMany, 5); i++) {
     const input = document.createElement('input');
     input.type = 'text';
-    input.name = `input-${i}`;
+    input.name = `input[]`;
     input.placeholder = `Enter Department ${i}`;
     inputsContainer.appendChild(input);
   }
