@@ -16,7 +16,19 @@ if (isset($_POST['save'])){
       $input = $_POST['input'];
      foreach($input as $key)
      {
-        echo $key;
+      $department = mysqli_query($conn, "SELECT * FROM deparment WHERE department = UPPER('$key')") or die('query failed');
+      $count = mysqli_num_rows($department);
+  
+      
+      if ($count == 0) {
+          $insertQuery = "INSERT INTO deparment (department) VALUES (UPPER('$key'))";
+          $insertStatement = mysqli_query($conn, $insertQuery);
+
+          // echo "Inserted $key into department table.<br>";
+      } else {
+          // echo "$key already exists in department table.<br>";
+      }
+    
      };
 
 }
