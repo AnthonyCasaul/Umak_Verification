@@ -10,7 +10,57 @@ $rowNavBar = $navBar->fetch_assoc();
 $account_tag = $rowNavBar['account_tag'];
 $Admin = "Admin";
 
-$displayDept = mysqli_query($conn, "SELECT DISTINCT(department) FROM student_data");
+$displayDept = mysqli_query($conn, "SELECT department FROM deparment");
+
+if (isset($_POST['awit'])){
+ $department = $_POST['department'];
+
+ $iddeparment = mysqli_query($conn, "SELECT id FROM deparment WHERE department= '$department'");
+ $iddept = mysqli_fetch_assoc($iddeparment);
+ $iddept =  $iddept['id'];
+ $program = $_POST['program']??'';
+ $major = $_POST['major']??'';
+
+ echo $department;
+ 
+$query = "SELECT * FROM ccis_program WHERE program = '$program'";
+$result = mysqli_query($conn,$query);
+
+ if (mysqli_num_rows($result) > 0)
+ {
+    $idprogram =mysqli_fetch_assoc($result);
+    $idprogram = $idprogram['id'];
+    $addmajor = "INSERT INTO ccis (program, major) VALUES ('$idprogram','$major')";
+    $result = mysqli_query($conn,$addmajor);
+    echo"SUCCESSFULLY ADDED";
+ }
+ else{
+    $addprogram = "INSERT INTO ccis_program (program, department_id) VALUES ('$program','$iddept')";
+    mysqli_query($conn,$addprogram);
+    
+
+   
+ //Getting the id of new program
+    $GetID = "SELECT * FROM ccis_program WHERE program = '$program'";
+    $GetResult = mysqli_query($conn,$GetID);
+    $ProgramID =mysqli_fetch_assoc($GetResult);
+    $ProgramID = $ProgramID['id'];
+   
+    $addmajor = "INSERT INTO ccis (program, major) VALUES ('$ProgramID','$major')";
+    $result = mysqli_query($conn,$addmajor);
+
+    echo"SUCCESSFULLY ADDED";
+
+
+
+    }
+
+
+
+}
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -98,16 +148,17 @@ $displayDept = mysqli_query($conn, "SELECT DISTINCT(department) FROM student_dat
       }
     ?>
     </div>
-      <form action="" class="form">
+      <form action="addProg.php" method="post" class="form">
         <div class="program">
         <div class="header" id="program-header">ENTER PROGRAM</div>
-          <input type="text">
+        <input type="hidden" name="department" id="department">
+          <input type="text" name="program">
         </div>
         <div class="major">
           <div class="header">ENTER MAJOR</div>
-          <input type="text">
+          <input type="text" name="major">
         </div>
-        <input type="submit" value="SAVE">
+        <input type="submit" name="awit" value="SAVE">
       </form>
     </div>
     </div>
@@ -117,6 +168,7 @@ $displayDept = mysqli_query($conn, "SELECT DISTINCT(department) FROM student_dat
       function displayPrograms(dept) {
         // update the program header text
         document.getElementById("program-header").textContent = "ENTER PROGRAM FOR " + dept;
+        document.getElementById("department").value = dept;
       }
     </script>
 
