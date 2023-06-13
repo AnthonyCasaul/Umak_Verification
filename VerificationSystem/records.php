@@ -111,7 +111,22 @@ $select = mysqli_query($conn, "SELECT * FROM `student_data`") or die('query fail
             <label>DEPARTMENT</label>
             <select name="deparment" id="department">
               <option value="all">All</option>
-                <option value="cbfs">CBFS</option>
+
+              <?php
+
+              $query = "SELECT * FROM deparment";
+              $result = mysqli_query($conn, $query);
+
+              while ($row = mysqli_fetch_assoc($result)){
+                $department = $row['department'];
+                $deplower = strtolower($department);
+                echo  "<option value='".$deplower."'>".$department."</option>";
+
+              }
+              
+              
+              ?>
+                <!-- <option value="cbfs">CBFS</option>
                 <option value="cthm">CTHM</option>
                 <option value="igs">IGS/CGS/CCAPS</option>
                 <option value="cos">COS</option>
@@ -124,7 +139,7 @@ $select = mysqli_query($conn, "SELECT * FROM `student_data`") or die('query fail
                 <option value="coahs">COAHS</option>
                 <option value="chk">CHK</option>
                 <option value="cmli">CMLI</option>
-                <option value="sol">SOL</option>
+                <option value="sol">SOL</option> -->
             </select>
             </div>
           </div>
@@ -133,6 +148,19 @@ $select = mysqli_query($conn, "SELECT * FROM `student_data`") or die('query fail
             <label>YEAR GRADUATED</label>
             <select id="year" name="year">
               <option value="all" >ALL</option>
+              <?php
+              $queryacademic = "SELECT DISTINCT(academic_year) FROM student_data";
+              $academicV = mysqli_query($conn,$queryacademic);
+              
+                while($rowacademic = mysqli_fetch_assoc($academicV)){
+                    $rowyr =$rowacademic['academic_year'];
+                    echo "<option value='".$rowyr."' >".$rowyr."</option>";
+                    
+                }
+              
+              
+              
+              ?>
             </select>
               </div>
           </div>
@@ -141,7 +169,7 @@ $select = mysqli_query($conn, "SELECT * FROM `student_data`") or die('query fail
 <div id="result"></div>
 <!-- <div id="searchResults"></div> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<script src="ddlYear.js"></script>
+<!-- <script src="ddlYear.js"></script> -->
 
 
 <script>
