@@ -36,6 +36,7 @@ if(mysqli_num_rows($select) > 0){
                 $gname = strtoupper($row['guardian_name']);
                 $gcontact = $row['guardian_contact'];
                 $relationship = strtoupper($row['guardian_relationship']);
+                $award = strtoupper($row['student_award']);
               }
 }
 ?>
@@ -45,7 +46,7 @@ if(mysqli_num_rows($select) > 0){
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="studentinfoRev.css" />
+    <link rel="stylesheet" href="css/studentinfoRev.css" />
     <link rel="icon" href="img/UMakLogo.png" />
     <script src="https://kit.fontawesome.com/370708d2ea.js" crossorigin="anonymous"></script>
     <title>UMak Verification System</title>
@@ -119,14 +120,6 @@ if(mysqli_num_rows($select) > 0){
                 ?>
             </section>
           </div>
-          <div class="lowerDiv">
-            <section class="label">
-              AWARD OF DISTINCTION
-            </section>
-            <section class="award unLine">
-              CUM LAUDE
-            </section>
-          </div>
           </div>
 
             <div class="persoInfo2">
@@ -166,6 +159,10 @@ if(mysqli_num_rows($select) > 0){
                 <section class="label acadyr unLine">
                   ACADEMIC YEAR <br>
                   <b><?php echo $acadyear?></b>
+                </section>
+                <section class="label award unLine">
+                  AWARD OF DISTINCTION <br>
+                    <b><?php echo $award?></b>
                 </section>
               </div>
               <section class="label dept unLine">

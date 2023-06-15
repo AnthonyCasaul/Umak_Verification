@@ -41,6 +41,7 @@ if(mysqli_num_rows($select) > 0){
                 $gname = $row['guardian_name'];
                 $gcontact = $row['guardian_contact'];
                 $relationship = $row['guardian_relationship'];
+                $award = $row['student_award'];
               }
 }
 
@@ -65,12 +66,13 @@ if(isset($_POST['update_profile'])){
    $gname = mysqli_real_escape_string($conn, $_POST['update_guardian']);
    $gcontact= mysqli_real_escape_string($conn, $_POST['update_guardiancontact']);
    $relationship = mysqli_real_escape_string($conn, $_POST['update_relationship']);
+   $award = mysqli_real_escape_string($conn, $_POST['update_award']);
 
     $update = mysqli_query($conn, 
     "UPDATE student_data SET student_id = '$sID', student_lname = '$lname', 
     student_fname = '$fname', student_mname = '$mname', student_suffix = '$suffix', 
     student_birthday = '$bdate', student_contact = '$contactno', student_address = '$address', 
-    student_gender = '$gender', date_graduated = '$dgrad', department = '$department', 
+    student_gender = '$gender', date_graduated = '$dgrad', student_award = '$award', department = '$department', 
     program = '$program', degree = '$degree', major = '$major', semester = '$sem', 
     academic_year = '$acadyr', guardian_name = '$gname', guardian_contact = '$gcontact', 
     guardian_relationship = '$relationship' WHERE id = '$student_id'") 
@@ -163,14 +165,6 @@ if(isset($_POST['update_profile'])){
             <input id="fname" type="text" name="update_firstname" value="<?php echo $fname;?>">
             <input id="mname" type="text" name="update_middlename" value="<?php echo $mname;?>"></div>
           </div>
-          <div class="lowerDiv">
-            <section class="label">
-              AWARD OF DISTINCTION
-            </section>
-            <section class="award unLine">
-              CUM LAUDE
-            </section>
-          </div>
           </div>
             <div class="persoInfo2">
 
@@ -210,26 +204,30 @@ if(isset($_POST['update_profile'])){
                   ACADEMIC YEAR <br>
                   <b><input class="label acadyr" type="text" name="update_academicyear" value="<?php echo $acadyear;?>"></b>
                 </section>
+                <section class="label">
+                  AWARD OF DISTINCTION <br>
+                    <b><input class="label award" type="text" name="update_award" value="<?php echo $award;?>"></b>
+                </section>
               </div>
               <section class="label">
                 DEPARTMENT <br>
                 <b>
                   <select id="department" name="update_department" >
                     <option value="<?php echo $department;?>"><?php echo $department;?></option>
-                    <option value="cbfs">CBFS</option>
-                    <option value="cthm">CTHM</option>
+                    <option value="College of Business and Finance Studies">CBFS</option>
+                    <option value="College of Tourism Hospitality Management">CTHM</option>
                     <option value="igs">IGS/CGS/CCAPS</option>
-                    <option value="cos">COS</option>
-                    <option value="coe">COE</option>
-                    <option value="ccsce">CCSE</option>
+                    <option value="College of Science">COS</option>
+                    <option value="College of Education">COE</option>
+                    <option value="College of Computer Science and Engineering">CCSE</option>
                     <option value="iit">IIT/COT/ITRED/CTM</option>
-                    <option value="ccis">CCIS</option>
-                    <option value="cgpp">CGPP</option>
-                    <option value="cal">CAL</option>
-                    <option value="coahs">COAHS</option>
-                    <option value="chk">CHK</option>
-                    <option value="cmli">CMLI</option>
-                    <option value="sol">SOL</option>
+                    <option value="College of Computing and Information Sciences">CCIS</option>
+                    <option value="College of Governance and Public Policy">CGPP</option>
+                    <option value="College of Arts and Letters">CAL</option>
+                    <option value="College of Allied Health Studies">COAHS</option>
+                    <option value="College of Human Kinetics">CHK</option>
+                    <option value="College of Maritime Leadership Innovation">CMLI</option>
+                    <option value="School of Law">SOL</option>
                   </select>
                 </b>
               </section>

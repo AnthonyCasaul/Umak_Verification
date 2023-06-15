@@ -203,6 +203,7 @@ h1 {
 .fname_mi {
   color: #073775;
   font-weight: 700;
+  font-size: 40px;
   border-bottom: 3px solid #073775;
   padding-bottom: 5px;
 }
@@ -212,11 +213,7 @@ h1 {
 .label{
   font-size: 20px;
 }
-.award{
-  font-size: 40px;
-  font-weight: 700;
-  color: #073775;
-}
+
 .studNumber {
   text-align: center;
   color: #545454;

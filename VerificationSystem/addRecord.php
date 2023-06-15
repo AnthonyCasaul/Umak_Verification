@@ -34,6 +34,7 @@ if(isset($_POST['submit'])){
    $gName = mysqli_real_escape_string($conn, $_POST['gName']);
    $gContact= mysqli_real_escape_string($conn, $_POST['gContact']);
    $relationship = mysqli_real_escape_string($conn, $_POST['relationship']);
+   $award = mysqli_real_escape_string($conn, $_POST['award']);
 
    $select = mysqli_query($conn, "SELECT * FROM `student_data` WHERE student_id = '$sID'") or die('query failed');
    
@@ -41,8 +42,8 @@ if(isset($_POST['submit'])){
       $message[] = 'user already exist'; 
    }
    else{
-      $insert = mysqli_query($conn, "INSERT INTO `student_data`(id, student_id, student_lname, student_fname, student_mname, student_suffix, student_birthday, student_address, student_contact, student_gender, date_graduated, department, program, degree, semester, academic_year, major, guardian_name, guardian_contact, guardian_relationship) 
-      VALUES('$id', '$sID', '$lName', '$fName', '$mName', '$suffix','$bDate','$address','$contactNo','$gender','$dGrad','$department','$program','$degree','$sem','$acadYr','$Major','$gName','$gContact','$relationship')") or die('query failed');
+      $insert = mysqli_query($conn, "INSERT INTO `student_data`(id, student_id, student_lname, student_fname, student_mname, student_suffix, student_birthday, student_address, student_contact, student_gender, date_graduated, student_award,department, program, degree, semester, academic_year, major, guardian_name, guardian_contact, guardian_relationship) 
+      VALUES('$id', '$sID', '$lName', '$fName', '$mName', '$suffix','$bDate','$address','$contactNo','$gender','$dGrad','$award','$department','$program','$degree','$sem','$acadYr','$Major','$gName','$gContact','$relationship')") or die('query failed');
       header('location: records.php');
 
       $add = 'Add';
@@ -199,7 +200,7 @@ if(isset($_POST['submit'])){
         <!-- INPUT -->
         <tr>
           <td colspan="2">
-            <select name="" id="" required>
+            <select name="award" id="" required>
             <option value="none" selected disabled hidden>Select an Option</option>
               <option value="Summa Cum Laude">SUMMA CUM LAUDE</option>
               <option value="Magna Cum Laude">MAGNA CUM LAUDE</option>

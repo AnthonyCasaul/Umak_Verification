@@ -27,18 +27,6 @@ $added  = "Add";
  $countAdded = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM activity_history WHERE recent_activity = '$added'") or die('query failed');
  $row5 = $countAdded->fetch_assoc();
 
-// $department = array("CCIS","cbfs");
-// $departmentV = array();
-
-// for ($x = 0;$x < count($department);$x++){
-
-//   $ccis = mysqli_query($conn, "SELECT * FROM student_data WHERE department = '$department[$x]'");
-//   $ccisV = mysqli_num_rows($ccis);
-//   $departmentV[] = $ccisV;
-
-//   //array_push($departmentV,$ccisV);
-// }
-
 $dbdepartment = "SELECT * FROM deparment";
 
 $dpresult = mysqli_query($conn,$dbdepartment);
@@ -96,6 +84,19 @@ for ($x = 0;$x < count($academicValue);$x++){
 }
 
 
+$countSumma = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM student_data WHERE student_award = 'Summa Cum Laude'") or die('query failed');
+ $summa = $countSumma->fetch_assoc();
+$countMagna = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM student_data WHERE student_award = 'Magna Cum Laude'") or die('query failed');
+ $magna = $countMagna->fetch_assoc();
+$countCumlaude = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM student_data WHERE student_award = 'Cum Laude'") or die('query failed');
+ $cumlaude = $countCumlaude->fetch_assoc();
+$countHighest = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM student_data WHERE student_award = 'With Highest Honors'") or die('query failed');
+ $highest = $countHighest->fetch_assoc();
+$countHigh = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM student_data WHERE student_award = 'With High Honors'") or die('query failed');
+ $high = $countHigh->fetch_assoc();
+$countWithhonors = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM student_data WHERE student_award = 'With Honors'") or die('query failed');
+ $withhonors = $countWithhonors->fetch_assoc();
+
 ?>
 
 <!DOCTYPE html>
@@ -104,7 +105,7 @@ for ($x = 0;$x < count($academicValue);$x++){
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
     <link rel="icon" href="img/UMakLogo.png" />
      <!-- FUNCTIONS FOR BUTTONS TO DISPLAY -->
     <script src="js/displayGraph.js"> </script>
@@ -260,25 +261,20 @@ for ($x = 0;$x < count($academicValue);$x++){
             <div class="separator">
               <div class="btnDiv">
                 <button class="btn btnDept" id="colBtn" onclick="showCol()">COLLEGES</button>
-                <button class="btn btnDept" id="deptBtn" onclick="showDept()">DEPARTMENT</button>
                 <button class="btn btnDeg" id="degBtn" onclick="showDeg()">DEGREE</button>
                 <button class="btn btnYear" id="yrBtn" onclick="showYr()">YEAR</button>
 
                 <div class="searchProg">
                   <img src="img/searchIcon.png" alt="" class="searchImg">
-                  <input type="text" placeholder="Search Program" oninput="showResults()">
+                  <input type="text" placeholder="Search Program" id="program" onkeydown="handleKeyPress(event)">
                 </div>
               </div>
 
-              <div id="searchResults" >
-                <span class="aNum">1000</span>
-                <span>N0. OF ALUMNI</span>
-              </div>
+              <div id="searchResults" ></div>
 
             <!-- DISPLAY -->
               <div class="barPlaceholder" id="barPlaceholder">
                 <canvas id="colGraph" class="graph" style="display:block"></canvas>
-                <canvas id="deptGraph" class="graph" style="display:none"></canvas>
                 <canvas id="degGraph" class="graph" style="display:none"></canvas>
                 <canvas id="yrGraph" class="graph" style="display:none"></canvas>
                 <canvas id="progGraph" class="graph" style="display:none"></canvas>
@@ -291,27 +287,27 @@ for ($x = 0;$x < count($academicValue);$x++){
               </div>
               <table>
                 <tr>
-                  <td>900</td>
+                  <td><?php echo $summa['total_row']; ?></td>
                   <td>SUMMA CUM LAUDE</td>
                 </tr>
                 <tr>
-                  <td>576</td>
+                  <td><?php echo $magna['total_row']; ?></td>
                   <td>MAGNA CUM LAUDE</td>
                 </tr>
                 <tr>
-                  <td>234</td>
+                  <td><?php echo $cumlaude['total_row']; ?></td>
                   <td> CUM LAUDE</td>
                 </tr>
                 <tr>
-                  <td>876</td>
+                  <td><?php echo $highest['total_row']; ?></td>
                   <td>WITH HIGHEST HONOR</td>
                 </tr>
                 <tr>
-                  <td>242</td>
+                  <td><?php echo $high['total_row']; ?></td>
                   <td>WITH HIGH HONOR</td>
                 </tr>
                 <tr>
-                  <td>132</td>
+                  <td><?php echo $withhonors['total_row']; ?></td>
                   <td>WITH HONOR</td>
                 </tr>
               </table>
@@ -419,6 +415,42 @@ for ($x = 0;$x < count($academicValue);$x++){
         
 
         
+        </script>
+        <script>
+          function handleKeyPress(event) {
+            if (event.key === "Enter") {
+              var program = document.getElementById("program").value;
+              searchProgram(program);
+            }
+          }
+          
+          function searchProgram() {
+              var input = document.getElementById("program").value;
+              
+              // Create a new XMLHttpRequest object
+              var xhr = new XMLHttpRequest();
+              
+              // Define the request URL and method (assuming the PHP file is named "search.php")
+              var url = "searchProgram.php";
+              var method = "POST";
+              
+              // Set up the request
+              xhr.open(method, url, true);
+              
+              // Set the request header
+              xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+              
+              // Set up a callback function to handle the response
+              xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                  var count = xhr.responseText;
+                  document.getElementById("searchResults").innerHTML = "<b style='font-family:san-serif;padding-left:50px;'>Number of Alumni: </b>" + count;
+                }
+              };
+              
+              // Send the request with the search query as a parameter
+              xhr.send("program=" + input);
+            }
         </script>
     
     <footer></footer>

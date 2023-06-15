@@ -108,7 +108,7 @@ if (isset($_POST['save'])){
     </div>
     <div class="display">
     <div class="leftPannel">
-      <div class="h1">CHOOSE A DEPARTMENT</div>
+      <div class="h1">DEPARTMENTS</div>
       <?php
         if(mysqli_num_rows($displayDept) > 0){
 			    while($row = mysqli_fetch_assoc($displayDept)){
@@ -121,8 +121,8 @@ if (isset($_POST['save'])){
       </div>
         <form action="" method= "post" class="form">
           <section>
-          <div class="header">HOW MANY DEPARTMENT (5 max)</div>
-            <input type="number" id="how-many" name="department">
+          <div class="header">DEPARTMENT CODE</div>
+            <input type="text" id="how-many" name="department">
           </section>
           <section>
           <div class="header">DEPARTMENT NAME</div>
@@ -140,22 +140,6 @@ if (isset($_POST['save'])){
     function goBack() {
       window.history.back();
     }
-// Number of Inputs
-    const howManyInput = document.getElementById('how-many');
-    const inputsContainer = document.getElementById('inputs-container');
-
-    howManyInput.addEventListener('input', (event) => {
-      const howMany = parseInt(event.target.value);
-      inputsContainer.innerHTML = '';
-
-      for (let i = 1; i <= Math.min(howMany, 5); i++) {
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.name = `input[]`;
-    input.placeholder = `Enter Department ${i}`;
-    inputsContainer.appendChild(input);
-  }
-    });
 </script>
 
  <footer></footer>
