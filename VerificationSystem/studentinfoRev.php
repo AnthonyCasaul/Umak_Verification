@@ -218,7 +218,17 @@ if(mysqli_num_rows($select) > 0){
       
         <div class="dlIcon">
         <img src="img/dlButton.png" alt="">
-        <span class="dlText"><a href="certificate_generate.php">DOWNLOAD</a></span>
+        <span class="dlText"><form method="post" action="certificate_generate.php">
+        <input type="hidden" name="fname" value="<?php echo $fname?>">
+        <input type="hidden" name="mname" value="<?php echo $mname?>">
+        <input type="hidden" name="lname" value="<?php echo $lname?>">
+        <input type="hidden" name="program" value="<?php echo $program?>">
+        <input type="hidden" name="major" value="<?php echo $major?>">
+        <input type="hidden" name="department" value="<?php echo $department?>">
+        <input type="hidden" name="dgrad" value="<?php echo $dgrad?>">
+        <input type="hidden" name="gender" value="<?php echo $gender?>">
+
+          <input type="submit" name="submit" value="DOWNLOAD"></form></span>
       </div>
     <footer></footer>
   </body>

@@ -2,3 +2,106 @@ body {
     margin: 0px 20px;
 }
 
+@font-face {
+    font-family: 'lhanz';
+    src: url("vendor/dompdf/dompdf/lib/fonts/bookman.ttf") format("truetype");
+    /* Add more src declarations for different font weights and styles if available */
+  } 
+.cert__header{
+  
+    margin: 0 auto;  
+}
+
+  .cert__umak {
+    width: 80px;
+  
+  }
+
+  .umak__lg {
+    width: 100%;
+    margin: 0;
+  
+  }
+
+  .header__detail { 
+
+
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .rp {
+    font-size: 15px;
+    margin: 0;
+  }
+
+  .cm {
+    font-size: 15px;
+    margin: 0;
+  }
+
+  .um {
+    margin: 0;
+    font-size: 22px;
+  }
+
+  .jp {
+    font-size: 10px;
+    margin: 0;
+  }
+
+  .tn {
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+
+  .cert__makati {
+    width: 85px;
+    
+  }
+
+  .makati__lg {
+    width: 100%;
+  }
+
+
+  .office_title , .certi_title{
+
+    text-align: center;
+    letter-spacing: 1px;
+    font-family: 'lhanz'; 
+
+  }
+  .content1, .content2,.content4{
+    text-indent: 50px;
+    line-height: 25px;
+  }
+  main{
+    margin-left: 45px;
+    margin-right: 45px;
+  }
+  .office_title{
+    font-size: 20px;
+    
+  }
+  .certi_title{
+    font-size: 32px;
+  }
+  .content3{
+    margin-left: 50px;
+  }
+.signature{
+    float: right;
+    line-height: 2px;
+}
+.seal{
+    float: left;
+    line-height: 3px;
+}
+
+.uf {
+    float: right;
+    margin-top: 40%;
+}
