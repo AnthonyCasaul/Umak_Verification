@@ -20,47 +20,42 @@ if (isset($_POST['awit'])){
  $iddept =  $iddept['id'];
  $program = $_POST['program']??'';
  $major = $_POST['major']??'';
-
- echo $department;
  
 $query = "SELECT * FROM ccis_program WHERE program = '$program'";
 $result = mysqli_query($conn,$query);
 
- if (mysqli_num_rows($result) > 0)
- {
-    $idprogram =mysqli_fetch_assoc($result);
-    $idprogram = $idprogram['id'];
-    $addmajor = "INSERT INTO ccis (program, major) VALUES ('$idprogram','$major')";
-    $result = mysqli_query($conn,$addmajor);
-    echo"SUCCESSFULLY ADDED";
- }
- else{
-    $addprogram = "INSERT INTO ccis_program (program, department_id) VALUES ('$program','$iddept')";
-    mysqli_query($conn,$addprogram);
-    
+if (mysqli_num_rows($result) > 0) {
+  $idprogram = mysqli_fetch_assoc($result);
+  $idprogram = $idprogram['id'];
+  $addmajor = "INSERT INTO ccis (program, major) VALUES ('$idprogram','$major')";
+  $result = mysqli_query($conn, $addmajor);
 
-   
- //Getting the id of new program
-    $GetID = "SELECT * FROM ccis_program WHERE program = '$program'";
-    $GetResult = mysqli_query($conn,$GetID);
-    $ProgramID =mysqli_fetch_assoc($GetResult);
-    $ProgramID = $ProgramID['id'];
-   
-    $addmajor = "INSERT INTO ccis (program, major) VALUES ('$ProgramID','$major')";
-    $result = mysqli_query($conn,$addmajor);
+  if ($result) {
+      echo '<script>alert("SUCCESSFULLY ADDED");</script>';
+  } else {
+      echo '<script>alert("Failed to add major");</script>';
+  }
+} else {
+  $addprogram = "INSERT INTO ccis_program (program, department_id) VALUES ('$program','$iddept')";
+  mysqli_query($conn, $addprogram);
 
-    echo"SUCCESSFULLY ADDED";
+  // Getting the id of the new program
+  $GetID = "SELECT * FROM ccis_program WHERE program = '$program'";
+  $GetResult = mysqli_query($conn, $GetID);
+  $ProgramID = mysqli_fetch_assoc($GetResult);
+  $ProgramID = $ProgramID['id'];
 
+  $addmajor = "INSERT INTO ccis (program, major) VALUES ('$ProgramID','$major')";
+  $result = mysqli_query($conn, $addmajor);
 
-
-    }
-
-
-
+  if ($result) {
+      echo '<script>alert("SUCCESSFULLY ADDED");</script>';
+  } else {
+      echo '<script>alert("Failed to add major");</script>';
+  }
 }
 
-
-
+}
 
 ?>
 <!DOCTYPE html>
@@ -148,29 +143,74 @@ $result = mysqli_query($conn,$query);
       }
     ?>
     </div>
-      <form action="addProg.php" method="post" class="form">
-        <div class="program">
+    <form action="addProg.php" method="post" class="form">
+      <div class="program">
         <div class="header" id="program-header">ENTER PROGRAM</div>
         <input type="hidden" name="department" id="department">
-          <input type="text" name="program">
-        </div>
-        <div class="major">
-          <div class="header">ENTER MAJOR</div>
-          <input type="text" name="major">
-        </div>
-        <input type="submit" name="awit" value="SAVE">
-      </form>
-    </div>
-    </div>
+        <input type="text" name="program" readonly class="disabled-input" onclick="showPrompt()" oninput="validateInputs()">
+      </div>
+      <div class="major">
+        <div class="header">ENTER MAJOR</div>
+        <input type="text" name="major" readonly class="disabled-input" onclick="showPrompt()" oninput="validateInputs()">
+      </div>
+      <input type="submit" name="awit" value="SAVE" id="submitButton" disabled>
+    </form>
 
-    <script>
-      function goBack() {window.history.back();}
-      function displayPrograms(dept) {
-        // update the program header text
-        document.getElementById("program-header").textContent = "ENTER PROGRAM FOR " + dept;
-        document.getElementById("department").value = dept;
-      }
-    </script>
+<script>
+  function displayPrograms(dept) {
+    var programHeader = document.getElementById("program-header");
+    var programInput = document.getElementsByName("program")[0];
+    var majorInput = document.getElementsByName("major")[0];
+    var submitButton = document.getElementById("submitButton");
+
+    // Check if the program header text was changed
+    if (programHeader.textContent !== "ENTER PROGRAM FOR " + dept) {
+      programInput.readOnly = false;
+      majorInput.readOnly = false;
+      programInput.classList.add("enabled-input");
+      majorInput.classList.add("enabled-input");
+      submitButton.disabled = false;
+    } else {
+      programInput.readOnly = true;
+      majorInput.readOnly = true;
+      programInput.classList.remove("enabled-input");
+      majorInput.classList.remove("enabled-input");
+      submitButton.disabled = true;
+    }
+
+    // Update the program header text and department value
+    programHeader.textContent = "ENTER PROGRAM FOR " + dept;
+    document.getElementById("department").value = dept;
+  }
+
+  function showPrompt() {
+    var programHeader = document.getElementById("program-header");
+    var departmentValue = document.getElementById("department").value;
+
+    if (programHeader.textContent === "ENTER PROGRAM" && departmentValue === "") {
+      window.alert("Please choose a department first.");
+    }
+  }
+
+  function validateInputs() {
+    var programInput = document.getElementsByName("program")[0];
+    var majorInput = document.getElementsByName("major")[0];
+    var submitButton = document.getElementById("submitButton");
+
+    if (programInput.value.trim() === "" || majorInput.value.trim() === "") {
+      submitButton.disabled = true;
+    } else {
+      submitButton.disabled = false;
+    }
+  }
+  //BACK BUTTON
+  function goBack() {window.history.back();}
+</script>
+
+
+
+
+
 
     <script src="../js/addCategory.js"></script>
     <script src="js/addProg.js"></script>

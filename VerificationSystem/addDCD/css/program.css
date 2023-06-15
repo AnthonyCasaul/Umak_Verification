@@ -54,6 +54,15 @@
   font-weight: 700;
   padding: 20px;
 }
+.disabled-input {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+.enabled-input {
+  background-color: #ffffff;
+  cursor: auto;
+}
 input{
   height: 60px;
   padding: 20px;
