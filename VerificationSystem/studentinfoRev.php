@@ -228,7 +228,7 @@ if(mysqli_num_rows($select) > 0){
         <input type="hidden" name="dgrad" value="<?php echo $dgrad?>">
         <input type="hidden" name="gender" value="<?php echo $gender?>">
 
-          <input type="submit" name="submit" value="DOWNLOAD"></form></span>
+          <input type="submit" class="download" name="submit" value="DOWNLOAD"></form></span>
       </div>
     <footer></footer>
   </body>

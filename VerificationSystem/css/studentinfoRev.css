@@ -36,7 +36,7 @@ h1 {
   justify-content: space-between;
   align-items: center;
   padding: 0 5%;
-
+  z-index: 1;
   position: relative;
 }
 
@@ -185,7 +185,7 @@ h1 {
 }
 /* CONTENTS */
 /* PERSONAL INFO */
-.infoHonor{
+.infoHonor {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -207,10 +207,10 @@ h1 {
   border-bottom: 3px solid #073775;
   padding-bottom: 5px;
 }
-.midtext{
+.midtext {
   font-size: 27px;
 }
-.label{
+.label {
   font-size: 20px;
 }
 
@@ -257,7 +257,7 @@ b {
   border: none;
   cursor: pointer;
 }
-.unLine{
+.unLine {
   border-bottom: 1px solid #073775;
 }
 /* EDIT ICON */
@@ -272,15 +272,6 @@ b {
   border-radius: 25px;
   transition: all 0.3s ease-out;
   overflow: hidden;
-}
-.fa-pen-to-square {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 1.2vw;
-  transition: all 0.3s ease-out;
 }
 .editIcon:hover {
   width: 8vh;
@@ -321,15 +312,6 @@ b {
   transition: all 0.3s ease;
   overflow: hidden;
 }
-.fa-download {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 1.2vw;
-  transition: all 0.3s ease;
-}
 .dlIcon:hover {
   width: 15vh;
   transition: all 0.3s ease;
@@ -340,21 +322,17 @@ b {
   transition: all 0.3s ease;
   cursor: pointer;
 }
-.dlIcon:hover .dlText {
-  display: block;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-.dlText {
+.dlIcon .download {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 20px;
-  color: white;
-  font-family: "Inter";
+  border: none;
+  background: none;
   font-weight: 700;
-  display: none;
-  transition: all 0.3s ease;
+  color: white;
+  font-size: 20px;
+  padding: 5px 5px 5px 10px;
+  cursor: pointer;
 }
 /*FOOTER*/
 footer {
@@ -366,31 +344,31 @@ footer {
   background-color: #073775;
 }
 @media screen and (max-height: 657px) {
-  .text{
+  .text {
     font-size: 35px;
   }
-  .lname{
+  .lname {
     font-size: 40px;
   }
-  .label{
+  .label {
     font-size: 15px;
   }
-  .award{
+  .award {
     font-size: 25px;
   }
-  .midtext{
+  .midtext {
     font-size: 23px;
   }
-  .studNumber{
+  .studNumber {
     font-size: 23px;
   }
-  b{
+  b {
     font-size: 20px;
   }
-  .content{
+  .content {
     height: 420px;
   }
-  .studInfo{
+  .studInfo {
     height: 420px;
   }
 }

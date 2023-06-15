@@ -159,9 +159,7 @@ if(isset($_POST['submit'])){
             <td><input type="text" name="suffix" class="" id="shortInput"></td>
             <td><input type="radio" name="gender" class="gender" value="Male" id="male"  required><label for="male">Male</label>
               <input type="radio" name="gender" class="gender" value="Female" id="female"  required><label for="female">Female</label></td>
-            <td colspan="2"> <select name="dGrad" id="year" class="dGrad"  required>
-                <option value="NA" disabled selected>-- Select an option --</option>
-              </select></td>
+            <td colspan="2"> <input type="date" name="dGrad" id="year" class="dGrad"  required></td>
             <td colspan="2">
               <!-- DEPARTMENT -->
               <select id="department" name="department"   required>
