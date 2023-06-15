@@ -41,7 +41,7 @@ if(mysqli_num_rows($select) > 0){
                 $gname = $row['guardian_name'];
                 $gcontact = $row['guardian_contact'];
                 $relationship = $row['guardian_relationship'];
-                $award = $row['student_award'];
+                $award = $row['student_award']??'';
               }
 }
 

@@ -36,7 +36,7 @@ if(mysqli_num_rows($select) > 0){
                 $gname = strtoupper($row['guardian_name']);
                 $gcontact = $row['guardian_contact'];
                 $relationship = strtoupper($row['guardian_relationship']);
-                $award = strtoupper($row['student_award']);
+                $award = strtoupper($row['student_award']??'');
               }
 }
 ?>
@@ -218,7 +218,7 @@ if(mysqli_num_rows($select) > 0){
       
         <div class="dlIcon">
         <img src="img/dlButton.png" alt="">
-        <span class="dlText">DOWNLOAD</span>
+        <span class="dlText"><a href="certificate_generate.php">DOWNLOAD</a></span>
       </div>
     <footer></footer>
   </body>
