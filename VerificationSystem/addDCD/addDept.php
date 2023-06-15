@@ -13,23 +13,16 @@ $Admin = "Admin";
 $displayDept = mysqli_query($conn, "SELECT DISTINCT(department) FROM deparment");
 
 if (isset($_POST['save'])){
-      $input = $_POST['input'];
-     foreach($input as $key)
-     {
-      $department = mysqli_query($conn, "SELECT * FROM deparment WHERE department = UPPER('$key')") or die('query failed');
-      $count = mysqli_num_rows($department);
-  
-      
-      if ($count == 0) {
-          $insertQuery = "INSERT INTO deparment (department) VALUES (UPPER('$key'))";
+      $code = $_POST['department_code'];
+      $name = $_POST['department_name'];
+      $department = mysqli_query($conn, "SELECT * FROM deparment WHERE department = UPPER('$code')") or die('query failed');
+      if(mysqli_num_rows($department) > 0){
+        echo "error: department";
+     }
+     else{
+          $insertQuery = "INSERT INTO deparment (department, department_name) VALUES ('$code', '$name')";
           $insertStatement = mysqli_query($conn, $insertQuery);
-
-          // echo "Inserted $key into department table.<br>";
-      } else {
-          // echo "$key already exists in department table.<br>";
-      }
-    
-     };
+     }
 
 }
 
@@ -122,12 +115,12 @@ if (isset($_POST['save'])){
         <form action="" method= "post" class="form">
           <section>
           <div class="header">DEPARTMENT CODE</div>
-            <input type="text" id="how-many" name="department">
+            <input type="text" name="department_code">
           </section>
           <section>
           <div class="header">DEPARTMENT NAME</div>
             <div id="inputs-container">
-              <input type="text" class="deptInput">
+              <input type="text" class="deptInput" name="department_name">
             </div>
         </section>
         <input type="submit" value="SAVE" name="save">
