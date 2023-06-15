@@ -108,7 +108,7 @@ if (isset($_POST['save'])){
     </div>
     <div class="display">
     <div class="leftPannel">
-      <div class="h1">DEPARTMENTS</div>
+      <div class="h1">LIST OF DEPARTMENTS</div>
       <?php
         if(mysqli_num_rows($displayDept) > 0){
 			    while($row = mysqli_fetch_assoc($displayDept)){
