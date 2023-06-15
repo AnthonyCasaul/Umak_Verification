@@ -13,17 +13,24 @@ $Admin = "Admin";
 $displayDept = mysqli_query($conn, "SELECT DISTINCT(department) FROM deparment");
 
 if (isset($_POST['save'])){
-      $code = $_POST['department_code'];
-      $name = $_POST['department_name'];
-      $department = mysqli_query($conn, "SELECT * FROM deparment WHERE department = UPPER('$code')") or die('query failed');
-      if(mysqli_num_rows($department) > 0){
-        echo "error: department";
-     }
-     else{
-          $insertQuery = "INSERT INTO deparment (department, department_name) VALUES ('$code', '$name')";
-          $insertStatement = mysqli_query($conn, $insertQuery);
-     }
-
+  $code = $_POST['department_code'];
+  $name = $_POST['department_name'];
+  $department = mysqli_query($conn, "SELECT * FROM deparment WHERE department = UPPER('$code')") or die('query failed');
+  
+  if(mysqli_num_rows($department) > 0){
+    echo '<script>alert("Error: Department already exists");</script>';
+  }
+  else{
+    $insertQuery = "INSERT INTO deparment (department, department_name) VALUES ('$code', '$name')";
+    $insertStatement = mysqli_query($conn, $insertQuery);
+    
+    if($insertStatement){
+      echo '<script>alert("Department successfully inserted");</script>';
+    }
+    else{
+      echo '<script>alert("Error: Failed to insert department");</script>';
+    }
+  }
 }
 
 ?>
@@ -127,7 +134,6 @@ if (isset($_POST['save'])){
       </form>
     </div>
     </div>
-
     <script>
       //Back Button Function
     function goBack() {
