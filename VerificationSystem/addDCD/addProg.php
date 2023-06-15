@@ -207,11 +207,6 @@ if (mysqli_num_rows($result) > 0) {
   function goBack() {window.history.back();}
 </script>
 
-
-
-
-
-
     <script src="../js/addCategory.js"></script>
     <script src="js/addProg.js"></script>
 
