@@ -20,7 +20,7 @@ $dompdf = new Dompdf($options);
 $dompdf->setPaper("A4", "portrait");
 
 $html = file_get_contents("certificate_template.html");
-$html = str_replace(["{{ name }}", "{{ date }}"], [$name, $date], $html);
+// $html = str_replace(["{{ name }}", "{{ date }}"], [$name, $date], $html);
 
 
 
