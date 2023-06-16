@@ -11,10 +11,13 @@ $mname = strtoupper($_POST['mname']);
 $lname = strtoupper($_POST['lname']);
 $program = $_POST['program'];
 $major = $_POST['major'];
-$department = $_POST['department'];
+$department1 = $_POST['department'];
 $dgrad = $_POST['dgrad'];
 $gender = $_POST['gender'];
 
+$iddeparment = mysqli_query($conn, "SELECT * FROM deparment WHERE department= '$department1'");
+ $iddept = mysqli_fetch_assoc($iddeparment);
+ $department = $iddept['department_name'];
 
 if ($gender == 'MALE'){
     $fullname = "MR.".$fname . " " .$mname ." ". $lname ;
