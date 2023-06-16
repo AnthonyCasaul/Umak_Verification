@@ -25,8 +25,8 @@ if(isset($_POST['submit'])){
    $suffix = mysqli_real_escape_string($conn, $_POST['suffix']);
    $gender = mysqli_real_escape_string($conn, $_POST['gender']);
    $dGrad = mysqli_real_escape_string($conn, $_POST['dGrad']);
-   $department = mysqli_real_escape_string($conn, $_POST['department']);
-   $program = mysqli_real_escape_string($conn, $_POST['program']);
+   $department1 = mysqli_real_escape_string($conn, $_POST['department']);
+   $program1 = mysqli_real_escape_string($conn, $_POST['program']);
    $degree = mysqli_real_escape_string($conn, $_POST['degrees']);
    $sem = mysqli_real_escape_string($conn, $_POST['sem']);
    $acadYr = mysqli_real_escape_string($conn, $_POST['acadYr']);
@@ -35,9 +35,19 @@ if(isset($_POST['submit'])){
    $gContact= mysqli_real_escape_string($conn, $_POST['gContact']);
    $relationship = mysqli_real_escape_string($conn, $_POST['relationship']);
    $award = mysqli_real_escape_string($conn, $_POST['award']);
-
-   $select = mysqli_query($conn, "SELECT * FROM `student_data` WHERE student_id = '$sID'") or die('query failed');
    
+   $select = mysqli_query($conn, "SELECT * FROM `student_data` WHERE student_id = '$sID'") or die('query failed');
+   $Getdeparment = mysqli_query($conn, "SELECT * FROM `deparment` WHERE id = '$department1'") or die('query failed');
+   $Getprogram = mysqli_query($conn, "SELECT * FROM `ccis_program` WHERE id = '$program1'") or die('query failed');
+
+   $dept = mysqli_fetch_assoc($Getdeparment);
+   $department = $dept['department'];
+
+   $prog = mysqli_fetch_assoc($Getprogram);
+   $program = $prog['program'];
+
+
+
    if(mysqli_num_rows($select) > 0){
       $message[] = 'user already exist'; 
    }
@@ -59,6 +69,8 @@ if(isset($_POST['submit'])){
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <link rel="stylesheet" href="css/addRecord.css" />
     <link rel="icon" href="img/UMakLogo.png" />
     <title>Add Student Record</title>
@@ -164,7 +176,22 @@ if(isset($_POST['submit'])){
               <!-- DEPARTMENT -->
               <select id="department" name="department"   required>
                 <option value="">--Select--</option>
-                <option value="CBFS">CBFS</option>
+
+                <?php
+
+                  $query = "SELECT * FROM deparment";
+                  $result = mysqli_query($conn, $query);
+
+                  while ($row = mysqli_fetch_assoc($result)){
+                    $department = $row['department'];
+                    $program = $row['id'];
+                    echo  "<option value='".$program."'>".$department."</option>";
+
+                  }
+
+
+?>
+                <!-- <option value="CBFS">CBFS</option>
                 <option value="CTHM">CTHM</option>
                 <option value="IGS">IGS/CGS/CCAPS</option>
                 <option value="COS">COS</option>
@@ -177,12 +204,12 @@ if(isset($_POST['submit'])){
                 <option value="COASH">COAHS</option>
                 <option value="CHK">CHK</option>
                 <option value="CMLI">CMLI</option>
-                <option value="SOL">SOL</option>
+                <option value="SOL">SOL</option> -->
               </select></td>
             <td colspan="2">
               <!-- PROGRAM -->
-              <select id="program" name="program"  required disabled>
-                <option value="">--Select--</option>
+              <select id="program" name="program"  required >
+                <option value="" selected>--Select--</option>
               </select>
             </td>
           </tr>
@@ -220,7 +247,7 @@ if(isset($_POST['submit'])){
           </select></td>
           <td colspan="2">
             <!-- MAJOR SECTION -->
-            <select id="major" name="major" disabled>
+            <select id="major" name="major" >
               <option value="">--Select--</option>
             </select>
         </td>
@@ -248,8 +275,71 @@ if(isset($_POST['submit'])){
     </div>
 
     <footer></footer>
-    <script src="major.js">
+    <!-- <script src="major.js"> -->
     </script>
     <script src="js/ddlYear.js"></script>
+
+  <script>
+   $(document).ready(function() {
+  // When the first select changes
+  $('#department').change(function() {
+    var selectedValue = $(this).val();
+   
+    // Make an AJAX request to fetch data from the server
+    $.ajax({
+      url: 'update_options.php',  // PHP file to handle the AJAX request
+      type: 'POST',
+      data: { value: selectedValue },
+      success: function(response) {
+        // Clear existing options in the second select
+        $('#program').html('');
+        $('#major').html('');
+        
+        // Parse the JSON response
+        var data = JSON.parse(response);
+        $('#major').append(' <option value="" selected>--Select--</option>');
+        $('#program').append(' <option value="" selected>--Select--</option>');
+        
+        // Add new options to the second select based on the response
+        $.each(data, function(key, value) {
+          $('#program').append('<option value="' + key + '">' + value + '</option>');
+        });
+      }
+    });
+  });
+});
+
+          $(document).ready(function() {
+            // When the first select changes
+            $('#program').change(function() {
+              var selectedValue = $(this).val();
+            
+              // Make an AJAX request to fetch data from the server
+              $.ajax({
+                url: 'major-option.php',  // PHP file to handle the AJAX request
+                type: 'POST',
+                data: { value: selectedValue },
+                success: function(response) {
+                  // Clear existing options in the second select
+                  $('#major').html('');
+                  
+                  // Parse the JSON response
+                  var data = JSON.parse(response);
+                  $('#major').append(' <option value="" selected>--Select--</option>');
+                  
+                  // Add new options to the second select based on the response
+                  $.each(data, function(key, value) {
+                    $('#major').append('<option value="' + key + '">' + value + '</option>');
+                  });
+                }
+              });
+            });
+          });
+
+
+
+
+
+  </script>
   </body>
 </html>
