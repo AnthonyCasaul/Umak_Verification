@@ -31,43 +31,40 @@ if(isset($_POST['importSubmit'])){
           $VerifiyColumn= fgetcsv($csvFile);
 
 
-            if($VerifiyColumn[0] == "student_id" && $VerifiyColumn[1] == "lastname" && $VerifiyColumn[2] == "firstname" && $VerifiyColumn[3] == "initials" && $VerifiyColumn[4] == "suffix" && $VerifiyColumn[5] == "bday" && $VerifiyColumn[6] == "address" && $VerifiyColumn[7] == "contact" && $VerifiyColumn[8] == "gender" && $VerifiyColumn[9] == "date_graduate" && $VerifiyColumn[10] == "department" && $VerifiyColumn[11] == "program" && $VerifiyColumn[12] == "degree" && $VerifiyColumn[13] == "sem"&& $VerifiyColumn[14] == "acadyr"&& $VerifiyColumn[15] == "major"&& $VerifiyColumn[16] == "guardian"&& $VerifiyColumn[17] == "guardian_contact"&& $VerifiyColumn[18] == "guardian_relationship"){
+            // if($VerifiyColumn[0] == "student_id" && $VerifiyColumn[1] == "lastname" && $VerifiyColumn[2] == "firstname" && $VerifiyColumn[3] == "initials" && $VerifiyColumn[4] == "suffix" && $VerifiyColumn[5] == "bday" && $VerifiyColumn[6] == "address" && $VerifiyColumn[7] == "contact" && $VerifiyColumn[8] == "gender" && $VerifiyColumn[9] == "date_graduate" && $VerifiyColumn[10] == "department" && $VerifiyColumn[11] == "program" && $VerifiyColumn[12] == "degree" && $VerifiyColumn[13] == "sem"&& $VerifiyColumn[14] == "acadyr"&& $VerifiyColumn[15] == "major"&& $VerifiyColumn[16] == "guardian"&& $VerifiyColumn[17] == "guardian_contact"&& $VerifiyColumn[18] == "guardian_relationship"){
                 while(($line = fgetcsv($csvFile)) !== FALSE)
                 {
                       $studentID = $line[0];
                       $lname = $line[1];
                       $fname = $line[2];
                       $mname = $line[3];
-                      $suffix = $line[4];
-                      $birthday = $line[5];
-                      $address = $line[6];
-                      $contact = $line[7];
-                      $gender = $line[8];
-                      $dGrad = $line[9];
-                      $dept = $line[10];
-                      $program = $line[11];
-                      $degree = $line[12];
-                      $sem = $line[13];
-                      $acadYr = $line[14];
-                      $major = $line[15];
-                      $gname = $line[16];
-                      $gcontact = $line[17];
-                      $grelationship = $line[18];
+                      $birthday = $line[16];
+                      $address = $line[13];
+                      $contact = $line[14];
+                      $gender = $line[18];
+                      $dGrad = $line[23];
+                      $dept = $line[5];
+                      $program = $line[6];
+                      $sem = $line[19];
+                      $acadYr = $line[20];
+                      $major = $line[7];
+                      $gname = $line[15];
+
                
-                  $conn->query("INSERT INTO student_data(student_id, student_lname, student_fname, student_mname, student_suffix, student_birthday, student_address, student_contact, student_gender, date_graduated, department, program, degree, semester, academic_year, major, guardian_name, guardian_contact, guardian_relationship) 
+                  $conn->query("INSERT INTO student_data(student_id, student_lname, student_fname, student_mname, student_birthday, student_address, student_contact, student_gender, date_graduated, department, program, semester, academic_year, major, guardian_name) 
                   VALUES 
-                  ('$studentID', '$lname', '$fname', '$mname', '$suffix', '$birthday', '$address', '$contact', '$gender', '$dGrad', '$dept', '$program', '$degree', '$sem', '$acadYr', '$major', '$gname', '$gcontact', '$grelationship')");
+                  ('$studentID', '$lname', '$fname', '$mname', '$birthday', '$address', '$contact', '$gender', '$dGrad', '$dept', '$program', '$sem', '$acadYr', '$major', '$gname')");
                }
                echo '<script>window.alert("File Succesfully Uploaded")</script>';
            
            
-              }
+              // }
 
-            else
-            {
-              echo '<script>window.alert("Upload Error! Check Column")</script>';
+            // else
+            // {
+            //   echo '<script>window.alert("Upload Error! Check Column")</script>';
              
-            }
+            // }
 
           
          
