@@ -57,8 +57,8 @@ if(isset($_POST['update_profile'])){
    $suffix = mysqli_real_escape_string($conn, $_POST['update_suffix']);
    $gender = mysqli_real_escape_string($conn, $_POST['update_gender']);
    $dgrad = mysqli_real_escape_string($conn, $_POST['update_yeargraduated']);
-   $department = mysqli_real_escape_string($conn, $_POST['update_department']);
-   $program = mysqli_real_escape_string($conn, $_POST['update_program']);
+   $department1 = mysqli_real_escape_string($conn, $_POST['update_department']);
+   $program1 = mysqli_real_escape_string($conn, $_POST['update_program']);
    $degree = mysqli_real_escape_string($conn, $_POST['update_degree']);
    $sem = mysqli_real_escape_string($conn, $_POST['update_semester']);
    $acadyr = mysqli_real_escape_string($conn, $_POST['update_academicyear']);
@@ -67,6 +67,15 @@ if(isset($_POST['update_profile'])){
    $gcontact= mysqli_real_escape_string($conn, $_POST['update_guardiancontact']);
    $relationship = mysqli_real_escape_string($conn, $_POST['update_relationship']);
    $award = mysqli_real_escape_string($conn, $_POST['update_award']);
+
+   $Getdeparment = mysqli_query($conn, "SELECT * FROM `deparment` WHERE id = '$department1'") or die('query failed');
+   $Getprogram = mysqli_query($conn, "SELECT * FROM `ccis_program` WHERE id = '$program1'") or die('query failed');
+
+   $dept = mysqli_fetch_assoc($Getdeparment);
+   $department = $dept['department'];
+
+   $prog = mysqli_fetch_assoc($Getprogram);
+   $program = $prog['program'];
 
     $update = mysqli_query($conn, 
     "UPDATE student_data SET student_id = '$sID', student_lname = '$lname', 
@@ -96,6 +105,7 @@ if(isset($_POST['update_profile'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/editStudentInfoRev.css" />
     <script src="https://kit.fontawesome.com/370708d2ea.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>UMak Verification System</title>
   </head>
   <body>
@@ -221,8 +231,25 @@ if(isset($_POST['update_profile'])){
               <b>DEPARTMENT <br>
 
                   <select id="department" name="update_department" >
-                    <option value="<?php echo $department;?>"><?php echo $department;?></option>
-                    <option value="College of Business and Finance Studies">CBFS</option>
+
+
+
+                    <option value="<?php echo $department;?>" selected><?php echo $department;?></option>
+                    <?php
+
+                    $query = "SELECT * FROM deparment";
+                    $result = mysqli_query($conn, $query);
+
+                    while ($row = mysqli_fetch_assoc($result)){
+                      $department = $row['department'];
+                      $program = $row['id'];
+                      echo  "<option value='".$program."'>".$department."</option>";
+
+                    }
+
+
+                    ?>
+                    <!-- <option value="College of Business and Finance Studies">CBFS</option>
                     <option value="College of Tourism Hospitality Management">CTHM</option>
                     <option value="igs">IGS/CGS/CCAPS</option>
                     <option value="College of Science">COS</option>
@@ -235,7 +262,7 @@ if(isset($_POST['update_profile'])){
                     <option value="College of Allied Health Studies">COAHS</option>
                     <option value="College of Human Kinetics">CHK</option>
                     <option value="College of Maritime Leadership Innovation">CMLI</option>
-                    <option value="School of Law">SOL</option>
+                    <option value="School of Law">SOL</option> -->
                   </select>
                 </b>
               </section>
@@ -279,7 +306,67 @@ if(isset($_POST['update_profile'])){
       <input type="submit" name="update_profile" value="SAVE"></form>
       </div>
       </div>
-          
+      <script>
+   $(document).ready(function() {
+  // When the first select changes
+  $('#department').change(function() {
+    var selectedValue = $(this).val();
+   
+    // Make an AJAX request to fetch data from the server
+    $.ajax({
+      url: 'update_options.php',  // PHP file to handle the AJAX request
+      type: 'POST',
+      data: { value: selectedValue },
+      success: function(response) {
+        // Clear existing options in the second select
+        $('#program').html('');
+        $('#major').html('');
+        
+        // Parse the JSON response
+        var data = JSON.parse(response);
+       
+        
+        // Add new options to the second select based on the response
+        $.each(data, function(key, value) {
+          $('#program').append('<option value="' + key + '">' + value + '</option>');
+        });
+      }
+    });
+  });
+});
+
+          $(document).ready(function() {
+            // When the first select changes
+            $('#program').change(function() {
+              var selectedValue = $(this).val();
+            
+              // Make an AJAX request to fetch data from the server
+              $.ajax({
+                url: 'major-option.php',  // PHP file to handle the AJAX request
+                type: 'POST',
+                data: { value: selectedValue },
+                success: function(response) {
+                  // Clear existing options in the second select
+                  $('#major').html('');
+                  
+                  // Parse the JSON response
+                  var data = JSON.parse(response);
+                  
+                  
+                  // Add new options to the second select based on the response
+                  $.each(data, function(key, value) {
+                    $('#major').append('<option value="' + key + '">' + value + '</option>');
+                  });
+                }
+              });
+            });
+          });
+
+
+
+
+
+  </script>
     <footer></footer>
   </body>
 </html>
