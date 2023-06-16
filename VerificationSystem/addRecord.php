@@ -225,7 +225,7 @@ if(isset($_POST['submit'])){
         <!-- INPUT -->
         <tr>
           <td colspan="2">
-            <select name="award" id="" required>
+            <select name="award" id="">
             <option value="none" selected disabled hidden>Select an Option</option>
               <option value="Summa Cum Laude">SUMMA CUM LAUDE</option>
               <option value="Magna Cum Laude">MAGNA CUM LAUDE</option>

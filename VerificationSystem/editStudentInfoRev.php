@@ -23,25 +23,25 @@ if(mysqli_num_rows($select) > 0){
 			while($row = mysqli_fetch_assoc($select)){
                 $ID = $row['id'];
                 $studentid = $row['student_id'];
-                $lname = $row['student_lname'];
-                $fname = $row['student_fname'];
-                $mname = $row['student_mname'];
+                $lname = ucfirst($row['student_lname']);
+                $fname = ucfirst($row['student_fname']);
+                $mname = ucfirst($row['student_mname']);
                 $suffix = $row['student_suffix'];
                 $birthday = $row['student_birthday'];
                 $contact = $row['student_contact'];
-                $address = $row['student_address'];
-                $gender = $row['student_gender'];
+                $address = ucwords($row['student_address']);
+                $gender =ucfirst($row['student_gender']);
                 $dgrad = $row['date_graduated'];
                 $department = $row['department'];
-                $program = $row['program'];
-                $degree = $row['degree'];
-                $major = $row['major'];
+                $program = ucfirst($row['program']);
+                $degree = ucfirst($row['degree']);
+                $major = ucfirst($row['major']);
                 $semester = $row['semester'];
                 $acadyear = $row['academic_year'];
-                $gname = $row['guardian_name'];
+                $gname = ucwords($row['guardian_name']);
                 $gcontact = $row['guardian_contact'];
-                $relationship = $row['guardian_relationship'];
-                $award = $row['student_award']??'';
+                $relationship = ucfirst($row['guardian_relationship']);
+                $award = ucfirst($row['student_award'])??'';
               }
 }
 
@@ -94,7 +94,7 @@ if(isset($_POST['update_profile'])){
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="editStudentInfoRev.css" />
+    <link rel="stylesheet" href="css/editStudentInfoRev.css" />
     <script src="https://kit.fontawesome.com/370708d2ea.js" crossorigin="anonymous"></script>
     <title>UMak Verification System</title>
   </head>
@@ -170,17 +170,17 @@ if(isset($_POST['update_profile'])){
 
             <input class="studNumber" type="text" name="update_studentid" value="<?php echo $studentid;?>">
               <section class="label bdate">
-                 BIRTHDATE <br>
-                <b><input class="label" type="date" name="update_birthdate" value="<?php echo $birthday;?>"></b> 
+                 <b>BIRTHDATE <br>
+                <input class="label" type="date" name="update_birthdate" value="<?php echo $birthday;?>"></b> 
               </section>
 
               <section class="label">
-                CONTACT <br>
-                <b><input class="label contact" type="text" name="update_contact" value="<?php echo $contact;?>"></b>
+              <b>CONTACT <br>
+                <input class="label contact" type="text" name="update_contact" value="<?php echo $contact;?>"></b>
               </section>
               <section class="label">
-                ADDRESS <br>
-                <b><input class="label add" type="text" name="update_address" value="<?php echo $address;?>"
+              <b>ADDRESS <br>
+                <input class="label add" type="text" name="update_address" value="<?php echo $address;?>"
                     style="width:100%"
                 ></b>
               </section>
@@ -193,25 +193,33 @@ if(isset($_POST['update_profile'])){
             <div class="schoolInfo">
             <div class="yearSemAcadyr">
                 <section class="label">
-                  DATE GRADUATED <br>
-                    <b><input class="label dateGrad" type="date" name="update_yeargraduated" value="<?php echo $dgrad;?>"></b>
+                <b>DATE GRADUATED <br>
+                    <input class="label dateGrad" type="date" name="update_yeargraduated" value="<?php echo $dgrad;?>"></b>
                 </section>
                 <section class="label">
-                  SEMESTER <br>
-                  <b><input class="label sem" type="text" name="update_semester" value="<?php echo $semester;?>"></b>
+                <b>SEMESTER <br>
+                  <input class="label sem" type="text" name="update_semester" value="<?php echo $semester;?>"></b>
                 </section>
                 <section class="label">
-                  ACADEMIC YEAR <br>
-                  <b><input class="label acadyr" type="text" name="update_academicyear" value="<?php echo $acadyear;?>"></b>
+                <b>ACADEMIC YEAR <br>
+                  <input class="label acadyr" type="text" name="update_academicyear" value="<?php echo $acadyear;?>"></b>
                 </section>
                 <section class="label">
-                  AWARD OF DISTINCTION <br>
-                    <b><input class="label award" type="text" name="update_award" value="<?php echo $award;?>"></b>
+                <b>AWARD OF DISTINCTION <br>
+                    <select name="update_award" id="">
+                      <option value="<?php echo $award;?>"><?php echo $award;?></option>
+                      <option value="Summa Cum Laude">SUMMA CUM LAUDE</option>
+                      <option value="Magna Cum Laude">MAGNA CUM LAUDE</option>
+                      <option value="Cum Laude">CUM LAUDE</option>
+                      <option value="With Highest Honors">WITH HIGHEST HONORS</option>
+                      <option value="With High Honors">WITH HIGH HONORS</option>
+                      <option value="With Honors">WITH HONORS</option>
+                    </select>
                 </section>
               </div>
-              <section class="label">
-                DEPARTMENT <br>
-                <b>
+              <section class="label schoolField" >
+              <b>DEPARTMENT <br>
+
                   <select id="department" name="update_department" >
                     <option value="<?php echo $department;?>"><?php echo $department;?></option>
                     <option value="College of Business and Finance Studies">CBFS</option>
@@ -231,17 +239,17 @@ if(isset($_POST['update_profile'])){
                   </select>
                 </b>
               </section>
-              <section class="label">
-                PROGRAM <br>
-                  <b>
+              <section class="label schoolField">
+              <b>PROGRAM <br>
+
                   <select id="program" name="update_program" >
                     <option value="<?php echo $program;?>"><?php echo $program;?></option>
                   </select>  
                   </b>
               </section>
-              <section class="label">
-                MAJOR <br>
-                  <b>
+              <section class="label schoolField">
+              <b>MAJOR <br>
+
                     <select id="major" name="update_major">
                       <option value="<?php echo $major;?>"><?php echo $major;?></option>
                     </select>  
@@ -251,18 +259,18 @@ if(isset($_POST['update_profile'])){
 
             <div class="parentInfo">
               <section>
-                GUARDIAN <br>
-                <b><input class="label guardian" type="text" name="update_guardian" value="<?php echo $gname;?>"></b>
+              <b>GUARDIAN <br>
+                <input class="label guardian" type="text" name="update_guardian" value="<?php echo $gname;?>"></b>
               </section>
 
             <div class="cont_rel">
               <section>
-                CONTACT <br>
-                <b><input class="label pcontact" type="text" name="update_guardiancontact" value="<?php echo $gcontact;?>"></b>
+              <b>CONTACT <br>
+                <input class="label pcontact" type="text" name="update_guardiancontact" value="<?php echo $gcontact;?>"></b>
               </section>
               <section>
-                RELATIONSHIP <br>
-                <b><input class="label relationship" type="text" name="update_relationship" value="<?php echo $relationship;?>"></b>
+              <b>RELATIONSHIP <br>
+                <input class="label relationship" type="text" name="update_relationship" value="<?php echo $relationship;?>"></b>
               </section></div>
             </div>
 
