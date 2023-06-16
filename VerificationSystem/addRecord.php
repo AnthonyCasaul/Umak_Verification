@@ -27,14 +27,14 @@ if(isset($_POST['submit'])){
    $dGrad = mysqli_real_escape_string($conn, $_POST['dGrad']);
    $department1 = mysqli_real_escape_string($conn, $_POST['department']);
    $program1 = mysqli_real_escape_string($conn, $_POST['program']);
-   $degree = mysqli_real_escape_string($conn, $_POST['degrees']);
+   $degree = mysqli_real_escape_string($conn, $_POST['degrees']??'');
    $sem = mysqli_real_escape_string($conn, $_POST['sem']);
    $acadYr = mysqli_real_escape_string($conn, $_POST['acadYr']);
    $Major = mysqli_real_escape_string($conn, $_POST['major']);
    $gName = mysqli_real_escape_string($conn, $_POST['gName']);
    $gContact= mysqli_real_escape_string($conn, $_POST['gContact']);
    $relationship = mysqli_real_escape_string($conn, $_POST['relationship']);
-   $award = mysqli_real_escape_string($conn, $_POST['award']);
+   $award = mysqli_real_escape_string($conn, $_POST['award']??'');
    
    $select = mysqli_query($conn, "SELECT * FROM `student_data` WHERE student_id = '$sID'") or die('query failed');
    $Getdeparment = mysqli_query($conn, "SELECT * FROM `deparment` WHERE id = '$department1'") or die('query failed');
