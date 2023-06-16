@@ -214,7 +214,7 @@ if(isset($_POST['update_profile'])){
                       <option value="With Highest Honors">WITH HIGHEST HONORS</option>
                       <option value="With High Honors">WITH HIGH HONORS</option>
                       <option value="With Honors">WITH HONORS</option>
-                    </select>
+                    </select> 
                 </section>
               </div>
               <section class="label schoolField" >
