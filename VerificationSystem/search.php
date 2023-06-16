@@ -11,7 +11,7 @@ echo '<div class="rcrdPage">
               <th>ID NUMBER</th>
               <th>STUDENT NAME</th>
               <th>PROGRAM</th>
-              <th>ACADEMIC YEAR</th>
+              <th>YEAR</th>
               <th></th>
             </tr>
           </thead>';

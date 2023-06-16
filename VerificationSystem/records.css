@@ -144,10 +144,10 @@ h1 {
   width: 30px;
   height: 30px;
 }
-.search-btn1:hover{
+.search-btn1:hover {
   cursor: pointer;
 }
-.search-img{
+.search-img {
   height: 25px;
 }
 .input {
@@ -290,7 +290,6 @@ select {
   overflow: hidden;
   white-space: nowrap;
 }
-
 th {
   background-color: #c7c7c7;
 }

@@ -18,7 +18,7 @@ $select = mysqli_query($conn, "SELECT * FROM `student_data`") or die('query fail
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/records.css" />
+    <link rel="stylesheet" href="records.css" />
     <link
       rel="shortcut icon"
       href="img/favicon-32x32.png"
@@ -123,23 +123,7 @@ $select = mysqli_query($conn, "SELECT * FROM `student_data`") or die('query fail
                 echo  "<option value='".$deplower."'>".$department."</option>";
 
               }
-              
-              
               ?>
-                <!-- <option value="cbfs">CBFS</option>
-                <option value="cthm">CTHM</option>
-                <option value="igs">IGS/CGS/CCAPS</option>
-                <option value="cos">COS</option>
-                <option value="coe">COE</option>
-                <option value="ccsce">CCSE</option>
-                <option value="iit">IIT/COT/ITRED/CTM</option>
-                <option value="ccis">CCIS</option>
-                <option value="cgpp">CGPP</option>
-                <option value="cal">CAL</option>
-                <option value="coahs">COAHS</option>
-                <option value="chk">CHK</option>
-                <option value="cmli">CMLI</option>
-                <option value="sol">SOL</option> -->
             </select>
             </div>
           </div>
