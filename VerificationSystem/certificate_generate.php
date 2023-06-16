@@ -14,7 +14,7 @@ $major = $_POST['major'];
 
 $department1 = $_POST['department'];
 $dgrad = $_POST['dgrad'];
-$gender = $_POST['gender'];
+$gender = strtoupper($_POST['gender']);
 $dategrad = date("F j, Y", strtotime($dgrad));
 
 $iddeparment = mysqli_query($conn, "SELECT * FROM deparment WHERE department= '$department1'");
@@ -22,12 +22,12 @@ $iddeparment = mysqli_query($conn, "SELECT * FROM deparment WHERE department= '$
  $department = $iddept['department_name'];
 
 if ($gender == 'MALE'){
-    $fullname = "Mr. ".$fname . " " .$mname ." ". $lname ;
-    $lastname = "Mr. " . $lname;
+    $fullname = "MR. ".$fname . " " .$mname ." ". $lname ;
+    $lastname = "MR. " . $lname;
 }
 else{
-    $fullname = "Ms. ".$fname . " " .$mname ." ". $lname ;
-    $lastname = "Ms. " . $lname;
+    $fullname = "MS. ".$fname . " " .$mname ." ". $lname ;
+    $lastname = "MS. " . $lname;
     
 }
 
