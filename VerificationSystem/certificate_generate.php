@@ -22,12 +22,12 @@ $iddeparment = mysqli_query($conn, "SELECT * FROM deparment WHERE department= '$
  $department = $iddept['department_name'];
 
 if ($gender == 'MALE'){
-    $fullname = "MR.".$fname . " " .$mname ." ". $lname ;
-    $lastname = "MR." . $lname;
+    $fullname = "Mr. ".$fname . " " .$mname ." ". $lname ;
+    $lastname = "Mr. " . $lname;
 }
 else{
-    $fullname = "MS.".$fname . " " .$mname ." ". $lname ;
-    $lastname = "MS." . $lname;
+    $fullname = "Ms. ".$fname . " " .$mname ." ". $lname ;
+    $lastname = "Ms. " . $lname;
     
 }
 
