@@ -155,6 +155,8 @@ if (mysqli_num_rows($result) > 0) {
       </div>
       <input type="submit" name="awit" value="SAVE" id="submitButton" disabled>
     </form>
+    </div>
+    </div>
 
 <script>
   function displayPrograms(dept) {
@@ -209,7 +211,7 @@ if (mysqli_num_rows($result) > 0) {
 
     <script src="../js/addCategory.js"></script>
     <script src="js/addProg.js"></script>
-
+   
  <footer></footer>
 </body>
 </html>
