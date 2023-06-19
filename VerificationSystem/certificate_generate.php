@@ -24,12 +24,14 @@ $iddeparment = mysqli_query($conn, "SELECT * FROM deparment WHERE department= '$
 if ($gender == 'MALE'){
     $fullname = "MR. ".$fname . " " .$mname ." ". $lname ;
     $lastname = "MR. " . $lname;
+    $pronouns = "him";
 }
 else{
     $fullname = "MS. ".$fname . " " .$mname ." ". $lname ;
     $lastname = "MS. " . $lname;
-    
+    $pronouns = "her";
 }
+
 
 $pm = $program . " ". $major;
 
@@ -43,7 +45,7 @@ $dompdf = new Dompdf($options);
 $dompdf->setPaper("A4", "portrait");
 
 $html = file_get_contents("certificate_template.html");
-$html = str_replace(["{{ name }}","{{ course }}","{{ date }}","{{ major }}","{{ dateofgraduation }}","{{ surname }}"], [$fullname,$pm,$date,$department,$dategrad,$lastname], $html);
+$html = str_replace(["{{ name }}","{{ course }}","{{ date }}","{{ major }}","{{ dateofgraduation }}","{{ surname }}", "{{ pronouns }}"], [$fullname,$pm,$date,$department,$dategrad,$lastname,$pronouns], $html);
 
 
 
