@@ -350,7 +350,7 @@ var currentYear = new Date().getFullYear();
             
               // Make an AJAX request to fetch data from the server
               $.ajax({
-                url: 'major-option.php',  // PHP file to handle the AJAX request
+                url: 'add-major.php',  // PHP file to handle the AJAX request
                 type: 'POST',
                 data: { value: selectedValue },
                 success: function(response) {
