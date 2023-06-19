@@ -239,8 +239,38 @@ if(isset($_POST['submit'])){
               <option value="With Honors">WITH HONORS</option>
             </select>
           </td>
-          <td><input type="text" name="sem" class="mediumInput" required></td>
-          <td><input type="text" name="acadYr" class="mediumInput" required></td></td>
+          <td>
+            <select name="sem" class="mediumInput" required>
+              <option value="1st">First Sem</option>
+              <option value="2nd">Second Sem</option>
+            </select>
+          <td>
+            <select name="acadYr" required id="yearDropdown"></select>
+            <script>
+
+var currentYear = new Date().getFullYear();
+    
+    // Create the dropdown options
+    var dropdown = document.getElementById("yearDropdown");
+
+    // Add the preselected option
+    var preselectedOption = document.createElement("option");
+    preselectedOption.text = (currentYear - 1) + "-" + currentYear;
+    preselectedOption.value = (currentYear - 1) + "-" + currentYear;
+    preselectedOption.selected = true;
+    dropdown.add(preselectedOption);
+
+    // Add the remaining options
+    for (var year = 1965; year <= currentYear; year++) {
+      var option = document.createElement("option");
+      option.text = year + "-" + (year + 1);
+      option.value = year + "-" + (year + 1);
+      dropdown.add(option);
+    }
+
+            </script>
+            </select>
+          </td>
           <!-- DEGREE SECTION -->
           <td colspan="2"><select name="degrees" id="degree" required>
             <option value="none" selected disabled hidden>Select an Option</option>
@@ -339,11 +369,7 @@ if(isset($_POST['submit'])){
               });
             });
           });
-
-
-
-
-
   </script>
+
   </body>
 </html>

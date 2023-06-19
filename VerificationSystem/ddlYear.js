@@ -1,18 +1,19 @@
-// Get the current year
-const currentYear = new Date().getFullYear();
+var currentYear = new Date().getFullYear();
+    
+    // Create the dropdown options
+    var dropdown = document.getElementById("yearDropdown");
 
-// Get the dropdown element
-const dropdown = document.getElementById("year");
+    // Add the preselected option
+    var preselectedOption = document.createElement("option");
+    preselectedOption.text = (currentYear - 1) + "-" + currentYear;
+    preselectedOption.value = (currentYear - 1) + "-" + currentYear;
+    preselectedOption.selected = true;
+    dropdown.add(preselectedOption);
 
-// Loop through years from 1957 to current year
-for (let year = 1957; year <= currentYear; year++) {
-  // Create a new option element
-  const option = document.createElement("option");
-
-  // Set the text and value of the option element
-  option.text = `${year}-${year + 1}`;
-  option.value = `${year}-${year + 1}`;
-
-  // Append the option element to the dropdown
-  dropdown.add(option);
-}
+    // Add the remaining options
+    for (var year = 1965; year <= currentYear; year++) {
+      var option = document.createElement("option");
+      option.text = year + "-" + (year + 1);
+      option.value = year + "-" + (year + 1);
+      dropdown.add(option);
+    }
