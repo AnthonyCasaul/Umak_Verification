@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
    $relationship = mysqli_real_escape_string($conn, $_POST['relationship']);
    $award = mysqli_real_escape_string($conn, $_POST['award']??'');
    
-   $select = mysqli_query($conn, "SELECT * FROM `student_data` WHERE student_id = '$sID'") or die('query failed');
+   $select = mysqli_query($conn, "SELECT * FROM `student_data` WHERE student_id = '$sID' AND academic_year = '$acadYr'") or die('query failed');
    $Getdeparment = mysqli_query($conn, "SELECT * FROM `deparment` WHERE id = '$department1'") or die('query failed');
    $Getprogram = mysqli_query($conn, "SELECT * FROM `ccis_program` WHERE id = '$program1'") or die('query failed');
 
@@ -46,10 +46,14 @@ if(isset($_POST['submit'])){
    $prog = mysqli_fetch_assoc($Getprogram);
    $program = $prog['program'];
 
-
+   $verify = mysqli_query($conn, "SELECT * FROM `student_data` WHERE student_id = '$sID' AND department = '$department' AND program = '$program' AND major = '$Major'") or die('query failed');
+  
 
    if(mysqli_num_rows($select) > 0){
-      $message[] = 'user already exist'; 
+      echo '<script>alert("Error: Student is Already in the Database!!");</script>'; 
+   }
+   else if(mysqli_num_rows($verify) > 0){
+      echo '<script>alert("Error: Student is Already in the Database!!");</script>'; 
    }
    else{
       $insert = mysqli_query($conn, "INSERT INTO `student_data`(id, student_id, student_lname, student_fname, student_mname, student_suffix, student_birthday, student_address, student_contact, student_gender, date_graduated, student_award,department, program, degree, semester, academic_year, major, guardian_name, guardian_contact, guardian_relationship) 
