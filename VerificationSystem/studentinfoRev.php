@@ -37,6 +37,9 @@ if(mysqli_num_rows($select) > 0){
                 $gcontact = $row['guardian_contact'];
                 $relationship = strtoupper($row['guardian_relationship']);
                 $award = strtoupper($row['student_award']??'');
+                $getprogramid = mysqli_query($conn, "SELECT * FROM deparment WHERE department = '$department' ") or die('query failed');
+                $gettingId = mysqli_fetch_assoc($getprogramid);
+                $deptfullname = strtoupper($gettingId['department_name']);
               }
 }
 ?>
@@ -167,7 +170,7 @@ if(mysqli_num_rows($select) > 0){
               </div>
               <section class="label dept unLine">
                 DEPARTMENT <br>
-                  <b><?php echo $department?></b>
+                  <b><?php echo $deptfullname?></b>
               </section>
               <section class="label prog unLine">
                 PROGRAM <br>

@@ -3,10 +3,10 @@
 
 include 'condb.php';
 
-$selectedValue = $_POST['value'];
-$existvalue = $_POST['programexist']??'';
+$selectedValue = strtoupper($_POST['deptvalue']);
+// $existvalue = $_POST['programexist'];
 
-$query = "SELECT * FROM ccis_program WHERE department_id = '$selectedValue'";
+$query = "SELECT * FROM deparment";
 $result = mysqli_query($conn, $query);
 
 
@@ -16,11 +16,12 @@ $options = array();
 if ($result->num_rows > 0) {
     // Loop through the rows and add options to the array
     while ($row = $result->fetch_assoc()) {
-            if($row['program'] != $existvalue)
+            if($row['department'] != $selectedValue)
             {
-                $options[$row['id']] = $row['program'];
+                $options[$row['id']] = $row['department'];
             }
-          
+        
+         
        
     }
 }

@@ -32,7 +32,7 @@ if(mysqli_num_rows($select) > 0){
                 $address = ucwords($row['student_address']);
                 $gender =ucfirst($row['student_gender']);
                 $dgrad = $row['date_graduated'];
-                $department = $row['department'];
+                $department = strtoupper($row['department']);
                 $program = ucfirst($row['program']);
                 $degree = ucfirst($row['degree']);
                 $major = ucfirst($row['major']);
@@ -42,6 +42,18 @@ if(mysqli_num_rows($select) > 0){
                 $gcontact = $row['guardian_contact'];
                 $relationship = ucfirst($row['guardian_relationship']);
                 $award = ucfirst($row['student_award'])??'';
+
+                $getprogramid = mysqli_query($conn, "SELECT * FROM deparment WHERE department = '$department' ") or die('query failed');
+                $gettingId = mysqli_fetch_assoc($getprogramid);
+                $deptid = $gettingId['id'];
+
+
+                $programupper = strtoupper($row['program']);
+                $progids = mysqli_query($conn, "SELECT * FROM ccis_program WHERE program = '$programupper' ") or die('query failed');
+                $gettingprogid = mysqli_fetch_assoc($progids);
+                echo $prodid = $gettingprogid['id'];
+                echo $deptid."wewewe";
+
               }
 }
 
@@ -72,10 +84,10 @@ if(isset($_POST['update_profile'])){
    $Getprogram = mysqli_query($conn, "SELECT * FROM `ccis_program` WHERE id = '$program1'") or die('query failed');
 
    $dept = mysqli_fetch_assoc($Getdeparment);
-   $department = $dept['department'];
+   $department = strtoupper($dept['department']);
 
    $prog = mysqli_fetch_assoc($Getprogram);
-   $program = $prog['program'];
+   $program = strtoupper($prog['program']);
 
     $update = mysqli_query($conn, 
     "UPDATE student_data SET student_id = '$sID', student_lname = '$lname', 
@@ -234,21 +246,9 @@ if(isset($_POST['update_profile'])){
 
 
 
-                    <option value="<?php echo $department;?>" selected><?php echo $department;?></option>
-                    <?php
-
-                    $query = "SELECT * FROM deparment";
-                    $result = mysqli_query($conn, $query);
-
-                    while ($row = mysqli_fetch_assoc($result)){
-                      $department = $row['department'];
-                      $program = $row['id'];
-                      echo  "<option value='".$program."'>".$department."</option>";
-
-                    }
-
-
-                    ?>
+                    <option value="<?php echo $deptid;?>" selected><?php echo $department;?></option>
+                    <input type="hidden" id="deptexist" value="<?php echo $department;?>">
+                    <!--  -->
                     <!-- <option value="College of Business and Finance Studies">CBFS</option>
                     <option value="College of Tourism Hospitality Management">CTHM</option>
                     <option value="igs">IGS/CGS/CCAPS</option>
@@ -270,8 +270,9 @@ if(isset($_POST['update_profile'])){
               <b>PROGRAM <br>
 
                   <select id="program" name="update_program" >
-                    <option value="<?php echo $program;?>"><?php echo $program;?></option>
+                    <option value="<?php echo $prodid;?>" selected ><?php echo $program;?></option>
                   </select>  
+                  <input type="hidden" id="programexist" value="<?php echo $program;?>">
                   </b>
               </section>
               <section class="label schoolField">
@@ -307,6 +308,58 @@ if(isset($_POST['update_profile'])){
       </div>
       </div>
       <script>
+
+        $(document).ready(function() {
+          var selectedValue = $('#deptexist').val();
+          $.ajax({
+            url: 'update_deparment.php',  // PHP file to handle the AJAX request
+            type: 'POST',
+            data: {deptvalue : selectedValue},
+            success: function(response) {
+              // Clear existing options in the second select
+              
+              
+              // Parse the JSON response
+              var data = JSON.parse(response);
+              
+              // Add new options to the second select based on the response
+              $.each(data, function(key, value) {
+                $('#department').append('<option value="' + key + '">' + value + '</option>');
+              });
+            }
+          });
+        });
+
+        $(document).ready(function() {
+        // When the first select changes
+      
+          var selectedValue = $('#department').val();
+          var programexist =$('#programexist').val();
+          // Make an AJAX request to fetch data from the server
+          $.ajax({
+            url: 'update_options.php',  // PHP file to handle the AJAX request
+            type: 'POST',
+            data: { value: selectedValue,programexist:programexist },
+            success: function(response) {
+              // Clear existing options in the second select
+              
+              
+              // Parse the JSON response
+              var data = JSON.parse(response);
+            
+              
+              // Add new options to the second select based on the response
+              $.each(data, function(key, value) {
+                $('#program').append('<option value="' + key + '">' + value + '</option>');
+              });
+            }
+          });
+        });
+
+
+
+
+
    $(document).ready(function() {
   // When the first select changes
   $('#department').change(function() {
@@ -316,7 +369,7 @@ if(isset($_POST['update_profile'])){
     $.ajax({
       url: 'update_options.php',  // PHP file to handle the AJAX request
       type: 'POST',
-      data: { value: selectedValue },
+      data: { value: selectedValue},
       success: function(response) {
         // Clear existing options in the second select
         $('#program').html('');
@@ -335,16 +388,50 @@ if(isset($_POST['update_profile'])){
   });
 });
 
-          $(document).ready(function() {
+$(document).ready(function() {
             // When the first select changes
-            $('#program').change(function() {
-              var selectedValue = $(this).val();
+          
+              var selectedValue = $('#program').val();
+              var major = $('#major').val();
             
               // Make an AJAX request to fetch data from the server
               $.ajax({
                 url: 'major-option.php',  // PHP file to handle the AJAX request
                 type: 'POST',
-                data: { value: selectedValue },
+                data: { value: selectedValue,major:major },
+                success: function(response) {
+                  // Clear existing options in the second select
+                  $('#major option:not(:selected)').remove();
+                  
+                  // Parse the JSON response
+                  var data = JSON.parse(response);
+                  
+                  
+                  // Add new options to the second select based on the response
+                  $.each(data, function(key, value) {
+                    $('#major').append('<option value="' + key + '">' + value + '</option>');
+                  });
+                }
+              });
+            });
+    
+
+
+
+
+
+
+
+          $(document).ready(function() {
+            // When the first select changes
+            $('#program').change(function() {
+              var selectedValue = $(this).val();
+              var major = $('#major').val();
+              // Make an AJAX request to fetch data from the server
+              $.ajax({
+                url: 'major-option.php',  // PHP file to handle the AJAX request
+                type: 'POST',
+                data: { value: selectedValue,major:major },
                 success: function(response) {
                   // Clear existing options in the second select
                   $('#major').html('');

@@ -4,7 +4,7 @@
 include 'condb.php';
 
 $selectedValue = $_POST['value'];
-
+$major = $_POST['major'];
 
 $query = "SELECT * FROM ccis WHERE program = '$selectedValue'";
 $result = mysqli_query($conn, $query);
@@ -16,7 +16,10 @@ $options = array();
 if ($result->num_rows > 0) {
     // Loop through the rows and add options to the array
     while ($row = $result->fetch_assoc()) {
-        $options[$row['major']] = $row['major'];
+        if($row['major'] != $major)
+            {
+                $options[$row['major']] = $row['major'];
+            }
     }
 }
 
