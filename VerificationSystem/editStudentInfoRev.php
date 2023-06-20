@@ -51,8 +51,7 @@ if(mysqli_num_rows($select) > 0){
                 $programupper = strtoupper($row['program']);
                 $progids = mysqli_query($conn, "SELECT * FROM ccis_program WHERE program = '$programupper' ") or die('query failed');
                 $gettingprogid = mysqli_fetch_assoc($progids);
-                echo $prodid = $gettingprogid['id'];
-                echo $deptid."wewewe";
+                $prodid = $gettingprogid['id'];
 
               }
 }
@@ -308,152 +307,183 @@ if(isset($_POST['update_profile'])){
       </div>
       </div>
       <script>
-
-        $(document).ready(function() {
-          var selectedValue = $('#deptexist').val();
-          $.ajax({
-            url: 'update_deparment.php',  // PHP file to handle the AJAX request
-            type: 'POST',
-            data: {deptvalue : selectedValue},
-            success: function(response) {
-              // Clear existing options in the second select
-              
-              
-              // Parse the JSON response
-              var data = JSON.parse(response);
-              
-              // Add new options to the second select based on the response
-              $.each(data, function(key, value) {
-                $('#department').append('<option value="' + key + '">' + value + '</option>');
-              });
-            }
-          });
-        });
-
-        $(document).ready(function() {
-        // When the first select changes
-      
-          var selectedValue = $('#department').val();
-          var programexist =$('#programexist').val();
-          // Make an AJAX request to fetch data from the server
-          $.ajax({
-            url: 'update_options.php',  // PHP file to handle the AJAX request
-            type: 'POST',
-            data: { value: selectedValue,programexist:programexist },
-            success: function(response) {
-              // Clear existing options in the second select
-              
-              
-              // Parse the JSON response
-              var data = JSON.parse(response);
-            
-              
-              // Add new options to the second select based on the response
-              $.each(data, function(key, value) {
-                $('#program').append('<option value="' + key + '">' + value + '</option>');
-              });
-            }
-          });
-        });
-
-
+              //  DISPLAY DEPARTMWENT
+                      $(document).ready(function() {
+                        var selectedValue = $('#deptexist').val();
+                        $.ajax({
+                          url: 'update_deparment.php',  // PHP file to handle the AJAX request
+                          type: 'POST',
+                          data: {deptvalue : selectedValue},
+                          success: function(response) {
+                            // Clear existing options in the second select
+                            
+                            
+                            // Parse the JSON response
+                            var data = JSON.parse(response);
+                            
+                            // Add new options to the second select based on the response
+                            $.each(data, function(key, value) {
+                              $('#department').append('<option value="' + key + '">' + value + '</option>');
+                            });
+                          }
+                        });
+                      });
+                //  DISPLAY PROGRAM
+                      $(document).ready(function() {
+                      // When the first select changes
+                    
+                        var selectedValue = $('#department').val();
+                        var programexist =$('#programexist').val();
+                        // Make an AJAX request to fetch data from the server
+                        $.ajax({
+                          url: 'update_options.php',  // PHP file to handle the AJAX request
+                          type: 'POST',
+                          data: { value: selectedValue,programexist:programexist },
+                          success: function(response) {
+                            // Clear existing options in the second select
+                            
+                            
+                            // Parse the JSON response
+                            var data = JSON.parse(response);
+                          
+                            
+                            // Add new options to the second select based on the response
+                            $.each(data, function(key, value) {
+                              $('#program').append('<option value="' + key + '">' + value + '</option>');
+                            });
+                          }
+                        });
+                      });
 
 
 
-   $(document).ready(function() {
+
+                        //DISPLAY PROGRAM ON CHANGE DEPARTMENT
+                        $(document).ready(function() {
   // When the first select changes
   $('#department').change(function() {
     var selectedValue = $(this).val();
-   
-    // Make an AJAX request to fetch data from the server
+
     $.ajax({
-      url: 'update_options.php',  // PHP file to handle the AJAX request
+      url: 'update_options.php',
       type: 'POST',
-      data: { value: selectedValue},
+      data: { value: selectedValue },
       success: function(response) {
         // Clear existing options in the second select
         $('#program').html('');
         $('#major').html('');
-        
+
         // Parse the JSON response
         var data = JSON.parse(response);
-       
-        
+
         // Add new options to the second select based on the response
         $.each(data, function(key, value) {
           $('#program').append('<option value="' + key + '">' + value + '</option>');
+        });
+
+        // Select the first option in the #program select element
+        $('#program option:first').prop('selected', true);
+
+        // Retrieve the updated major value
+        var major = $('#major').val();
+
+        // Make AJAX request to fetch data for the #major select element
+        var selectedProgram = $('#program').val();
+        $.ajax({
+          url: 'major-option.php',
+          type: 'POST',
+          data: { value: selectedProgram, major: major },
+          success: function(response) {
+            // Clear existing options in the #major select element
+            $('#major').html('');
+
+            // Parse the JSON response
+            var data = JSON.parse(response);
+
+            // Add new options to the #major select element based on the response
+            $.each(data, function(key, value) {
+              $('#major').append('<option value="' + key + '">' + value + '</option>');
+            });
+          }
         });
       }
     });
   });
 });
-
-$(document).ready(function() {
-            // When the first select changes
-          
-              var selectedValue = $('#program').val();
-              var major = $('#major').val();
-            
-              // Make an AJAX request to fetch data from the server
-              $.ajax({
-                url: 'major-option.php',  // PHP file to handle the AJAX request
-                type: 'POST',
-                data: { value: selectedValue,major:major },
-                success: function(response) {
-                  // Clear existing options in the second select
-                  $('#major option:not(:selected)').remove();
-                  
-                  // Parse the JSON response
-                  var data = JSON.parse(response);
-                  
-                  
-                  // Add new options to the second select based on the response
-                  $.each(data, function(key, value) {
-                    $('#major').append('<option value="' + key + '">' + value + '</option>');
-                  });
-                }
-              });
-            });
-    
+                 
 
 
-
-
+                          //DISPLAY MAJOR ON OPEN
+                          $(document).ready(function() {
+                                      // When the first select changes
+                                    
+                                        var selectedValue = $('#program').val();
+                                        var major = $('#major').val();
+                                      
+                                        // Make an AJAX request to fetch data from the server
+                                        $.ajax({
+                                          url: 'major-option.php',  // PHP file to handle the AJAX request
+                                          type: 'POST',
+                                          data: { value: selectedValue,major:major },
+                                          success: function(response) {
+                                            // Clear existing options in the second select
+                                          
+                                            // Parse the JSON response
+                                            var data = JSON.parse(response);
+                                            
+                                            
+                                            // Add new options to the second select based on the response
+                                            $.each(data, function(key, value) {
+                                              $('#major').append('<option value="' + key + '">' + value + '</option>');
+                                            });
+                                          }
+                                        });
+                                      });
+                              
 
 
 
-          $(document).ready(function() {
-            // When the first select changes
-            $('#program').change(function() {
-              var selectedValue = $(this).val();
-              var major = $('#major').val();
-              // Make an AJAX request to fetch data from the server
-              $.ajax({
-                url: 'major-option.php',  // PHP file to handle the AJAX request
-                type: 'POST',
-                data: { value: selectedValue,major:major },
-                success: function(response) {
-                  // Clear existing options in the second select
-                  $('#major').html('');
-                  
-                  // Parse the JSON response
-                  var data = JSON.parse(response);
-                  
-                  
-                  // Add new options to the second select based on the response
-                  $.each(data, function(key, value) {
-                    $('#major').append('<option value="' + key + '">' + value + '</option>');
-                  });
-                }
-              });
-            });
-          });
+
+
+
+                                      
+                          //DISPLAY MAJOR ON CHANGE PROGRAM
+                              $(document).ready(function() {
+                                // When the first select changes
+                                $('#program').change(function() {
+                                  var selectedValue = $(this).val();
+                                  var major = $('#major').val();
+                                  // Make an AJAX request to fetch data from the server
+                                  $.ajax({
+                                    url: 'major-option.php',  // PHP file to handle the AJAX request
+                                    type: 'POST',
+                                    data: { value: selectedValue,major:major },
+                                    success: function(response) {
+                                      // Clear existing options in the second select
+                                      $('#major').html('');
+                                      
+                                      // Parse the JSON response
+                                      var data = JSON.parse(response);
+                                      
+                                      
+                                      // Add new options to the second select based on the response
+                                      $.each(data, function(key, value) {
+                                        $('#major').append('<option value="' + key + '">' + value + '</option>');
+                                      });
+                                    }
+                                  });
+                                });
+                              });
 
 
 
 
 
   </script>
+
+
+
+
     <footer></footer>
   </body>
 </html>
