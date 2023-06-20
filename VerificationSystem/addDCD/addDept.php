@@ -42,8 +42,8 @@ if (isset($_POST['save'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="template.css" />
     <link rel="stylesheet" href="css/dept.css" />
-    <link rel="icon" href="../img/UMakLogo.png" />
-    <title>Document</title>
+    <link rel="icon" href="img/UMakLogo.png" />
+    <title>UMAK Verification System</title>
   </head>
   <body>
     <!-- START OF NAV BAR -->

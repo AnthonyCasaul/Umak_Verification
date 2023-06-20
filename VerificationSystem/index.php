@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="home.css" />
     <link rel="icon" href="img/UMakLogo.png" />
-    <title>UMak Verification System</title>
+    <title>UMAK Verification System</title>
   </head>
   <body style="background-image: url(img/UMakBG.jpg)">
     <div class="blueContainer"></div>

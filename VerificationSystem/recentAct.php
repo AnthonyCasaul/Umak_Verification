@@ -42,7 +42,7 @@ $select1 = mysqli_query($conn, "SELECT * FROM `activity_history` WHERE staff_ema
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="recentAct.css" />
     <link rel="icon" href="img/UMakLogo.png" />
-    <title>UMak Verification System</title>
+    <title>UMAK Verification System</title>
   </head>
   <body>
     <!-- START OF NAV BAR -->

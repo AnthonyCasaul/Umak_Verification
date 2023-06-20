@@ -19,9 +19,9 @@ $select = mysqli_query($conn, "SELECT * FROM `activity_history`") or die('query 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff Activity</title>
-<link rel="stylesheet" href="css/staffactivity.css">
-<link rel="icon" href="img/UMakLogo.png" />
+    <link rel="stylesheet" href="css/staffactivity.css">
+    <link rel="icon" href="img/UMakLogo.png" />
+    <title>UMAK Verification System</title>
 
 <body>
   <!-- START OF NAV BAR -->

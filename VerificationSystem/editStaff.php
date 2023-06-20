@@ -68,11 +68,11 @@ if(isset($_POST['update'])){
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>UMak Verification System</title>
+        <link rel="icon" href="img/UMakLogo.png" />
+        <title>UMAK Verification System</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="editStaff.css">
-        <link rel="icon" href="img/UMakLogo.png" />
     </head>
 
     <body>

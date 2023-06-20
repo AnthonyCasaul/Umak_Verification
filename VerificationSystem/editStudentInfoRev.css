@@ -36,7 +36,7 @@ h1 {
   justify-content: space-between;
   align-items: center;
   padding: 0 5%;
-
+  z-index: 1;
   position: relative;
 }
 

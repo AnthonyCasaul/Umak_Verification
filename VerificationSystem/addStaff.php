@@ -44,11 +44,11 @@ if(isset($_POST['submit'])){
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>UMak Verification System</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="addStaff.css">
         <link rel="icon" href="img/UMakLogo.png" />
+        <title>UMAK Verification System</title>
     </head>
 
     <body>

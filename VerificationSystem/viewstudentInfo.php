@@ -46,9 +46,9 @@ if(mysqli_num_rows($select) > 0){
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/studentInfo.css" />
-    <link rel="icon" href="img/UMakLogo.png" />
     <script src="https://kit.fontawesome.com/370708d2ea.js" crossorigin="anonymous"></script>
-    <title>UMak Verification System</title>
+    <link rel="icon" href="img/UMakLogo.png" />
+    <title>UMAK Verification System</title>
   </head>
   <body>
      <!-- START OF NAV BAR -->

@@ -24,7 +24,8 @@ $select = mysqli_query($conn, "SELECT * FROM `student_data`") or die('query fail
       href="img/favicon-32x32.png"
       type="image/x-icon"
     />
-    <title>UMak Verification System</title>
+    <link rel="icon" href="img/UMakLogo.png" />
+    <title>UMAK Verification System</title>
   </head>
   <body onload="updateResult()">
     <!-- START OF NAV BAR -->

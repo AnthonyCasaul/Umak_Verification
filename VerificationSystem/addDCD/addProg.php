@@ -66,8 +66,8 @@ if (mysqli_num_rows($result) > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="template.css" />
     <link rel="stylesheet" href="css/program.css" />
-    <link rel="icon" href="../img/UMakLogo.png" />
-    <title>Document</title>
+    <link rel="icon" href="img/UMakLogo.png" />
+    <title>UMAK Verification System</title>
   </head>
   <body>
     <!-- START OF NAV BAR -->

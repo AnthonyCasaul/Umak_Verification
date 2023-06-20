@@ -77,7 +77,7 @@ if(isset($_POST['submit'])){
 
     <link rel="stylesheet" href="css/addRecord.css" />
     <link rel="icon" href="img/UMakLogo.png" />
-    <title>Add Student Record</title>
+    <title>UMAK Verification System</title>
   </head>
   <body>
     <!-- START OF NAV BAR -->

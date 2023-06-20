@@ -107,12 +107,12 @@ $countWithhonors = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM studen
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/dashboard.css" />
     <link rel="icon" href="img/UMakLogo.png" />
+    <title>UMAK Verification System</title>
      <!-- FUNCTIONS FOR BUTTONS TO DISPLAY -->
     <script src="js/displayGraph.js"> </script>
 
     <!-- DISPLAY FOR COLLEGES -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>Document</title>
   </head>
   <body>
     <!-- START OF NAV BAR -->

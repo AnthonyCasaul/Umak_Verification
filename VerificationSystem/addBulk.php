@@ -92,7 +92,7 @@ if(isset($_POST['importSubmit'])){
     />
     <link rel="stylesheet" href="css/addBulk.css" />
     <link rel="icon" href="img/UMakLogo.png" />
-    <title>UMak Verification System</title>
+    <title>UMAK Verification System</title>
   </head>
   <body>
     <!-- START OF NAV BAR -->
