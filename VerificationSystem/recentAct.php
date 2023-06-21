@@ -19,18 +19,15 @@ $tags = $select1->fetch_assoc();
 $tag = $tags['account_tag'];
 
 $select = mysqli_query($conn, "SELECT * FROM `accounts` WHERE account_id = '$account_id' ") or die('query failed');
-if(mysqli_num_rows($select) > 0){
-			while($row = mysqli_fetch_assoc($select)){
-                $id = $row['account_id'];
-                $lname = ucfirst(strtolower($row['Last_Name']));
-                $fname = ucfirst(strtolower($row['First_Name']));
-                $username = $row['account_username'];
-                $password = $row['account_password'];
-                $program = strtoupper($row['Program_in_Charge']);
-                $email = $row['Email'];
-                $contact = $row['Contact'];
-              }
-}
+$row = $select->fetch_assoc();
+$id = $row['account_id'];
+$lname = ucfirst(strtolower($row['Last_Name']));
+$fname = ucfirst(strtolower($row['First_Name']));
+$username = $row['account_username'];
+$password = $row['account_password'];
+$program = strtoupper($row['Program_in_Charge']);
+$email = $row['Email'];
+$contact = $row['Contact'];
 
 $select1 = mysqli_query($conn, "SELECT * FROM `activity_history` WHERE staff_email = '$email'") or die('query failed');
 ?>
@@ -41,6 +38,7 @@ $select1 = mysqli_query($conn, "SELECT * FROM `activity_history` WHERE staff_ema
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="recentAct.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="icon" href="img/UMakLogo.png" />
     <title>UMAK Verification System</title>
   </head>
@@ -148,7 +146,7 @@ $select1 = mysqli_query($conn, "SELECT * FROM `activity_history` WHERE staff_ema
                   }
                 ?>
               </div>
-              <button class="profileBtn prof-edit">EDIT PROFILE</button>
+              <button class="profileBtn prof-edit" onclick="editStaff('<?php echo $id;?>')">EDIT PROFILE</button>
               <form method="post" action="delete_staff.php">
               <button type="submit" class="profileBtn prof-delete">DELETE PROFILE</button>
               </form>
@@ -205,5 +203,20 @@ else{
       </div>
     </div>
     <footer></footer>
+    <script>
+      function editStaff(id) {
+        console.log(id);
+            $.ajax({
+            type: "POST",
+            url: "input.php",
+            data: {"id": id},
+            success: function(result){
+            window.location.href = "editStaff.php";
+            }
+        });	
+
+      }
+
+    </script>
   </body>
 </html>
