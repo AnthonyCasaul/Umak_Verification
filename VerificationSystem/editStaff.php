@@ -59,6 +59,9 @@ if(isset($_POST['update'])){
     or die('query failed');
     header('location: admin_staff.php');
 }
+if(isset($_POST['cancel'])){
+header('location: admin_staff.php');
+}
 
 ?>
 
@@ -196,7 +199,7 @@ if(isset($_POST['update'])){
                       <option value="sol">SOL</option>
                     </select>
                     <div class="btns">
-                      <button class="cancel hoverBtns" onclick="window.location.href='admin_staff.php';">CANCEL</button>
+                      <button class="cancel hoverBtns" type="submit" name="cancel">CANCEL</button>
                         <div class="radioBtns">
                           <div class="EVbtns">
                             <input type="radio" id="view" name="tag" value="View" class="radio"<?php if($tag=="View"){echo "checked";}?>><label for=""> VIEW</label>
@@ -217,4 +220,9 @@ if(isset($_POST['update'])){
     </body>
 
     <footer> </footer>
+    <!-- <script>
+      function btnCancel(){
+        window.location.href="admin_staff.php";
+      }
+    </script> -->
 </html>
