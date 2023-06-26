@@ -50,10 +50,37 @@ if(isset($_POST['importSubmit'])){
                       $major = $line[7];
                       $gname = $line[15];
 
+                      $result = $conn->query("SELECT * FROM student_data WHERE 
+                        student_id = '$studentID' AND 
+                        student_lname = '$lname' AND 
+                        student_fname = '$fname' AND 
+                        student_mname = '$mname' AND 
+                        student_birthday = '$birthday' AND 
+                        student_address = '$address' AND 
+                        student_contact = '$contact' AND 
+                        student_gender = '$gender' AND 
+                        date_graduated = '$dGrad' AND 
+                        department = '$dept' AND 
+                        program = '$program' AND 
+                        semester = '$sem' AND 
+                        academic_year = '$acadYr' AND 
+                        major = '$major' AND 
+                        guardian_name = '$gname'");
+
+                      if ($result->num_rows == 0) {
+                        
+                        $conn->query("INSERT INTO student_data(student_id, student_lname, student_fname, student_mname, student_birthday, student_address, student_contact, student_gender, date_graduated, department, program, semester, academic_year, major, guardian_name) 
+                                      VALUES 
+                                      ('$studentID', '$lname', '$fname', '$mname', '$birthday', '$address', '$contact', '$gender', '$dGrad', '$dept', '$program', '$sem', '$acadYr', '$major', '$gname')");
+                      } else {
+                       
+                        // echo "Data already exists in the database.";
+                      }
+
                
-                  $conn->query("INSERT INTO student_data(student_id, student_lname, student_fname, student_mname, student_birthday, student_address, student_contact, student_gender, date_graduated, department, program, semester, academic_year, major, guardian_name) 
-                  VALUES 
-                  ('$studentID', '$lname', '$fname', '$mname', '$birthday', '$address', '$contact', '$gender', '$dGrad', '$dept', '$program', '$sem', '$acadYr', '$major', '$gname')");
+                  // $conn->query("INSERT INTO student_data(student_id, student_lname, student_fname, student_mname, student_birthday, student_address, student_contact, student_gender, date_graduated, department, program, semester, academic_year, major, guardian_name) 
+                  // VALUES 
+                  // ('$studentID', '$lname', '$fname', '$mname', '$birthday', '$address', '$contact', '$gender', '$dGrad', '$dept', '$program', '$sem', '$acadYr', '$major', '$gname')");
                }
                echo '<script>window.alert("File Succesfully Uploaded")</script>';
            
