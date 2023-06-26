@@ -97,6 +97,8 @@ $countHigh = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM student_data
 $countWithhonors = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM student_data WHERE student_award = 'With Honors'") or die('query failed');
  $withhonors = $countWithhonors->fetch_assoc();
 
+ 
+
 ?>
 
 <!DOCTYPE html>
@@ -106,6 +108,8 @@ $countWithhonors = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM studen
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="dashboardtrial.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="icon" href="img/UMakLogo.png" />
     <title>UMAK Verification System</title>
   </head>
@@ -211,10 +215,15 @@ $countWithhonors = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM studen
 
       <div class="barGraph">
         <select name="" id="" class="CDAdropdown">
-          <option value="">COLLEGES</option>
-          <option value="">DEGREE</option>
-          <option value="">ACADEMIC YEAR</option>
+          <option value="COLLEGES">COLLEGES</option>
+          <option value="DEGREE">DEGREE</option>
+          <option value="ACADEMIC YEAR">ACADEMIC YEAR</option>
         </select>
+        <div class="barPlaceholder" id="barPlaceholder">
+                <canvas id="colGraph" class="graph" style="display:block"></canvas>
+                <canvas id="degGraph" class="graph" style="display:none"></canvas>
+                <canvas id="yrGraph" class="graph" style="display:none"></canvas>
+        </div>
       </div>
 
       <div class="rightSideBar">
@@ -230,6 +239,109 @@ $countWithhonors = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM studen
 
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('colGraph');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: <?php echo json_encode($deptvalue);?>,
+      datasets: [{
+        label: 'Total Alumni by Colleges',
+        data: <?php echo json_encode($departmentV);?>,
+        backgroundColor: ['#e1cd19','#9d9712','#1967e1','#073755']
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+<!-- DISPLAY FOR DEPARTMENT -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const cty = document.getElementById('degGraph');
+
+  new Chart(cty, {
+    type: 'bar',
+    data: {
+      labels: <?php echo json_encode($degree)?>,
+      datasets: [{
+        label: 'Total Alumni by Colleges',
+        data: <?php echo json_encode($degreecount)?>,
+        backgroundColor: ['#000','#9d9712','#1967e1','#073755']
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+
+
+</script>
+<!-- DISPLAY FOR YEAR -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    const ctyear = document.getElementById('yrGraph');
+
+    new Chart(ctyear, {
+      type: 'bar',
+      data: {
+        labels: <?php echo json_encode($academicValue)?>,
+        datasets: [{
+          label: 'Total Alumni by Colleges',
+          data: <?php echo json_encode($acadValue)?>,
+          backgroundColor: ['#000','#9d9712','#1967e1','#073755']
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  
+
+  
+  </script>
+  <script>
+    $(document).ready(function() {
+  $(".CDAdropdown").change(function() {
+    var selectedOption = $(this).val();
+    
+    if (selectedOption === "COLLEGES") {
+      $("#colGraph").show();
+      $("#degGraph").hide();
+      $("#yrGraph").hide();
+    } else if (selectedOption === "DEGREE") {
+      $("#colGraph").hide();
+      $("#degGraph").show();
+      $("#yrGraph").hide();
+    } else if (selectedOption === "ACADEMIC YEAR") {
+      $("#colGraph").hide();
+      $("#degGraph").hide();
+      $("#yrGraph").show();
+    }
+  });
+});
+
+  </script>
    
     
     <footer></footer>
