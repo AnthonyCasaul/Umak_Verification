@@ -33,6 +33,7 @@ if(mysqli_num_rows($select) > 0){
                 $gender =ucfirst($row['student_gender']);
                 $dgrad = $row['date_graduated'];
                 $department = strtoupper($row['department']);
+                
                 $program = ucfirst($row['program']);
                 $degree = ucfirst($row['degree']);
                 $major = ucfirst($row['major']);
@@ -46,6 +47,7 @@ if(mysqli_num_rows($select) > 0){
                 $getprogramid = mysqli_query($conn, "SELECT * FROM deparment WHERE department = '$department' ") or die('query failed');
                 $gettingId = mysqli_fetch_assoc($getprogramid);
                 $deptid = $gettingId['id'];
+                $departmentname = $gettingId['department_name'];
 
 
                 $programupper = strtoupper($row['program']);
@@ -245,7 +247,7 @@ if(isset($_POST['update_profile'])){
 
 
 
-                    <option value="<?php echo $deptid;?>" selected><?php echo $department;?></option>
+                    <option value="<?php echo $deptid;?>" selected><?php echo $departmentname;?></option>
                     <input type="hidden" id="deptexist" value="<?php echo $department;?>">
                     <!--  -->
                     <!-- <option value="College of Business and Finance Studies">CBFS</option>

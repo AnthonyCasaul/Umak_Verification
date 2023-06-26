@@ -57,18 +57,30 @@ $select = mysqli_query($conn, "SELECT * FROM `student_data`") or die('query fail
           <a href="records.php">RECORDS ▼</a>
 
           <div class="dropdown-menu">
-            <ul>
-              <li><a href="records.php">View Records</a></li>
-              <?php 
-                if($account_tag == $Admin){
-                echo '
-              <li><a href="addRecord.php">Add Records</a></li>
-              <li><a href="addBulk.php">Add Bulk</a></li>
-              <li><a href="addDCD.php">Add Category</a></li>';
-            }
-              ?>
-            </ul>
-          </div>
+  <ul>
+    <li><a href="records.php">View Records</a></li>
+    <?php
+    if ($account_tag == $Admin) {
+      echo '
+      <li><a href="addRecord.php">Add Records</a></li>
+      <li><a href="addBulk.php">Add Bulk</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle">Add Category</a>
+        <div class="dropdown-menu1" id="dropdowncategory">
+          <ul>
+            <li><a href="addDCD/addDept.php">Add Dept</a></li>
+            <li><a href="addDCD/addProg.php">Add Program</a></li>
+            <li> <a href="addDCD/addDeg.php">Add Degree</a></li>
+          </ul>
+        </div>
+      </li>';
+    }
+    ?>
+  </ul>
+</div>
+
+
+          
         </li>
         <li>
           <form action="index.php" method="post">

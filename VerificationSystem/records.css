@@ -331,6 +331,15 @@ td {
   text-align: left;
 }
 
+
+.dropdown-menu1{
+  display: none;
+  
+}
+.dropdown:hover .dropdown-menu1{
+  display: block;
+}
+
 /* footer */
 footer {
   position: fixed;
