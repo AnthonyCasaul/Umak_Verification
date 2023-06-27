@@ -26,8 +26,16 @@ if(isset($_POST['submit'])){
 
    $select = mysqli_query($conn, "SELECT * FROM `accounts` WHERE Email = '$email'") or die('query failed');
 
+    $uppercase = preg_match('@[A-Z]@', $pass);
+    $lowercase = preg_match('@[a-z]@', $pass);
+    $number    = preg_match('@[0-9]@', $pass);
+    
+
     if(mysqli_num_rows($select) > 0){
       $message[] = 'user already exist'; 
+    }
+    else if(!$uppercase || !$lowercase || !$number || strlen($pass) < 8) {
+        echo 'Password should be at least 8 characters in length and should include at least one upper case letter, and one number.';
     }
    else{
       $insert = mysqli_query($conn, "INSERT INTO `accounts`(account_id, Last_Name, First_Name, MIddle_Name, account_username, account_password, Email, Contact, Program_in_Charge, account_tag) 

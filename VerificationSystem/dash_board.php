@@ -182,11 +182,11 @@ $countWithhonors = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM studen
           <div class="totalVE">
             <div class="view divVE">
               <h2 class="vStaff"><?php echo $row2['total_row']; ?></h2>
-              <p class="staffText">can VIEW</p>
+              <p class="staffText">CAA</p>
             </div>
             <div class="edit divVE">
               <h2 class="eStaff"><?php echo $row3['total_row']; ?></h2>
-              <p class="staffText">can EDIT</p>
+              <p class="staffText">UR</p>
             </div>
           </div>
         </div>
