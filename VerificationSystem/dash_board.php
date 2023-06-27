@@ -107,7 +107,7 @@ $countWithhonors = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM studen
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="dashboardtrial.css" />
+    <link rel="stylesheet" href="css/dashboardtrial.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="icon" href="img/UMakLogo.png" />
@@ -232,9 +232,43 @@ $countWithhonors = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM studen
             <img src="img/searchIcon.png" alt="" class="searchImg">
             <input type="text" placeholder="Search Program" id="program" onkeydown="handleKeyPress(event)">
           </div>
-          <div class="result"></div>
+          <div class="result">
+            <p class="resultNum"><?php echo $row['total_row']; ?></p>
+            <p class="resultText">NUMBER OF ALUMNI</p>
+          </div>
         </div>
-        <div class="rBot awards"></div>
+        <div class="awardees">
+              <div class="labelTop">
+                <img src="img/awards.png" alt="" class="icon">
+                <span>AWARDS OF <br> DISTINCTION</span>
+              </div>
+              <table>
+                <tr>
+                  <td><?php echo $summa['total_row']; ?></td>
+                  <td>SUMMA CUM LAUDE</td>
+                </tr>
+                <tr>
+                  <td><?php echo $magna['total_row']; ?></td>
+                  <td>MAGNA CUM LAUDE</td>
+                </tr>
+                <tr>
+                  <td><?php echo $cumlaude['total_row']; ?></td>
+                  <td> CUM LAUDE</td>
+                </tr>
+                <tr>
+                  <td><?php echo $highest['total_row']; ?></td>
+                  <td>WITH HIGHEST HONOR</td>
+                </tr>
+                <tr>
+                  <td><?php echo $high['total_row']; ?></td>
+                  <td>WITH HIGH HONOR</td>
+                </tr>
+                <tr>
+                  <td><?php echo $withhonors['total_row']; ?></td>
+                  <td>WITH HONOR</td>
+                </tr>
+              </table>
+            </div>
       </div>
 
     </div>
