@@ -100,7 +100,7 @@ h1 {
   position: absolute;
   left: 150px;
   top: 0;
-  background-color: var(--color-black);
+  background-color: #073775;
 }
 
 .hero {

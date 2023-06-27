@@ -34,18 +34,18 @@ $select = mysqli_query($conn, "SELECT * FROM `activity_history`") or die('query 
       <?php 
          if($account_tag == $Admin){
           echo '
-          <li><a href="dashboard.php">REPORT</a></li>
-          <li>
-            <a href="admin_staff.php">STAFFS ▼</a>
-  
-            <div class="dropdown-menu">
-              <ul>
-                <li><a href="admin_staff.php">View Staffs</a></li>
-                <li><a href="addStaff.php">Add Staffs</a></li>
-                <li><a href="staffactivity.php">Show Staff Activities</a></li>
-              </ul>
-            </div>
-          </li>';
+          <li><a href="addRecord.php">Add Records</a></li>
+              <li><a href="addBulk.php">Add Bulk</a></li>
+              <li>
+                <a href="#">Add Category</a>
+                <div class="dropdown-menu-1">
+                  <ul>
+                    <li><a href="addDCD/addDept.php">Add Department</a></li>
+                    <li><a href="addDCD/addProg.php">Add Program</a></li>
+                    <li><a href="addDCD/addDeg.php">Add Degree</a></li>
+                  </ul>
+                </div>
+              </li>';
          }
         ?>
         

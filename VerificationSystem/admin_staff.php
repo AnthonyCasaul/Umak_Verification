@@ -62,7 +62,16 @@ $Admin = "Admin";
                 echo '
               <li><a href="addRecord.php">Add Records</a></li>
               <li><a href="addBulk.php">Add Bulk</a></li>
-              <li><a href="addDCD.php">Add Category</a></li>';
+              <li>
+                <a href="#">Add Category</a>
+                <div class="dropdown-menu-1">
+                  <ul>
+                    <li><a href="addDCD/addDept.php">Add Department</a></li>
+                    <li><a href="addDCD/addProg.php">Add Program</a></li>
+                    <li><a href="addDCD/addDeg.php">Add Degree</a></li>
+                  </ul>
+                </div>
+              </li>';
             }
               ?>
             </ul>
