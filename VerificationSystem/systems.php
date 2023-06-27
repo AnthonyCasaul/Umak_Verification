@@ -87,6 +87,15 @@ $added  = "Add";
             <img src="img/formrequest.png" alt="">
             <h2 class="fr">FORM <br> REQUEST</h2>
         </div>
+        <div class="box blank">
+            <img src="img/picture.png" alt="">
+            <h2 class="fr">BLANK <br> BOX</h2>
+        </div>
+        <div class="box blank">
+            <img src="img/picture.png" alt="">
+            <h2 class="fr">BLANK <br> BOX</h2>
+        </div>
+        
     </div>
 
     <footer></footer>

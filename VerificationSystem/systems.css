@@ -126,11 +126,11 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
-    gap: 100px;
+    gap: 50px;
 }
 .box{
-    width: 500px;
-    height: 550px;
+    width: 350px;
+    height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -153,8 +153,11 @@ h1 {
     transition: all 1s ease;
 }
 .box img{
-    width: 400px;
+    width: 250px;
     margin-left:40px;
+}
+.blank img{
+    margin-left: 0;
 }
 h2{
     text-align: center;
