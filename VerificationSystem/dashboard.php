@@ -97,6 +97,8 @@ $countHigh = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM student_data
 $countWithhonors = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM student_data WHERE student_award = 'With Honors'") or die('query failed');
  $withhonors = $countWithhonors->fetch_assoc();
 
+ 
+
 ?>
 
 <!DOCTYPE html>
@@ -106,13 +108,10 @@ $countWithhonors = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM studen
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/dashboard.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="icon" href="img/UMakLogo.png" />
     <title>UMAK Verification System</title>
-     <!-- FUNCTIONS FOR BUTTONS TO DISPLAY -->
-    <script src="js/displayGraph.js"> </script>
-
-    <!-- DISPLAY FOR COLLEGES -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <!-- START OF NAV BAR -->
@@ -165,124 +164,82 @@ $countWithhonors = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM studen
     </div>
     <!-- END OF NAV BAR -->
 
-   <div class="content">
-      <div class="headingTxt">REPORTS</div>
-      <div class="container">
-        <div class="sideBar">
-          <div class="tStaff">
-            <div class="tStaffImg">
-              <img src="img/staffIcon.png" alt="" />
-            </div>
-            <div class="tStaffTxt">
-              <div class="tStaffNum tNum"><?php echo $row1['total_row']; ?></div>
-              <div class="tStaffg tText">Total Staffs</div>
-            </div>
-          </div>
-          <div class="viewEdit">
-            <div class="tView">
-              <div class="tViewTxt">
-                <div class="tViewNum tNum"><?php echo $row2['total_row']; ?></div>
-                <div class="tViewg tText">can Edit</div>
-              </div>
-            </div>
+  <div class="dashboard">
+    <div class="title">DASHBOARD</div>
 
-            <div class="tEdit">
-              <div class="tEditTxt">
-                <div class="tEditNum tNum"><?php echo $row3['total_row']; ?></div>
-                <div class="tEditg tText">can View</div>
-              </div>
+    <div class="content">
+
+      <div class="leftSideBar">
+        <div class="left lTop">
+          <div class="tStaff">
+            <img src="img/staffIcon.png" alt="" class="sImg">
+            <div class="text">
+              <h2 class="num"><?php echo $row1['total_row']; ?></h2>
+              <p class="staffText">TOTAL STAFFS</p>
             </div>
-          </div>
-          <div class="donutContainer">
-            <div class="donutPlaceholder"><canvas id="myChart" width="100%" ></canvas></div>
+            </div>
+            
+          <div class="totalVE">
+            <div class="view divVE">
+              <h2 class="vStaff"><?php echo $row2['total_row']; ?></h2>
+              <p class="staffText">CAA</p>
+            </div>
+            <div class="edit divVE">
+              <h2 class="eStaff"><?php echo $row3['total_row']; ?></h2>
+              <p class="staffText">UR</p>
+            </div>
           </div>
         </div>
 
-        <div class="main-content">
-          <div class="top-div">
-            <div class="total totalAdd tDiv">
-              <div class="tAddImg tImg">
-                <img src="img/add.png" alt="" />
-              </div>
-              <div class="tAddTxt">
-                <div class="viewMore"></div>
-                <div class="tNum tAddNumR"><?php echo $row5['total_row']; ?></div>
-                <div class="tText tAddt">Total Added Records</div>
-              </div>
-            </div>
-
-            <div class="total totalEdit tDiv">
-              <div class="tEditImg tImg">
-                <img src="img/edit.png" alt="" />
-              </div>
-              <div class="tEditTxt">
-                <div class="viewMore"></div>
-                <div class="tNum tEditNumR"><?php echo $row4['total_row']; ?></div>
-                <div class="tText tEditt">Total Edited Records</div>
-              </div>
-            </div>
-
-            <div class="total tAlumni">
-              <div class="tAlumniNum tNum"><?php echo $row['total_row']; ?></div>
-              <div class="tAlumniTxt tText">TOTAL ALUMNI RECORDS</div>
-            </div>
+        <div class="left lBot tAdded">
+          <img src="img/add.png" alt="" class="tImg">
+          <div class="text">
+            <h2 class="num"><?php echo $row5['total_row']; ?></h2>
+            <p class="numText addText">TOTAL ADDED RECORDS</p>
           </div>
-  
-        <!-- DONUT CHART -->
-        <script>
-          var xValues = ["Can Edit", "Can View"];
-            var yValues = [<?php echo $row2['total_row']; ?>, <?php echo $row3['total_row']?>];
-            var barColors = [
-            "#e1cd19",
-            "#1967e1"
-                            
-            ];
-                            
-            new Chart("myChart", {
-            type: "doughnut",
-            data: {
-              labels: xValues,
-              datasets: [{
-              backgroundColor: barColors,
-              data: yValues
-              }]
-            },
-            options: {
-              title: {
-              display: true,
-              text: ""
-              }
-            }
-            });
-        </script>
+        </div>
 
-          <!-- CALLER -->
-          <div class="bot-div barContainer">
-            <div class="separator">
-              <div class="btnDiv">
-                <button class="btn btnDept" id="colBtn" onclick="showCol()">COLLEGES</button>
-                <button class="btn btnDeg" id="degBtn" onclick="showDeg()">DEGREE</button>
-                <button class="btn btnYear" id="yrBtn" onclick="showYr()">YEAR</button>
+        <div class="left lBot tEdited">
+          <img src="img/edit.png" alt="" class="tImg">
+          <div class="text">
+            <h2 class="num"><?php echo $row4['total_row']; ?></h2>
+            <p class="numText editText">TOTAL EDITED RECORDS</p>
+          </div>
+        </div>
 
-                <div class="searchProg">
-                  <img src="img/searchIcon.png" alt="" class="searchImg">
-                  <input type="text" placeholder="Search Program" id="program" onkeydown="handleKeyPress(event)">
-                </div>
-              </div>
+        <div class="left lBot tAlumni">
+          <h2 class="num"><?php echo $row['total_row']; ?></h2>
+          <p class="numText alumniText">TOTAL ALUMNI RECORDS</p>
+        </div>
+      </div>
 
-              <div id="searchResults" ></div>
-
-            <!-- DISPLAY -->
-              <div class="barPlaceholder" id="barPlaceholder">
+      <div class="barGraph">
+        <select name="" id="" class="CDAdropdown">
+          <option value="COLLEGES">COLLEGES</option>
+          <option value="DEGREE">DEGREE</option>
+          <option value="ACADEMIC YEAR">ACADEMIC YEAR</option>
+        </select>
+        <div class="barPlaceholder" id="barPlaceholder">
                 <canvas id="colGraph" class="graph" style="display:block"></canvas>
                 <canvas id="degGraph" class="graph" style="display:none"></canvas>
                 <canvas id="yrGraph" class="graph" style="display:none"></canvas>
-                <canvas id="progGraph" class="graph" style="display:none"></canvas>
-              </div>
-            </div>
-            <div class="awardees">
+        </div>
+      </div>
+
+      <div class="rightSideBar">
+        <div class="right rTop">
+          <div class="searchProg">
+            <img src="img/searchIcon.png" alt="" class="searchImg">
+            <input type="text" placeholder="Search Program" id="program" onkeydown="handleKeyPress(event)">
+          </div>
+          <div class="result">
+            <p class="resultNum"><?php echo $row['total_row']; ?></p>
+            <p class="resultText">NUMBER OF ALUMNI</p>
+          </div>
+        </div>
+        <div class="awardees">
               <div class="labelTop">
-                <img src="img/cum-laude.png" alt="" class="icon">
+                <img src="img/awards.png" alt="" class="icon">
                 <span>AWARDS OF <br> DISTINCTION</span>
               </div>
               <table>
@@ -312,146 +269,114 @@ $countWithhonors = mysqli_query($conn, "SELECT COUNT(*) as total_row FROM studen
                 </tr>
               </table>
             </div>
-
-          </div>
-        </div>
       </div>
-    </div>
 
-    <!-- SEARCH RESULT -->
-    <script>
-      function showResults() {
-        var input = document.querySelector('input[type="text"]');
-        var results = document.getElementById('searchResults');
-        if (input.value.length > 0) {
-          results.style.display = "block";
-        } else {
-          results.style.display = "none";
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('colGraph');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: <?php echo json_encode($deptvalue);?>,
+      datasets: [{
+        label: 'Total Alumni by Colleges',
+        data: <?php echo json_encode($departmentV);?>,
+        backgroundColor: ['#e1cd19','#9d9712','#1967e1','#073755']
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
         }
       }
-    </script>
+    }
+  });
+</script>
 
-    <!-- FUNCTIONS FOR BUTTONS TO DISPLAY -->
-    <script src="js/displayGraph.js"> </script>
+<!-- DISPLAY FOR DEPARTMENT -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- DISPLAY FOR COLLEGES -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const cty = document.getElementById('degGraph');
 
-      <script>
-        const ctx = document.getElementById('colGraph');
+  new Chart(cty, {
+    type: 'bar',
+    data: {
+      labels: <?php echo json_encode($degree)?>,
+      datasets: [{
+        label: 'Total Alumni by Colleges',
+        data: <?php echo json_encode($degreecount)?>,
+        backgroundColor: ['#000','#9d9712','#1967e1','#073755']
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
 
-        new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: <?php echo json_encode($deptvalue);?>,
-            datasets: [{
-              label: 'Total Alumni by Colleges',
-              data: <?php echo json_encode($departmentV);?>,
-              backgroundColor: ['#e1cd19','#9d9712','#1967e1','#073755']
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
+
+
+</script>
+<!-- DISPLAY FOR YEAR -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    const ctyear = document.getElementById('yrGraph');
+
+    new Chart(ctyear, {
+      type: 'bar',
+      data: {
+        labels: <?php echo json_encode($academicValue)?>,
+        datasets: [{
+          label: 'Total Alumni by Colleges',
+          data: <?php echo json_encode($acadValue)?>,
+          backgroundColor: ['#000','#9d9712','#1967e1','#073755']
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
           }
-        });
-      </script>
-      
-    <!-- DISPLAY FOR DEPARTMENT -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        }
+      }
+    });
+  
 
-      <script>
-        const cty = document.getElementById('degGraph');
+  
+  </script>
+  <script>
+    $(document).ready(function() {
+  $(".CDAdropdown").change(function() {
+    var selectedOption = $(this).val();
+    
+    if (selectedOption === "COLLEGES") {
+      $("#colGraph").show();
+      $("#degGraph").hide();
+      $("#yrGraph").hide();
+    } else if (selectedOption === "DEGREE") {
+      $("#colGraph").hide();
+      $("#degGraph").show();
+      $("#yrGraph").hide();
+    } else if (selectedOption === "ACADEMIC YEAR") {
+      $("#colGraph").hide();
+      $("#degGraph").hide();
+      $("#yrGraph").show();
+    }
+  });
+});
 
-        new Chart(cty, {
-          type: 'bar',
-          data: {
-            labels: <?php echo json_encode($degree)?>,
-            datasets: [{
-              label: 'Total Alumni by Colleges',
-              data: <?php echo json_encode($degreecount)?>,
-              backgroundColor: ['#000','#9d9712','#1967e1','#073755']
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-      
-
-      
-      </script>
-      <!-- DISPLAY FOR YEAR -->
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-        <script>
-          const ctyear = document.getElementById('yrGraph');
-
-          new Chart(ctyear, {
-            type: 'bar',
-            data: {
-              labels: <?php echo json_encode($academicValue)?>,
-              datasets: [{
-                label: 'Total Alumni by Colleges',
-                data: <?php echo json_encode($acadValue)?>,
-                backgroundColor: ['#000','#9d9712','#1967e1','#073755']
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            }
-          });
-        
-
-        
-        </script>
-        <script>
-          function handleKeyPress(event) {
-            if (event.key === "Enter") {
-              var program = document.getElementById("program").value;
-              searchProgram(program);
-            }
-          }
-          
-          function searchProgram() {
-              var input = document.getElementById("program").value;
-              
-              // Create a new XMLHttpRequest object
-              var xhr = new XMLHttpRequest();
-              
-              // Define the request URL and method (assuming the PHP file is named "search.php")
-              var url = "searchProgram.php";
-              var method = "POST";
-              
-              // Set up the request
-              xhr.open(method, url, true);
-              
-              // Set the request header
-              xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-              
-              // Set up a callback function to handle the response
-              xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                  var count = xhr.responseText;
-                  document.getElementById("searchResults").innerHTML = "<b style='font-family:san-serif;padding-left:50px;'>Number of Alumni: </b>" + count;
-                }
-              };
-              
-              // Send the request with the search query as a parameter
-              xhr.send("program=" + input);
-            }
-        </script>
+  </script>
+   
     
     <footer></footer>
   </body>

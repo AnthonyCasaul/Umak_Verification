@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
     header('location:records.php');
     $_SESSION['username'] = $email; 
       if(mysqli_num_rows($admin) > 0){
-          header('location:dash_board.php');
+          header('location:dashboard.php');
           $_SESSION['username'] = $email;
         } 
       }
