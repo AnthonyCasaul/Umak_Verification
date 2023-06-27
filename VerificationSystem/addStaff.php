@@ -176,10 +176,10 @@ if(isset($_POST['submit'])){
                   <button class="cancel hoverBtns" onclick="window.location.href='admin_staff.php';">CANCEL</button>
                     <div class="radioBtns">
                       <div class="EVbtns">
-                        <input type="radio" id="view" name="tag" value="View" class="radio"><label for=""> VIEW</label>
+                        <input type="radio" id="view" name="tag" value="CAA" class="radio"><label for=""> CAA</label>
                       </div>
                       <div class="EVbtns">
-                        <input type="radio" id="edit" name="tag" value="Edit" class="radio"><label for=""> EDIT</label>
+                        <input type="radio" id="edit" name="tag" value="UR" class="radio"><label for=""> UR</label>
                       </div>
                     </div>
                     <input class="hoverBtns" type="submit" name="submit" placeholder="SAVE" value="SAVE"/>

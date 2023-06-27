@@ -202,10 +202,10 @@ header('location: admin_staff.php');
                       <button class="cancel hoverBtns" type="submit" name="cancel">CANCEL</button>
                         <div class="radioBtns">
                           <div class="EVbtns">
-                            <input type="radio" id="view" name="tag" value="View" class="radio"<?php if($tag=="View"){echo "checked";}?>><label for=""> VIEW</label>
+                            <input type="radio" id="view" name="tag" value="CAA" class="radio"<?php if($tag=="CAA"){echo "checked";}?>><label for=""> CAA</label>
                           </div>
                           <div class="EVbtns">
-                            <input type="radio" id="edit" name="tag" value="Edit" class="radio"<?php if($tag=="Edit"){echo "checked";}?>><label for=""> EDIT</label>
+                            <input type="radio" id="edit" name="tag" value="UR" class="radio"<?php if($tag=="UR"){echo "checked";}?>><label for=""> UR</label>
                           </div>
                         </div>
                       <input class="hoverBtns" type="submit" name="submit" placeholder="SAVE" value="SAVE"/>
